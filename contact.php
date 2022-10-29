@@ -34,7 +34,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     <td><?=$row["branch_id"]?></td>
                     <td><?=$row["branch_address"]?></td>
                     <td><iframe src="https://www.google.com/maps/embed?pb=<?=$location[$i]?>"
-                        width="100%" height="100% style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe></td>
                     <td><?=$row["branch_tel"]?></td>
                 </tr>
                 <?php $i++;
