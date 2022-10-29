@@ -5,7 +5,9 @@ $stmt = $pdo->prepare("INSERT INTO customer VALUES ( ?, ?, ?)");
 $stmt->bindParam(1, $_POST["cus_name"]);
 $stmt->bindParam(2, $_POST["cus_prefix"]);
 $stmt->bindParam(3, $_POST["cus_tel"]);
+
 $stmt->execute();
+
 ?>
 
 <html>
