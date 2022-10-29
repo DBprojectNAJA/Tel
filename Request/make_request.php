@@ -1,4 +1,4 @@
-<?php include "connectMysqli.php";
+<?php include "../connectMysqli.php";
 $tel_id = $_POST['tel_id'];
 $abnormality = $_POST['abnormality'];
 $emp_id = $_POST['emp_id'];
