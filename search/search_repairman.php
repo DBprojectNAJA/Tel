@@ -1,15 +1,18 @@
 <?php
-$pdo = new PDO("mysql:host=localhost;dbname=telephone;charset=utf8", "root", "");
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include "../connect.php";
+session_start();
+echo $_SESSION['is_repairman'];
 ?>
 <html>
     <head>
         <mega charset="utf-8">
     </head>
     <body>
+        <?php echo $_SESSION['employee_id']. ':'.$_SESSION['emp_name']; ?>
         <a href='repairPanel.php'>อัพเดทสถานะการซ่อม</a>
         <a href=''>เพิ่มเครื่อง</a>
         <a href='request_form.php'>เพิ่มคำร้อง</a>
+
         <div class="search">
         <form>
             <label>กรอกชื่อ-สกุล/รหัสโทรศัพท์</label><br>
@@ -53,8 +56,8 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $check2 = $stmt2->fetch();
                 if($check2==0){
                     //ไม่พบ
-                    header("location:register.php?nameforsearch=$nameforsearch");
-                    echo '<meta http-equiv=refresh content=0;URL=register.php>';
+                    header("location:../Register/Register.php?name=$nameforsearch");
+                    echo '<meta http-equiv=refresh content=0;URL=Register.php>';
                 }else{ ?>
                     <!-- display 1 -->
                     ประวัติการซ่อม

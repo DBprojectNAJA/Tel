@@ -1,4 +1,4 @@
-<?php include "connect.php"?>
+<?php include "../connect.php"?>
 <html>
     <body>
         <form action="login-check.php" method="post">

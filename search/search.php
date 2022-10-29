@@ -1,6 +1,7 @@
 <?php
-$pdo = new PDO("mysql:host=localhost;dbname=telephone;charset=utf8", "root", "");
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include "../connect.php";
+session_start();
+echo $_SESSION['is_repairman'];
 ?>
 <html>
     <head>
@@ -52,8 +53,8 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $check2 = $stmt2->fetch();
                 if($check2==0){
                     //ไม่พบ
-                    header("location:register.php?nameforsearch=$nameforsearch");
-                    echo '<meta http-equiv=refresh content=0;URL=register.php>';
+                    header("location:../Register/Register.php?name=$nameforsearch");
+                    echo '<meta http-equiv=refresh content=0;URL=Register.php>';
                 }else{ ?>
                     <!-- display 1 -->
                     ประวัติการซ่อม

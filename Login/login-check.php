@@ -1,5 +1,5 @@
 <?php 
-include "connect.php"; 
+include "../connect.php"; 
 session_start();
 
 $stmt = $pdo->prepare("SELECT * FROM employee WHERE employee_id = ? AND emp_tel = ?");
@@ -10,12 +10,14 @@ $row = $stmt->fetch();
 
 if(!empty($row)){
     session_regenerate_id();
-    $_SESSION["fullname"]=$row["emp_name"];
-    $_SESSION["username"]=$row["emp_tel"];
+    $_SESSION["employee_id"]=$row["employee_id"];
+    $_SESSION["emp_name"]=$row["emp_name"];
+    $_SESSION["is_repairman"]=false;
+    // $_SESSION["username"]=$row["emp_tel"];
 
     echo "เข้าสู่ระบบสำเร็จ<br>";
     $value=$_POST["employee_id"];
-    $check="select * from repairman where employee_id = '$value'";
+    $check="select repairman_id from repairman where employee_id = '$value'";
     $stmt2 = $pdo->prepare($check);
     $stmt2->execute();
     $row2 = $stmt2->fetch();
@@ -24,10 +26,13 @@ if(!empty($row)){
     //$result=mysql_query($check) or die(mysql_error());
     //$num=mysql_num_rows($result);
     if(empty($row2)){
-        echo "<a href='search.php'>ไปยังหน้าหลัก</a><br>";
+
+        echo "<a href='../search/search.php'>ไปยังหน้าหลัก</a><br>";
     }
     else{
-        echo "<a href='search_repairman.php'>ไปยังหน้าหลัก</a><br>";
+        $_SESSION["is_repairman"]=true;
+        $_SESSION["repairman"]=$row2['repairman_id'];
+        echo "<a href='../search/search_repairman.php'>ไปยังหน้าหลัก</a><br>";
     }
 }
 else{
