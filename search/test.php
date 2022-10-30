@@ -7,14 +7,6 @@ echo $_SESSION['is_repairman'];
 
 <head>
     <mega charset="utf-8">
-    <script>
-        function employee(){
-            document.getElementById("employee").style.visibility=visible;
-        }
-        function repairman(){
-            document.getElementById("repairman").style.visibility=visible;
-        }
-    </script>
 </head>
 
 <body>
@@ -36,17 +28,6 @@ echo $_SESSION['is_repairman'];
     <?php
 }
 ?>
-    
-
-    <!--<div id="employee" style='visibility:hidden'>
-        <a href='../Phone/insert-phone.php'>เพิ่มเครื่อง</a>
-        <a href='../Request/request_form.php'>เพิ่มคำร้อง</a>
-    </div>
-    <div id="repairman" style='visibility:hidden'>
-        <a href='../RepairPanel/repairPanel.php'>อัพเดทสถานะการซ่อม</a>
-        <a href='../Phone/insert-phone.php'>เพิ่มเครื่อง</a>
-        <a href='../Request/request_form.php'>เพิ่มคำร้อง</a>
-    </div>-->
 
     <div class="search">
         <form>
