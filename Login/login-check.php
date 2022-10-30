@@ -27,12 +27,12 @@ if(!empty($row)){
     //$num=mysql_num_rows($result);
     if(empty($row2)){
 
-        echo "<a href='../search/search.php'>ไปยังหน้าหลัก</a><br>";
+        echo "<a href='../search/test.php'>ไปยังหน้าหลัก</a><br>";
     }
     else{
         $_SESSION["is_repairman"]=true;
         $_SESSION["repairman"]=$row2['repairman_id'];
-        echo "<a href='../search/search_repairman.php'>ไปยังหน้าหลัก</a><br>";
+        echo "<a href='../search/test.php'>ไปยังหน้าหลัก</a><br>";
     }
 }
 else{
