@@ -1,7 +1,7 @@
 <?php
 include "../connect.php";
 session_start();
-echo $_SESSION['is_repairman'];
+//echo $_SESSION['is_repairman'];
 ?>
 <html>
 

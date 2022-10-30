@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Mali&family=Prompt:wght@200&display=swap" rel="stylesheet">
     <style type="text/css">
         body {
-            margin-top: 10px;
+            margin-top: 0px;
             margin-left: auto;
             margin-right: auto;
             background:#e6e6ff;
@@ -18,31 +18,45 @@
             color: aliceblue;
             margin: auto;
             font-size: 20px;
+            display: flex;
 
         }
-        .N2 {
+        #N1{
             text-align: right;
-            display: flex;
-            color: aliceblue;
+            padding-left: 70%;
+        }
+        footer {
+            text-align: center;
+            padding: 3px;
+            background-color: DarkSalmon;
+            color: white;
+            bottom: 0;
+            position: absolute;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
 <nav>
+    <b>Technic telaphone</b>
+
   <div id="N1">
-      <b>Technic telaphone</b>
-        <a href="#">Page 1</a></li>
-        <a href="#">Page 2</a></li>
-        <a href="#">Page 3</a></li>
-        <a href="#">Sign Up</a>
+        <a href="../SearchCustomer.php">เช็คสถานะ</a>
+        <a href="../Login/login-form.php">Login</a>
   </div>
 </nav>
   
 <div class="container">
-  <h3>Basic Navbar Example</h3>
-  <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
+  <h3>โทรศัพท์ใครมีปัญหา<br>
+โทรหาใครไม่ติด<br>
+ติดต่อเรา</h3>
+  <p>ปลอดภัย มีฝีมือ มากประสบการณ์</p>
+  <button type="button" onclick="document.location='../CustomerSearch.php'">เช็คสถานะ ></button>
 </div>
-
+<footer>
+    <p>CONTACT<br>
+    <a href="../contact.php">สาขาทั้งหมด</a></p>
+  </footer>
 </body>
 </html>
