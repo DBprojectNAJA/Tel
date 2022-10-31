@@ -34,7 +34,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt->bindParam(1,$_GET["search-by-name-or-telid"]);
             $stmt->execute();
 
-            $stmt2 = $pdo->prepare("SELECT telephone.tel_model,telephone.color
+            $stmt2 = $pdo->prepare("SELECT telephone.tel_id,telephone.tel_model,telephone.color
             FROM telephone where cus_name like ?"); 
             $check=0;
             ?>
@@ -106,15 +106,17 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             ?>
             <?php while($row2 = $stmt2->fetch()){
             if($check==0||$check==1){ ?>
-                ประวัติการซ่อมของ คุณ<?=$nameforsearch?><br><br>
+                คุณ<?=$nameforsearch?> มีโทรศัพท์ที่เคยลงทะเบียนกับทางร้าน<br><br>
                 <table border="1" class="search-table">
                     <tr>
+                        <th>รหัสโทรศัพท์</th>
                         <th>รุ่นโทรศัพท์</th>
                         <th>สี</th>
                     </tr>
             <?php }  
             $check=2; ?>
             <tr>
+            <td><?=$row2["tel_id"]?></td>
                 <td><?=$row2["tel_model"]?></td>
                 <td><?=$row2["color"]?></td>
             </tr>
