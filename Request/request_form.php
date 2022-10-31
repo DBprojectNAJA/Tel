@@ -60,10 +60,10 @@ if (!isset($_SESSION['employee_id'])) {
                     <br />
                     <textarea id="abnormality" name="abnormality" rows="5"></textarea>
                 </div>
-                <input type="button" value="ส่งคำร้อง" id="submit" />
+                <input type="button" value="ส่งคำร้อง" id="submit"/>
             </section>
         </div>
-        <a href="../search/search.php">Back</a>
+        <a href="../search/search.php?search-by-name-or-telid=<?=$name ?>">Back</a>
     <?php
     }
     ?>
@@ -90,6 +90,9 @@ if (!isset($_SESSION['employee_id'])) {
                     emp_id
                 },
                 success: function(data) {
+                    if (data){
+                        alert("เพิ่มคำร้องสำเร็จ")
+                    }
                     console.log(data);
                 }
 
