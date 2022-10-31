@@ -116,7 +116,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             <?php }  
             $check=2; ?>
             <tr>
-            <td><?=$row2["tel_id"]?></td>
+                <td><?=$row2["tel_id"]?></td>
                 <td><?=$row2["tel_model"]?></td>
                 <td><?=$row2["color"]?></td>
             </tr>
