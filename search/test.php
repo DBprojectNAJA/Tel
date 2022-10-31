@@ -1,7 +1,7 @@
 <?php
 include "../connect.php";
 session_start();
-echo $_SESSION['is_repairman'];
+//echo $_SESSION['is_repairman'];
 ?>
 <html>
 
@@ -10,15 +10,39 @@ echo $_SESSION['is_repairman'];
 </head>
 
 <body>
-    <a href=''>เพิ่มเครื่อง</a>
-    <a href='../Request/request_form.php'>เพิ่มคำร้อง</a>
+    <?php
+        if ($_SESSION['is_repairman']){
+            ?>
+        <a href='../RepairPanel/repairPanel.php'>อัพเดทสถานะการซ่อม</a>
+        
+            <?php 
+        }
+    ?>
+    <?php
+    if (isset($_GET["search-by-name-or-telid"])){
+        
+        $cus_name=$_GET["search-by-name-or-telid"];
+        ?>
+        <a href='../Phone/insert-phone.php'>เพิ่มเครื่อง</a>
+        <a href='../Request/request_form.php?cus_name=$cus_name'>เพิ่มคำร้อง</a>
+    <?php
+}
+?>
+
     <div class="search">
         <form>
             <label>กรอกชื่อ-สกุล/รหัสโทรศัพท์</label><br>
-            <input type="text" name="search-by-name-or-telid"><br>
+            <input type="text" name="search-by-name-or-telid" 
+            value='<?php 
+            $value=(
+            isset($_GET["search-by-name-or-telid"])) ? 
+            $_GET["search-by-name-or-telid"] : "";
+             echo $value;
+            ?>'><br>
             <input type="submit" value="ค้นหา" class="submit-button">
         </form>
     </div>
+
     <?php
     if (empty($_GET)) {
     } else {
