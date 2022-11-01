@@ -168,7 +168,7 @@ session_start();
             $row3=$stmt3->fetch();
             if($row3!=0){?>
                 ค้างชำระ<br><br>
-                <a href="invoice-db.php" target="_bank">ใบเสร็จรับเงิน</a>
+                <a href="../reciept/reciept.php" target="_bank">ใบเสร็จรับเงิน</a>
             <?php session_regenerate_id();
             $_SESSION["cus_reciept"]=$nameforsearch;
             } ?>
