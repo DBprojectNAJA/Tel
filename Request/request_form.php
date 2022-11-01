@@ -82,7 +82,7 @@ if (!isset($_SESSION['employee_id'])) {
                 return
             }
             $.ajax({
-                url: "make_request.php",
+                url: "make_request.php", //ส่งไปที่ไหน
                 method: "POST",
                 data: {
                     tel_id,
