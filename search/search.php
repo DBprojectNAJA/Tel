@@ -1,7 +1,6 @@
 <?php
 include "../connect.php";
 session_start();
-//echo $_SESSION['is_repairman'];
 ?>
 <html>
 
@@ -66,6 +65,7 @@ session_start();
             $stmt2 = $pdo->prepare("SELECT telephone.tel_id,telephone.tel_model,telephone.color
             FROM telephone where cus_name like ?"); 
             $check=0;
+
             ?>
             <?php while($row = $stmt->fetch()){
             if($check==0){ ?>
@@ -151,6 +151,28 @@ session_start();
             </tr>
             <?php } ?>
             </table>
+            <br>
+            <?php
+            $nameforsearch = str_replace(" ","%",$nameforsearch);
+            $stmt3 = $pdo->prepare("SELECT invoice.payment_status
+            FROM invoice INNER JOIN Repair_detail JOIN Request JOIN Telephone JOIN Customer
+            WHERE invoice.repair_id = Repair_detail.repair_id 
+            AND Repair_detail.request_id = Request.request_id 
+            AND Request.tel_id = Telephone.tel_id 
+            AND Telephone.cus_name = Customer.cus_name
+            AND invoice.payment_status = 'pending'
+            AND Customer.cus_name LIKE ?
+            ");
+            $stmt3->bindParam(1,$nameforsearch);
+            $stmt3->execute();
+            $row3=$stmt3->fetch();
+            if($row3!=0){?>
+                ค้างชำระ<br><br>
+                <a href="invoice-db.php" target="_bank">ใบเสร็จรับเงิน</a>
+            <?php session_regenerate_id();
+            $_SESSION["cus_reciept"]=$nameforsearch;
+            } ?>
+            
             <?php if($check==0){
                 header("location:../Register/Register.php?name=$nameforsearch");
                 echo '<meta http-equiv=refresh content=0;URL=Register.php>';
