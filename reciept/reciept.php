@@ -1,13 +1,10 @@
 <?php
-$pdo = new PDO("mysql:host=localhost;dbname=telephone;charset=utf8", "root", "");
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include "../connect.php";
 require('./fpdf/fpdf.php');
-$con=mysqli_connect('localhost','root','');
-mysqli_select_db($con,'telephone');
 session_start();
 
 $date=strtotime("today");
-$todaydate=date("d M Y", $date);
+$todaydate=date("d/m/Y", $date);
 $total=0;
 
 $stmt = $pdo->prepare("SELECT branch.branch_id,branch.branch_address,branch.branch_tel

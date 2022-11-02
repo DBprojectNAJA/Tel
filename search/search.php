@@ -136,7 +136,6 @@ session_start();
             <?php while($row2 = $stmt2->fetch()){
             if($check==0||$check==1){ ?>
                 คุณ<?=$nameforsearch?><br><br>
-                โทรศัพท์ที่ค้างชำระ<br>
             <?php $nameforsearch = str_replace(" ","%",$nameforsearch);
                 $stmt3 = $pdo->prepare("SELECT telephone.tel_id,telephone.tel_model,telephone.color,
                 invoice.payment_status,request.abnormality,invoice.cost
@@ -151,8 +150,11 @@ session_start();
                 $stmt3->bindParam(1,$nameforsearch);
                 $stmt3->execute();
                 $total=0;
-            ?>
-                <table border="1" class="search-table">
+                $reciept=0;
+                while($row3 = $stmt3->fetch()){
+                if($reciept==0){ ?>
+                    โทรศัพท์ที่ค้างชำระ<br>
+                    <table border="1" class="search-table">
                     <tr>
                         <th>รหัสโทรศัพท์</th>
                         <th>รุ่นโทรศัพท์</th>
@@ -160,7 +162,8 @@ session_start();
                         <th>อาการผิดปกติ</th>
                         <th>ราคา</th>
                     </tr>
-                    <?php while($row3 = $stmt3->fetch()){?>
+                <?php }
+                $reciept=1;?>
                     <tr>
                         <td><?=$row3["tel_id"]?></td>
                         <td><?=$row3["tel_model"]?></td>
@@ -168,15 +171,19 @@ session_start();
                         <td><?=$row3["abnormality"]?></td>
                         <td align="right"><?=$row3["cost"]?>.00</td>
                     </tr>
-                    <?php $total+=$row3["cost"]; } ?>
+                    <?php $total+=$row3["cost"]; }
+                    if($reciept==1){ ?>
                     <tr>
                         <td align="center" colspan="4">รวม</td>
                         <td align="right"><?=$total?>.00</td>
                     </tr>
+                    <?php }?>
                 </table>
+                <?php if($reciept==1){ ?>
                 <a href="../reciept/reciept.php" target="_bank">พิมพ์ใบเสร็จรับเงิน</a><br>
                 <?php session_regenerate_id();
                 $_SESSION["cus_reciept"]=$nameforsearch; ?>
+                <?php } ?>
                 โทรศัพท์ที่เคยลงทะเบียนกับทางร้าน<br>
                 <table border="1" class="search-table">
                     <tr>
