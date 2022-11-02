@@ -1,5 +1,5 @@
-<?php
-include "../connect.php";
+<?php 
+include "../connect.php"; 
 require('./fpdf/fpdf.php');
 session_start();
 
