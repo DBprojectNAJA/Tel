@@ -103,10 +103,50 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt2->bindParam(1, $nameforsearch);
             $stmt2->execute();
             $nameforsearch = str_replace("%"," ",$nameforsearch);
+            
             ?>
             <?php while($row2 = $stmt2->fetch()){
             if($check==0||$check==1){ ?>
-                คุณ<?=$nameforsearch?> มีโทรศัพท์ที่เคยลงทะเบียนกับทางร้าน<br><br>
+                คุณ<?=$nameforsearch?><br><br>
+                โทรศัพท์ที่ค้างชำระ<br>
+            <?php $nameforsearch = str_replace(" ","%",$nameforsearch);
+                $stmt3 = $pdo->prepare("SELECT telephone.tel_id,telephone.tel_model,telephone.color,
+                invoice.payment_status,request.abnormality,invoice.cost
+                FROM invoice INNER JOIN Repair_detail JOIN Request JOIN Telephone JOIN Customer
+                WHERE invoice.repair_id = Repair_detail.repair_id 
+                AND Repair_detail.request_id = Request.request_id 
+                AND Request.tel_id = Telephone.tel_id 
+                AND Telephone.cus_name = Customer.cus_name
+                AND invoice.payment_status = 'pending'
+                AND Customer.cus_name LIKE ?
+                ");
+                $stmt3->bindParam(1,$nameforsearch);
+                $stmt3->execute();
+                $total=0;
+            ?>
+                <table border="1" class="search-table">
+                    <tr>
+                        <th>รหัสโทรศัพท์</th>
+                        <th>รุ่นโทรศัพท์</th>
+                        <th>สี</th>
+                        <th>อาการผิดปกติ</th>
+                        <th>ราคา</th>
+                    </tr>
+                    <?php while($row3 = $stmt3->fetch()){?>
+                    <tr>
+                        <td><?=$row3["tel_id"]?></td>
+                        <td><?=$row3["tel_model"]?></td>
+                        <td><?=$row3["color"]?></td>
+                        <td><?=$row3["abnormality"]?></td>
+                        <td align="right"><?=$row3["cost"]?>.00</td>
+                    </tr>
+                    <?php $total+=$row3["cost"]; } ?>
+                    <tr>
+                        <td align="center" colspan="4">รวม</td>
+                        <td align="right"><?=$total?>.00</td>
+                    </tr>
+                </table>
+                โทรศัพท์ที่เคยลงทะเบียนกับทางร้าน<br>
                 <table border="1" class="search-table">
                     <tr>
                         <th>รหัสโทรศัพท์</th>
