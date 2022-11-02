@@ -1,6 +1,5 @@
-<?php
-$pdo = new PDO("mysql:host=localhost;dbname=telephone;charset=utf8", "root", "");
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+<?php 
+include "../connect.php"; 
 require('./fpdf/fpdf.php');
 $con=mysqli_connect('localhost','root','');
 mysqli_select_db($con,'telephone');
