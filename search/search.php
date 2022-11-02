@@ -293,7 +293,7 @@ session_start();
                     <?php }?>
                 </table>
                 <?php if($reciept==1){ ?>
-                <button >พิมพ์ใบเสร็จรับเงิน</button><br>
+                <button onclick="location.href='../reciept/reciept.php';" >พิมพ์ใบเสร็จรับเงิน</button><br>
                 <?php $_SESSION["cus_reciept"]=$nameforsearch; ?>
                 <?php } ?>
                 <b>โทรศัพท์ที่เคยลงทะเบียนกับทางร้าน</b><br>
