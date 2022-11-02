@@ -107,7 +107,7 @@ session_start();
 <body>
     <nav>
     <ul>
-        <li><a href="../../Tel/"><img src="../img/logo.png" id="logo"> Technic telaphone</a></li>
+        <li><a href="../../Tel/"><img src="../img/logo.png" id="logo"> Technic telephone</a></li>
         <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"];?></a></li>
         <li style="float:right">
         <?php
@@ -319,7 +319,7 @@ session_start();
         } ?> 
         </div>
         <footer>
-        <p><b>Technic telaphone since 1987</b></p>
+        <p><b>Technic telephone since 1987</b></p>
         </footer>
 </body>
 
