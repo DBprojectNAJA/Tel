@@ -53,7 +53,7 @@ session_start();
         }
         table{
             border-collapse: collapse;
-            width: 98%;
+            width: 98%;   
         }
         td {
             padding-top: 5px;
@@ -183,12 +183,32 @@ session_start();
             <?php } 
             $check=1;
             $nameforsearch = str_replace(" ","%",$row["cus_name"]);
+            $row["request_date"]=date('d/m/Y', strtotime($row["request_date"]));
             if(!$row["finish_date"]){
                 $warranty_date='';
                 $pick_up_before_date='';
             }else{
-                $warranty_date=date('Y-m-d', strtotime('+3 months',strtotime($row["finish_date"])));
-                $pick_up_before_date=date('Y-m-d', strtotime('+1 years',strtotime($row["finish_date"])));
+                $row["finish_date"]=date('d/m/Y', strtotime($row["finish_date"]));
+                $warranty_date=date('d/m/Y', strtotime('+3 months',strtotime($row["finish_date"])));
+                $pick_up_before_date=date('d/m/Y', strtotime('+1 years',strtotime($row["finish_date"])));
+            }
+            switch($row["repair_status"]){
+                case 'repaired' : $row["repair_status"] = 'ซ่อมสำเร็จ';
+                            break;
+                case 'require spare part' : $row["repair_status"] = 'กำลังจัดหาอะไหล่';
+                            break;
+                case 'repaired in progress' : $row["repair_status"] = 'อยู่ระหว่างการซ่อม';
+                            break;
+            }
+            switch($row["request_status"]){
+                case 'awaiting' : $row["request_status"] = 'อยู่ระหว่างการซ่อม';
+                            break;
+                case 'pending' : $row["request_status"] = 'รอชําระเงิน';
+                            break;
+                case 'fulfill' : $row["request_status"] = 'สําเร็จ';
+                            break;
+                case 'canceled' : $row["request_status"] = 'ยกเลิกคําร้อง';
+                            break;
             }
             ?>
             <table class="tel-table" align="center">
@@ -212,7 +232,8 @@ session_start();
                 <th>รหัสโทรศัพท์</th>
                 <td><?=$row["tel_id"]?></td>
             </tr>
-            <tr>
+            <?php if($row["finish_date"]){ ?>
+                <tr>
                 <th>ราคา</th>
                 <td><?=$row["cost"]?></td>
             </tr>
@@ -228,6 +249,7 @@ session_start();
                 <th>ควรมารับก่อน</th>
                 <td><?=$pick_up_before_date?></td>
             </tr>
+            <?php } ?>
             <tr>
                 <th>สถานะการจ่ายเงิน</th>
                 <td><?=$row["request_status"]?></td>
@@ -248,7 +270,7 @@ session_start();
             if($check==0||$check==1){ ?>
                 <div class="h">ข้อมูลลูกค้า</div>
                 <hr class="style1">
-                คุณ<?=$nameforsearch?>     โทร <?=$row2["cus_tel"]?><br><br>
+                คุณ<?=$nameforsearch?> | โทร <?=$row2["cus_tel"]?><br><br>
             <?php $nameforsearch = str_replace(" ","%",$nameforsearch);
                 $stmt3 = $pdo->prepare("SELECT telephone.tel_id,telephone.tel_model,telephone.color,
                 invoice.payment_status,request.abnormality,invoice.cost
@@ -306,7 +328,7 @@ session_start();
             <?php }  
             $check=2; ?>
             <tr>
-                <td><?=$row2["tel_id"]?></td>
+                <td><a href="Search.php?search-by-name-or-telid=<?=$row2["tel_id"]?>"><?=$row2["tel_id"]?></a></td>
                 <td><?=$row2["tel_model"]?></td>
                 <td><?=$row2["color"]?></td>
             </tr>
