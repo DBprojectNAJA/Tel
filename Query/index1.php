@@ -1,6 +1,4 @@
-<?php
-$pdo = new PDO("mysql:host=localhost;dbname=telephone;charset=utf8", "root", "");
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); ?>
+<?php include "../connect.php"?>
 <html>
     <head><meta charset="utf-8"></head>
     <body style="padding:10px; line-height: 30px;">
@@ -16,7 +14,8 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); ?>
                 ON request.request_caretaker = employee.employee_id
                 INNER JOIN branch
                 ON employee.branch_id = branch.branch_id
-                WHERE branch.branch_id = 'b004';
+                WHERE branch.branch_id = 'b004'
+                GROUP BY customer.cus_name;
             ");
             $stmt2 = $pdo->prepare('    
                 SELECT customer.cus_name
@@ -29,19 +28,17 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); ?>
                 ON request.request_caretaker = employee.employee_id
                 INNER JOIN branch
                 ON employee.branch_id = branch.branch_id
-                WHERE branch.branch_id = "b004";'
+                WHERE branch.branch_id = "b004"
+                GROUP BY customer.cus_name;'
             );
            
             $stmt->execute();
             $stmt2->execute();
-            
+            $row = $stmt->fetch();
         ?>
-        
-        <?php while($row = $stmt->fetch()){ ?>
             รหัสสาขา: <?=$row["branch_id"]?><br>
             จำนวนลูกค้า: <?=$row["total_cus"]?><br>
         <hr>
-        <?php } ?>
         <?php while($row = $stmt2->fetch()){ ?>
             ชื่อลูกค้า: <?=$row["cus_name"]?><br>
         <hr>

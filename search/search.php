@@ -6,42 +6,149 @@ session_start();
 
 <head>
     <mega charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Mali&family=Prompt:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        *{
+            font-family: 'Prompt';
+        }
+        body {
+            margin: 0px auto 0px auto;
+            background-color: #06283D;
+        }
+        nav{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+            background-color: #47B5FF;
+        }
+        li {
+            float: left;
+        }
+        li a {
+            /* display: flex; */
+            display:inline-flex;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        li a:hover {
+            
+        }
+        #logo{
+            width: 30px;
+        }
+        .head-search{
+            margin: 20% 20% 10% 20%;
+            padding: 5%;
+            background-color: white;
+        }
+        table{
+            border-collapse: collapse;
+            width: 98%;
+        }
+        td {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        th, td{
+            padding-left: 15px;
+            text-align: left;
+        }
+        .tel-table tr {
+            border-bottom: 1px solid #ddd;
+        }
+        .tel-table tr:hover{
+            background-color:whitesmoke;
+        }
+        .content{
+            margin: 0px 20px 50px 20px;
+            padding: 20px;
+            background-color: white;
+        }
+        .h{
+            font-size: 25px;
+        }
+        
+        hr.style1 {
+            border-top: 1px solid #8c8b8b;
+	        border-bottom: 1px solid #fff;
+        }
+        img{
+            width: 2%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button {
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: 1%;
+        }
+        footer {
+            height: 10%;
+            background:#47B5FF;
+            color: #06283D;
+            margin: 0px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
-
 <body>
-    <?php
+    <nav>
+    <ul>
+        <li><a href="../../Tel/"><img src="../img/logo.png" id="logo"> Technic telaphone</a></li>
+        <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"];?></a></li>
+        <li style="float:right">
+        <?php
         if ($_SESSION['is_repairman']){
             ?>
-        <a href='../RepairPanel/repairPanel.php'>อัพเดทสถานะการซ่อม</a>
+        <a href='../RepairPanel/repairPanel.php'>อัพเดทสถานะการซ่อม</a><br>
         
             <?php 
         }
     ?>
-    <?php
-    if (isset($_GET["search-by-name-or-telid"])){
-        
-        $cus_name=$_GET["search-by-name-or-telid"];
-        ?>
-        <a href='../Phone/insert-phone.php?cus_name=<?=$cus_name ?>'>เพิ่มเครื่อง</a>
-        <a href='../Request/request_form.php?cus_name=<?=$cus_name ?>'>เพิ่มคำร้อง</a>
-    <?php
-}
-?>
-
+        </li>
+        <li style="float:right"><a href="../Query/index1.php">ลูกค้า</a></li>
+        <li style="float:right"><a href="../Query/index4.php">ซ่อมสำเร็จ</a></li>
+        <li style="float:right"><a href="../Query/index3.php">ใบแจ้งหนี้ทั้งหมด</a></li>
+    </ul>
+    </nav>
+    <div class="head-search" align="center">
     <div class="search">
         <form>
             <label>กรอกชื่อ-สกุล/รหัสโทรศัพท์</label><br>
-            <input type="text" name="search-by-name-or-telid" 
+            <input type="text" name="search-by-name-or-telid" style="text-align:center"
             value='<?php 
             $value=(
             isset($_GET["search-by-name-or-telid"])) ? 
             $_GET["search-by-name-or-telid"] : "";
              echo $value;
-            ?>'><br>
+            ?>'>
             <input type="submit" value="ค้นหา" class="submit-button">
         </form>
     </div>
-
+    <div style="font-size: 14px;">
+    <?php
+    if (isset($_GET["search-by-name-or-telid"])){
+        $cus_name=$_GET["search-by-name-or-telid"];
+        ?>
+        <a href='../Phone/insert-phone.php?cus_name=<?=$cus_name ?>'>เพิ่มเครื่อง</a>
+        <a href='../Request/request_form.php?cus_name=<?=$cus_name ?>'>เพิ่มคำร้อง</a>
+    <?php } ?>
+    </div>
+    </div>
+    <div class="content">
     <?php
         if(empty($_GET)){
         }
@@ -62,14 +169,17 @@ session_start();
             $stmt->bindParam(1,$_GET["search-by-name-or-telid"]);
             $stmt->execute();
 
-            $stmt2 = $pdo->prepare("SELECT telephone.tel_id,telephone.tel_model,telephone.color
-            FROM telephone where cus_name like ?"); 
+            $stmt2 = $pdo->prepare("SELECT telephone.tel_id,telephone.tel_model,telephone.color,
+            customer.cus_tel FROM telephone JOIN customer
+            where customer.cus_name = telephone.cus_name
+            AND telephone.cus_name like ?"); 
             $check=0;
 
             ?>
             <?php while($row = $stmt->fetch()){
             if($check==0){ ?>
-                รายละเอียดการซ่อมของโทรศัพท์ <?=$_GET["search-by-name-or-telid"]?><br><br>
+                <div class="h">ประวัติการซ่อม '<?=$_GET["search-by-name-or-telid"]?>'</div>
+                <hr class="style1">
             <?php } 
             $check=1;
             $nameforsearch = str_replace(" ","%",$row["cus_name"]);
@@ -81,7 +191,7 @@ session_start();
                 $pick_up_before_date=date('Y-m-d', strtotime('+1 years',strtotime($row["finish_date"])));
             }
             ?>
-            <table border="1" class="search-table">
+            <table class="tel-table" align="center">
             <tr>
                 <th>ชื่อ</th>
                 <td><?=$row["cus_name"]?></td>
@@ -123,7 +233,7 @@ session_start();
                 <td><?=$row["request_status"]?></td>
             </tr>
             </table>
-            <br>
+            <br><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><br>
             <?php } ?>
             <?php
             if($check==0){
@@ -132,10 +242,13 @@ session_start();
             $stmt2->bindParam(1, $nameforsearch);
             $stmt2->execute();
             $nameforsearch = str_replace("%"," ",$nameforsearch);
-            ?>
+            ?></div>
+            <div class="content">
             <?php while($row2 = $stmt2->fetch()){
             if($check==0||$check==1){ ?>
-                คุณ<?=$nameforsearch?><br><br>
+                <div class="h">ข้อมูลลูกค้า</div>
+                <hr class="style1">
+                คุณ<?=$nameforsearch?>     โทร <?=$row2["cus_tel"]?><br><br>
             <?php $nameforsearch = str_replace(" ","%",$nameforsearch);
                 $stmt3 = $pdo->prepare("SELECT telephone.tel_id,telephone.tel_model,telephone.color,
                 invoice.payment_status,request.abnormality,invoice.cost
@@ -153,8 +266,8 @@ session_start();
                 $reciept=0;
                 while($row3 = $stmt3->fetch()){
                 if($reciept==0){ ?>
-                    โทรศัพท์ที่ค้างชำระ<br>
-                    <table border="1" class="search-table">
+                    <b>โทรศัพท์ที่ค้างชำระ</b><br>
+                    <table border="1" class="inv-table" align="center">
                     <tr>
                         <th>รหัสโทรศัพท์</th>
                         <th>รุ่นโทรศัพท์</th>
@@ -180,12 +293,11 @@ session_start();
                     <?php }?>
                 </table>
                 <?php if($reciept==1){ ?>
-                <a href="../reciept/reciept.php" target="_bank">พิมพ์ใบเสร็จรับเงิน</a><br>
-                <?php session_regenerate_id();
-                $_SESSION["cus_reciept"]=$nameforsearch; ?>
+                <button >พิมพ์ใบเสร็จรับเงิน</button><br>
+                <?php $_SESSION["cus_reciept"]=$nameforsearch; ?>
                 <?php } ?>
-                โทรศัพท์ที่เคยลงทะเบียนกับทางร้าน<br>
-                <table border="1" class="search-table">
+                <b>โทรศัพท์ที่เคยลงทะเบียนกับทางร้าน</b><br>
+                <table border="1" class="tel-reg-table" align="center">
                     <tr>
                         <th>รหัสโทรศัพท์</th>
                         <th>รุ่นโทรศัพท์</th>
@@ -205,6 +317,10 @@ session_start();
                 echo '<meta http-equiv=refresh content=0;URL=Register.php>';
             }
         } ?> 
+        </div>
+        <footer>
+        <p><b>Technic telaphone since 1987</b></p>
+        </footer>
 </body>
 
 </html>
