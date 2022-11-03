@@ -15,17 +15,6 @@
             margin-right: auto;
             background:#06283D;
         }
-        nav {
-            height: 50px;
-            background:#47B5FF;
-            color: #06283D;
-            margin: auto;
-            padding: 10px 10px 0px 10px;
-            font-size: 20px;
-            text-align: center;
-            display: flex;
-            justify-content: space-between;
-        }
         #logo::before{
             font-family: "FontAwesome";
             content: "\f095";
@@ -95,12 +84,7 @@
 
 <body>
 <header>
-<nav>
-    <b id="logo">Technic telaphone</b>
-  <div id="N1">
-      <a href="./Login/login-form.php">Log in</a>
-  </div>
-</nav>
+    <?php include "nav/nav_index.php" ?>
 </header>
 <section>
     <article>
