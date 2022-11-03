@@ -15,8 +15,11 @@ WHERE employee.employee_id LIKE ?
 $stmt->bindParam(1,$_SESSION["employee_id"]);
 $stmt->execute();
 $row=$stmt->fetch();
+if(!$_GET){
+	// queryกดจ่ายตังแบบปกติ ใช้ cus_name หา
 $stmt3 = $pdo->prepare("SELECT customer.cus_name,customer.cus_tel FROM customer
-WHERE customer.cus_name LIKE 'ฐาปนัท%สุวรรณศิริ'");
+WHERE customer.cus_name LIKE ?");
+$stmt3->bindParam(1,$_SESSION["cus_reciept"]);
 $stmt3->execute();
 $cus=$stmt3->fetch();
 $stmt2 = $pdo->prepare("SELECT telephone.tel_id,telephone.tel_model
@@ -31,6 +34,11 @@ AND customer.cus_name LIKE ?
 ");
 $stmt2->bindParam(1,$_SESSION["cus_reciept"]);
 $stmt2->execute();
+}else{
+	// query หาพวก check box ทั้งหลายที่จะปริ้น ใช้ request_id หา (มั้ง แหละ)
+	// $stmt3 customer.cus_name customer.cus_tel
+	// $stmt2 ในตารางใบเสร็จ
+}
 
 //A4 width : 219mm
 //default margin : 10mm each side
@@ -108,10 +116,6 @@ $pdf->SetFont('THSarabunNew','B',16);
 $pdf->Cell(26	,5,iconv('UTF-8','cp874','รวม'),0,0);
 $pdf->Cell(4	,5,iconv('UTF-8','cp874','฿'),1,0);
 $pdf->Cell(30	,5,iconv('UTF-8','cp874',$total.'.00'),1,1,'R');
-
-$pdf->Cell(4	,5,'',0,1);
-$pdf->Cell(4	,5,'',0,1);
-$pdf->Cell(180	,5,iconv('UTF-8','cp874',' *** ยังไม่แก้เลยยยยยยยยยยยยยยยยย ***'),0,0,'C');
 
 $pdf->Output();
 ?>
