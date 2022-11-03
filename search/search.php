@@ -154,7 +154,7 @@ include "../connect.php";
             request.request_date,repair_detail.repair_status,
             telephone.tel_id,invoice.cost,repair_detail.finish_date,
             repair_detail.finish_date,repair_detail.finish_date,
-            request.request_status 
+            request.request_status,request.request_id 
             FROM invoice INNER JOIN Repair_detail JOIN Request JOIN Telephone JOIN Customer
             WHERE invoice.repair_id = Repair_detail.repair_id 
             AND Repair_detail.request_id = Request.request_id 
@@ -168,95 +168,92 @@ include "../connect.php";
     ?>
         <div class="content">
 
-            <?php while ($row4 = $stmt4->fetch()) {
-                if ($check == 0) { ?>
-                    <div class="h">ประวัติคำร้อง 'คุณ<?= $_GET["search-by-name-or-telid"] ?>'</div>
-                    <hr class="style1">
-                <?php }
-                $check = 1;
-                $row4["request_date"] = date('d-m-Y', strtotime($row4["request_date"]));
-                if (!$row4["finish_date"]) {
-                    $warranty_date = '';
-                    $pick_up_before_date = '';
-                } else {
-                    $row4["finish_date"] = date('d-m-Y', strtotime($row4["finish_date"]));
-                    $warranty_date = date('d-m-Y', strtotime('+3 months', strtotime($row4["finish_date"])));
-                    $pick_up_before_date = date('d-m-Y', strtotime('+1 years', strtotime($row4["finish_date"])));
-                }
-                switch ($row4["repair_status"]) {
-                    case 'repaired':
-                        $row4["repair_status"] = 'ซ่อมสำเร็จ';
-                        break;
-                    case 'require spare part':
-                        $row4["repair_status"] = 'กำลังจัดหาอะไหล่';
-                        break;
-                    case 'repaired in progress':
-                        $row4["repair_status"] = 'อยู่ระหว่างการซ่อม';
-                        break;
-                }
-                switch ($row4["request_status"]) {
-                    case 'awaiting':
-                        $row4["request_status"] = 'อยู่ระหว่างการซ่อม';
-                        break;
-                    case 'pending':
-                        $row4["request_status"] = 'รอชําระเงิน';
-                        break;
-                    case 'fulfill':
-                        $row4["request_status"] = 'สําเร็จ';
-                        break;
-                    case 'canceled':
-                        $row4["request_status"] = 'ยกเลิกคําร้อง';
-                        break;
-                }
-                ?>
-                <table class="tel-table" align="center">
-                    <tr>
-                        <th>รหัสโทรศัพท์</th>
-                        <td><a href="Search.php?search-by-name-or-telid=<?= $row4["tel_id"] ?>"><?= $row4["tel_id"] ?></a></td>
-                    </tr>
-                    <tr>
-                        <th>ชื่อ</th>
-                        <td><?= $row4["cus_name"] ?></td>
-                    </tr>
-                    <tr>
-                        <th>รุ่น</th>
-                        <td><?= $row4["tel_model"] ?></td>
-                    </tr>
-                    <tr>
-                        <th>วันที่นำมาซ่อม</th>
-                        <td><?= $row4["request_date"] ?></td>
-                    </tr>
-                    <tr>
-                        <th>สถานะของโทรศัพท์</th>
-                        <td><?= $row4["repair_status"] ?></td>
-                    </tr>
-                    <?php if ($row4["finish_date"]) { ?>
-                        <tr>
-                            <th>ราคา</th>
-                            <td><?= $row4["cost"] ?></td>
-                        </tr>
-                        <tr>
-                            <th>วันที่ซ่อมเสร็จ</th>
-                            <td><?= $row4["finish_date"] ?></td>
-                        </tr>
-                        <tr>
-                            <th>วันที่หมดประกัน</th>
-                            <td><?= $warranty_date ?></td>
-                        </tr>
-                        <tr>
-                            <th>ควรมารับก่อน</th>
-                            <td><?= $pick_up_before_date ?></td>
-                        </tr>
-                    <?php } ?>
-                    <tr>
-                        <th>สถานะการจ่ายเงิน</th>
-                        <td><?= $row4["request_status"] ?></td>
-                    </tr>
-                </table>
-                <?php if ($row4["request_status"] == 'รอชําระเงิน') { ?>
-                    <button onclick="location.href=' '">ชำระเงิน</button>
-                <?php } ?>
-                <br><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><br>
+            <?php while($row4 = $stmt4->fetch()){
+            if($check==0){ ?>
+                <div class="h">ประวัติคำร้อง 'คุณ<?=$_GET["search-by-name-or-telid"]?>'</div>
+                <hr class="style1">
+            <?php } 
+            $check=1;
+            $row4["request_date"]=date('d/m/Y', strtotime($row4["request_date"]));
+            if(!$row4["finish_date"]){
+                $warranty_date='';
+                $pick_up_before_date='';
+            }else{
+                $row4["finish_date"]=date('d/m/Y', strtotime($row4["finish_date"]));
+                $warranty_date=date('d/m/Y', strtotime('+3 months',strtotime($row4["finish_date"])));
+                $pick_up_before_date=date('d/m/Y', strtotime('+1 years',strtotime($row4["finish_date"])));
+            }
+            switch($row4["repair_status"]){
+                case 'repaired' : $row4["repair_status"] = 'ซ่อมสำเร็จ';
+                            break;
+                case 'require spare part' : $row4["repair_status"] = 'กำลังจัดหาอะไหล่';
+                            break;
+                case 'repaired in progress' : $row4["repair_status"] = 'อยู่ระหว่างการซ่อม';
+                            break;
+            }
+            switch($row4["request_status"]){
+                case 'awaiting' : $row4["request_status"] = 'อยู่ระหว่างการซ่อม';
+                            break;
+                case 'pending' : $row4["request_status"] = 'รอชําระเงิน';
+                            break;
+                case 'fulfill' : $row4["request_status"] = 'สําเร็จ';
+                            break;
+                case 'canceled' : $row4["request_status"] = 'ยกเลิกคําร้อง';
+                            break;
+            }
+            ?>
+            <table class="tel-table" align="center">
+            <tr>
+                <th>รหัสคำร้อง</th>
+                <td><?=$row4["request_id"]?></td>
+            </tr>
+            <tr>
+                <th>รหัสโทรศัพท์</th>
+                <td><a href="Search.php?search-by-name-or-telid=<?=$row4["tel_id"]?>"><?=$row4["tel_id"]?></a></td>
+            </tr>
+            <tr>
+                <th>ชื่อ</th>
+                <td><?=$row4["cus_name"]?></td>
+            </tr>
+            <tr>
+                <th>รุ่น</th>
+                <td><?=$row4["tel_model"]?></td>
+            </tr>
+            <tr>
+                <th>วันที่นำมาซ่อม</th>
+                <td><?=$row4["request_date"]?></td>
+            </tr>
+            <tr>
+                <th>สถานะของโทรศัพท์</th>
+                <td><?=$row4["repair_status"]?></td>
+            </tr>
+            <?php if($row4["finish_date"]){ ?>
+                <tr>
+                <th>ราคา</th>
+                <td><?=$row4["cost"]?></td>
+            </tr>
+            <tr>
+                <th>วันที่ซ่อมเสร็จ</th>
+                <td><?=$row4["finish_date"]?></td>
+            </tr>
+            <tr>
+                <th>วันที่หมดประกัน</th>
+                <td><?=$warranty_date?></td>
+            </tr>
+            <tr>
+                <th>ควรมารับก่อน</th>
+                <td><?=$pick_up_before_date?></td>
+            </tr>
+            <?php } ?>
+            <tr>
+                <th>สถานะการจ่ายเงิน</th>
+                <td><?=$row4["request_status"]?></td>
+            </tr>
+            </table>
+            <?php if($row4["request_status"]=='รอชําระเงิน'){?>
+                <button onclick="location.href=' '" >ชำระเงิน</button>
+            <?php } ?>
+            <br><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><br>
             <?php }
             $check == 0; ?>
             <?php while ($row = $stmt->fetch()) {
@@ -402,25 +399,18 @@ include "../connect.php";
                         <?php $total += $row3["cost"];
                     }
                     if ($reciept == 1) { ?>
-                            <tr>
-                                <td align="center" colspan="4">รวม</td>
-                                <td align="right"><?= $total ?>.00</td>
-                            </tr>
-                        <?php } ?>
-                            </table>
-                            <?php if ($reciept == 1) { ?>
-                                <button onclick="location.href='../reciept/reciept.php';">พิมพ์ใบเสร็จรับเงิน</button><br>
-                                <?php $_SESSION["cus_reciept"] = $nameforsearch; ?>
-                            <?php } ?>
-                            <b>โทรศัพท์ที่เคยลงทะเบียนกับทางร้าน</b><br>
-                            <table border="1" class="tel-reg-table" align="center">
-                                <tr>
-                                    <th>รหัสโทรศัพท์</th>
-                                    <th>รุ่นโทรศัพท์</th>
-                                    <th>สี</th>
-                                </tr>
-                            <?php }
-                        $check = 2; ?>
+                        <tr>
+                            <td align="center" colspan="4">รวม</td>
+                            <td align="right"><?= $total ?>.00</td>
+                        </tr>
+                    <?php } ?>
+                        </table><br>
+                        <?php /*if ($reciept == 1) { */?>
+                            <!-- <button onclick="location.href='../reciept/reciept.php';">พิมพ์ใบเสร็จรับเงิน</button><br> -->
+                            <?php /* $_SESSION["cus_reciept"] = $nameforsearch; */?>
+                        <?php /* } */?>
+                        <b>โทรศัพท์ที่เคยลงทะเบียนกับทางร้าน</b><br>
+                        <table border="1" class="tel-reg-table" align="center">
                             <tr>
                                 <td><a href="Search.php?search-by-name-or-telid=<?= $row2["tel_id"] ?>"><?= $row2["tel_id"] ?></a></td>
                                 <td><?= $row2["tel_model"] ?></td>
