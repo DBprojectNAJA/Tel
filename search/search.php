@@ -197,7 +197,7 @@ session_start();
             request.request_date,repair_detail.repair_status,
             telephone.tel_id,invoice.cost,repair_detail.finish_date,
             repair_detail.finish_date,repair_detail.finish_date,
-            request.request_status 
+            request.request_status,request.request_id 
             FROM invoice INNER JOIN Repair_detail JOIN Request JOIN Telephone JOIN Customer
             WHERE invoice.repair_id = Repair_detail.repair_id 
             AND Repair_detail.request_id = Request.request_id 
@@ -245,6 +245,10 @@ session_start();
             }
             ?>
             <table class="tel-table" align="center">
+            <tr>
+                <th>รหัสคำร้อง</th>
+                <td><?=$row4["request_id"]?></td>
+            </tr>
             <tr>
                 <th>รหัสโทรศัพท์</th>
                 <td><a href="Search.php?search-by-name-or-telid=<?=$row4["tel_id"]?>"><?=$row4["tel_id"]?></a></td>
@@ -440,11 +444,11 @@ session_start();
                             <td align="right"><?= $total ?>.00</td>
                         </tr>
                     <?php } ?>
-                        </table>
-                        <?php if ($reciept == 1) { ?>
-                            <button onclick="location.href='../reciept/reciept.php';">พิมพ์ใบเสร็จรับเงิน</button><br>
-                            <?php $_SESSION["cus_reciept"] = $nameforsearch; ?>
-                        <?php } ?>
+                        </table><br>
+                        <?php /*if ($reciept == 1) { */?>
+                            <!-- <button onclick="location.href='../reciept/reciept.php';">พิมพ์ใบเสร็จรับเงิน</button><br> -->
+                            <?php /* $_SESSION["cus_reciept"] = $nameforsearch; */?>
+                        <?php /* } */?>
                         <b>โทรศัพท์ที่เคยลงทะเบียนกับทางร้าน</b><br>
                         <table border="1" class="tel-reg-table" align="center">
                             <tr>
