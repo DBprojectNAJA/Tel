@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Technic telaphone</title>
+    <title>Technic telephone</title>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=Mali&family=Prompt:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -81,7 +81,7 @@
 <section>
     <article>
         <div class="caption">
-        <h3>Technic telaphone</h3><br>
+        <h3>Technic telephone</h3><br>
         <p>โทรศัพท์มีปัญหา<br>โทรหาใครไม่ติด<br>ติดต่อเรา</p>
         <p>ปลอดภัย มีฝีมือ มากประสบการณ์</p>
         <a href="./Customer/CustomerSearch.php"><input type="button" value="เช็คสถานะ" id="check"></a>
@@ -114,7 +114,7 @@
 </section>
 <footer>
     <h2><b>About</b></h2>
-    <p><b>Technic telaphone since 1987</b></p>
+    <p><b>Technic telephone since 1987</b></p>
     <a href="./contact.php"><input type="button" value="Contact" id="check"></a>
 </footer>
 </body>
