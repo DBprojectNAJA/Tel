@@ -22,8 +22,7 @@ $stmt4 = $pdo->prepare("SELECT customer.cus_name,telephone.tel_model,
             AND Request.tel_id = Telephone.tel_id 
             AND Telephone.cus_name = Customer.cus_name
             AND customer.cus_name LIKE 'ขวัญทิพย์%แสนวงศ์'
-            AND request.request_status NOT LIKE 'awaiting'
-            AND request.request_status NOT LIKE 'canceled'
+            AND invoice.invoice_status = 'completed'
             ORDER BY Request.request_id DESC;
             ");
 // $stmt4->bindParam(1, $nameforsearch);
