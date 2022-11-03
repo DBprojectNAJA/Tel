@@ -423,7 +423,9 @@ include "../connect.php";
                 $str = str_replace(" ", "%", $nameforsearch);
                 echo "<meta http-equiv=refresh content=0;URL=../Register/Register.php?name=" . $str . ">";
             }
-        } ?>
+        } 
+        }
+        ?>
 
             <footer>
                 <p><b>Technic telephone since 1987</b></p>
