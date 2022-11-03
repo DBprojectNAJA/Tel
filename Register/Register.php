@@ -1,10 +1,8 @@
 <?php include "../connect.php";
-$name = $_GET['name'];
-$str = str_replace("%", " ", $name);
+    $name = $_GET['name'];
+    $str = str_replace("%", " ", $name);
 ?>
-<?php
 
-?>
 <html>
 
 <head>
