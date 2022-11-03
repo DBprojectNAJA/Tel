@@ -464,9 +464,6 @@ session_start();
                         </table>
                     <?php if ($check == 0) {
                         $str = str_replace(" ", "%", $nameforsearch);
-
-                        // echo "tdfthgpdrgdfop[gdf" . $nameforsearch;
-                        // header("location:../Register/Register.php?name=$nameforsearch");
                         echo "<meta http-equiv=refresh content=0;URL=../Register/Register.php?name=" . $str . ">";
                     }
                 } ?>
