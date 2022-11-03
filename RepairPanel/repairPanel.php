@@ -10,6 +10,7 @@ if (!isset($_SESSION['employee_id'])) {
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta charset="utf-8">
+    <?php include "../nav/nav.php" ?>
 </head>
 
 <body>

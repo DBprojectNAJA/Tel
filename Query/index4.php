@@ -1,1 +1,3 @@
-ข้อ 4 ที่หายไป
+<?php include "../nav/nav.php";
+?>
+it's gone

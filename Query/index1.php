@@ -1,9 +1,14 @@
-<?php include "../connect.php"?>
+<?php include "../connect.php" ?>
 <html>
-    <head><meta charset="utf-8"></head>
-    <body style="padding:10px; line-height: 30px;">
-        <?php
-            $stmt = $pdo->prepare("
+
+<head>
+    <meta charset="utf-8">
+</head>
+<?php include "../nav/nav.php" ?>
+
+<body style=" line-height: 30px;">
+    <?php
+    $stmt = $pdo->prepare("
                 SELECT branch.branch_id,COUNT(customer.cus_name) as total_cus
                 FROM customer
                 INNER JOIN telephone
@@ -17,7 +22,8 @@
                 WHERE branch.branch_id = 'b004'
                 GROUP BY customer.cus_name;
             ");
-            $stmt2 = $pdo->prepare('    
+    $stmt2 = $pdo->prepare(
+        '    
                 SELECT customer.cus_name
                 FROM customer
                 INNER JOIN telephone
@@ -30,18 +36,20 @@
                 ON employee.branch_id = branch.branch_id
                 WHERE branch.branch_id = "b004"
                 GROUP BY customer.cus_name;'
-            );
-           
-            $stmt->execute();
-            $stmt2->execute();
-            $row = $stmt->fetch();
-        ?>
-            รหัสสาขา: <?=$row["branch_id"]?><br>
-            จำนวนลูกค้า: <?=$row["total_cus"]?><br>
+    );
+
+    $stmt->execute();
+    $stmt2->execute();
+    $row = $stmt->fetch();
+    ?>
+
+    รหัสสาขา: <?= $row["branch_id"] ?><br>
+    จำนวนลูกค้า: <?= $row["total_cus"] ?><br>
+    <hr>
+    <?php while ($row = $stmt2->fetch()) { ?>
+        ชื่อลูกค้า: <?= $row["cus_name"] ?><br>
         <hr>
-        <?php while($row = $stmt2->fetch()){ ?>
-            ชื่อลูกค้า: <?=$row["cus_name"]?><br>
-        <hr>
-        <?php } ?>
-    </body>
+    <?php } ?>
+</body>
+
 </html>
