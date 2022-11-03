@@ -145,6 +145,7 @@ session_start();
         ?>
         <a href='../Phone/insert-phone.php?cus_name=<?=$cus_name ?>'>เพิ่มเครื่อง</a>
         <a href='../Request/request_form.php?cus_name=<?=$cus_name ?>'>เพิ่มคำร้อง</a>
+        <a href=''>ชำระเงิน</a>
     <?php } ?>
     </div>
     </div>
@@ -229,7 +230,7 @@ session_start();
             <table class="tel-table" align="center">
             <tr>
                 <th>รหัสโทรศัพท์</th>
-                <td><?=$row4["tel_id"]?></td>
+                <td><a href="Search.php?search-by-name-or-telid=<?=$row4["tel_id"]?>"><?=$row4["tel_id"]?></a></td>
             </tr>
             <tr>
                 <th>ชื่อ</th>
@@ -270,6 +271,9 @@ session_start();
                 <td><?=$row4["request_status"]?></td>
             </tr>
             </table>
+            <?php if($row4["request_status"]=='รอชําระเงิน'){?>
+                <button onclick="location.href=' '" >ชำระเงิน</button>
+            <?php } ?>
             <br><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><br>
             <?php }
             $check==0; ?>
@@ -410,11 +414,11 @@ session_start();
                         <td align="right"><?=$total?>.00</td>
                     </tr>
                     <?php }?>
-                </table>
-                <?php if($reciept==1){ ?>
-                <button onclick="location.href='../reciept/reciept.php';" >พิมพ์ใบเสร็จรับเงิน</button><br>
-                <?php $_SESSION["cus_reciept"]=$nameforsearch; ?>
-                <?php } ?>
+                </table><br>
+                <?php /*if($reciept==1){ */?>
+                <!-- <button onclick="location.href='../reciept/reciept.php';" >พิมพ์ใบเสร็จรับเงิน</button><br> -->
+                <?php /*$_SESSION["cus_reciept"]=$nameforsearch; */?>
+                <?php /* } */?>
                 <b>โทรศัพท์ที่เคยลงทะเบียนกับทางร้าน</b><br>
                 <table border="1" class="tel-reg-table" align="center">
                     <tr>
