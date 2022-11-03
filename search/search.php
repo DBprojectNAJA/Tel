@@ -175,14 +175,14 @@ include "../connect.php";
                     <hr class="style1">
                 <?php }
                 $check = 1;
-                $row4["request_date"] = date('d/m/Y', strtotime($row4["request_date"]));
+                $row4["request_date"] = date('d-m-Y', strtotime($row4["request_date"]));
                 if (!$row4["finish_date"]) {
                     $warranty_date = '';
                     $pick_up_before_date = '';
                 } else {
-                    $row4["finish_date"] = date('d/m/Y', strtotime($row4["finish_date"]));
-                    $warranty_date = date('d/m/Y', strtotime('+3 months', strtotime($row4["finish_date"])));
-                    $pick_up_before_date = date('d/m/Y', strtotime('+1 years', strtotime($row4["finish_date"])));
+                    $row4["finish_date"] = date('d-m-Y', strtotime($row4["finish_date"]));
+                    $warranty_date = date('d-m-Y', strtotime('+3 months', strtotime($row4["finish_date"])));
+                    $pick_up_before_date = date('d-m-Y', strtotime('+1 years', strtotime($row4["finish_date"])));
                 }
                 switch ($row4["repair_status"]) {
                     case 'repaired':
