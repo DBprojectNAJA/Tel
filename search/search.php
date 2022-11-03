@@ -1,12 +1,11 @@
 <?php
 include "../connect.php";
-session_start();
 ?>
 <html>
 
 <head>
     <mega charset="utf-8">
-        <link href="https://fonts.googleapis.com/css2?family=Mali&family=Prompt:wght@200&display=swap" rel="stylesheet">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <style>
             * {
@@ -18,46 +17,23 @@ session_start();
                 background-color: #06283D;
             }
 
-            nav {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-            }
-
-            ul {
-                list-style-type: none;
-                margin: 0px;
-                padding: 0px;
-                overflow: hidden;
-                background-color: #47B5FF;
-            }
-
-            li {
-                float: left;
-            }
-
-            li a {
-                /* display: flex; */
-                display: inline-flex;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-            }
-
-            li a:hover {}
-
-            #logo {
-                width: 30px;
-            }
-
             .head-search {
-                margin: 20% 20% 10% 20%;
+                margin: 15vh 20% 20vh 20%;
                 padding: 5%;
                 background-color: white;
             }
 
+            .head-search div {
+                margin-bottom: 20px;
+            }
+
+            .head-search div>a {
+                text-decoration: none;
+                margin: 0 5px;
+                color: blue;
+            }
+
+            /* .search form label{} */
             table {
                 border-collapse: collapse;
                 width: 98%;
@@ -123,55 +99,36 @@ session_start();
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="../../Tel/"><img src="../img/logo.png" id="logo"> Technic telephone</a></li>
-            <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"]; ?></a></li>
-            <li style="float:right">
-                <?php
-                if ($_SESSION['is_repairman']) {
-                ?>
-                    <a href='../RepairPanel/repairPanel.php'>อัพเดทสถานะการซ่อม</a><br>
-
-                <?php
-                }
-                ?>
-            </li>
-            <li style="float:right"><a href="../Query/index1.php">ลูกค้า</a></li>
-            <li style="float:right"><a href="../Query/index4.php">ซ่อมสำเร็จ</a></li>
-            <li style="float:right"><a href="../Query/index3.php">ใบแจ้งหนี้ทั้งหมด</a></li>
-        </ul>
-    </nav>
+    <?php include "../nav/nav.php" ?>
     <div class="head-search" align="center">
-    <div class="search">
-        <form>
-            <label>กรอกชื่อ-สกุล/รหัสโทรศัพท์</label><br>
-            <input type="text" name="search-by-name-or-telid" style="text-align:center"
-            value='<?php 
-            $value=(
-            isset($_GET["search-by-name-or-telid"])) ? 
-            $_GET["search-by-name-or-telid"] : "";
-             echo $value;
-            ?>'>
-            <input type="submit" value="ค้นหา" class="submit-button">
-        </form>
+        <div class="search">
+            <form>
+                <label>
+                    <h1>กรอกชื่อ-สกุล/รหัสโทรศัพท์</h1>
+                </label><br>
+                <input type="text" name="search-by-name-or-telid" style="text-align:center" value='<?php
+                                                                                                    $value = (isset($_GET["search-by-name-or-telid"])) ?
+                                                                                                        $_GET["search-by-name-or-telid"] : "";
+                                                                                                    echo $value;
+                                                                                                    ?>'>
+                <input type="submit" value="ค้นหา" class="submit-button">
+            </form>
+        </div>
+        <div style="font-size: 14px;">
+            <?php
+            if (isset($_GET["search-by-name-or-telid"])) {
+                $cus_name = $_GET["search-by-name-or-telid"];
+            ?>
+                <a href='../Phone/insert-phone.php?cus_name=<?= $cus_name ?>'>เพิ่มเครื่อง</a>
+                <a href='../Request/request_form.php?cus_name=<?= $cus_name ?>'>เพิ่มคำร้อง</a>
+                <a href=''>ชำระเงิน</a>
+            <?php } ?>
+        </div>
     </div>
-    <div style="font-size: 14px;">
     <?php
-    if (isset($_GET["search-by-name-or-telid"])){
-        $cus_name=$_GET["search-by-name-or-telid"];
-        ?>
-        <a href='../Phone/insert-phone.php?cus_name=<?=$cus_name ?>'>เพิ่มเครื่อง</a>
-        <a href='../Request/request_form.php?cus_name=<?=$cus_name ?>'>เพิ่มคำร้อง</a>
-        <a href=''>ชำระเงิน</a>
-    <?php } ?>
-    </div>
-    </div>
-    <div class="content">
-        <?php
-        if (empty($_GET)) {
-        } else {
-            $stmt = $pdo->prepare("SELECT customer.cus_name,telephone.tel_model,
+    if (empty($_GET)) {
+    } else {
+        $stmt = $pdo->prepare("SELECT customer.cus_name,telephone.tel_model,
             request.request_date,repair_detail.repair_status,
             telephone.tel_id,invoice.cost,repair_detail.finish_date,
             repair_detail.finish_date,repair_detail.finish_date,
@@ -184,16 +141,16 @@ session_start();
             AND Request.tel_id LIKE ?
             ORDER BY Request.request_id DESC;
             ");
-            $stmt->bindParam(1, $_GET["search-by-name-or-telid"]);
-            $stmt->execute();
+        $stmt->bindParam(1, $_GET["search-by-name-or-telid"]);
+        $stmt->execute();
 
-            $stmt2 = $pdo->prepare("SELECT telephone.tel_id,telephone.tel_model,telephone.color,
+        $stmt2 = $pdo->prepare("SELECT telephone.tel_id,telephone.tel_model,telephone.color,
             customer.cus_tel FROM telephone JOIN customer
             where customer.cus_name = telephone.cus_name
             AND telephone.cus_name like ?");
-            $check = 0;
-            $nameforsearch = str_replace(" ", "%", $_GET["search-by-name-or-telid"]);
-            $stmt4 = $pdo->prepare("SELECT customer.cus_name,telephone.tel_model,
+        $check = 0;
+        $nameforsearch = str_replace(" ", "%", $_GET["search-by-name-or-telid"]);
+        $stmt4 = $pdo->prepare("SELECT customer.cus_name,telephone.tel_model,
             request.request_date,repair_detail.repair_status,
             telephone.tel_id,invoice.cost,repair_detail.finish_date,
             repair_detail.finish_date,repair_detail.finish_date,
@@ -206,9 +163,10 @@ session_start();
             AND customer.cus_name LIKE ?
             ORDER BY Request.request_id DESC;
             ");
-            $stmt4->bindParam(1, $nameforsearch);
-            $stmt4->execute();
-        ?>
+        $stmt4->bindParam(1, $nameforsearch);
+        $stmt4->execute();
+    ?>
+        <div class="content">
 
             <?php while($row4 = $stmt4->fetch()){
             if($check==0){ ?>
@@ -305,14 +263,14 @@ session_start();
                 <?php }
                 $check = 1;
                 $nameforsearch = str_replace(" ", "%", $row["cus_name"]);
-                $row["request_date"] = date('d/m/Y', strtotime($row["request_date"]));
+                $row["request_date"] = date('d-m-Y', strtotime($row["request_date"]));
                 if (!$row["finish_date"]) {
                     $warranty_date = '';
                     $pick_up_before_date = '';
                 } else {
-                    $row["finish_date"] = date('d/m/Y', strtotime($row["finish_date"]));
-                    $warranty_date = date('d/m/Y', strtotime('+3 months', strtotime($row["finish_date"])));
-                    $pick_up_before_date = date('d/m/Y', strtotime('+1 years', strtotime($row["finish_date"])));
+                    $row["finish_date"] = date('d-m-Y', strtotime($row["finish_date"]));
+                    $warranty_date = date('d-m-Y', strtotime('+3 months', strtotime($row["finish_date"])));
+                    $pick_up_before_date = date('d-m-Y', strtotime('+1 years', strtotime($row["finish_date"])));
                 }
                 switch ($row["repair_status"]) {
                     case 'repaired':
@@ -386,22 +344,24 @@ session_start();
                 </table>
                 <br><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><br>
             <?php } ?>
-            <?php
-            if ($check == 0) {
-                $nameforsearch = str_replace(" ", "%", $_GET["search-by-name-or-telid"]);
-            }
-            $stmt2->bindParam(1, $nameforsearch);
-            $stmt2->execute();
-            $nameforsearch = str_replace("%", " ", $nameforsearch);
-            ?>
-    </div>
-    <div class="content">
+        </div>
+
+        <?php
+        if ($check == 0) {
+            $nameforsearch = str_replace(" ", "%", $_GET["search-by-name-or-telid"]);
+        }
+        $stmt2->bindParam(1, $nameforsearch);
+        $stmt2->execute();
+        $nameforsearch = str_replace("%", " ", $nameforsearch);
+        ?>
+
         <?php while ($row2 = $stmt2->fetch()) {
-                if ($check == 0 || $check == 1) { ?>
-                <div class="h">ข้อมูลลูกค้า</div>
-                <hr class="style1">
-                คุณ<?= $nameforsearch ?> | โทร <?= $row2["cus_tel"] ?><br><br>
-                <?php $nameforsearch = str_replace(" ", "%", $nameforsearch);
+            if ($check == 0 || $check == 1) { ?>
+                <div class="content">
+                    <div class="h">ข้อมูลลูกค้า</div>
+                    <hr class="style1">
+                    คุณ<?= $nameforsearch ?> | โทร <?= $row2["cus_tel"] ?><br><br>
+                    <?php $nameforsearch = str_replace(" ", "%", $nameforsearch);
                     $stmt3 = $pdo->prepare("SELECT telephone.tel_id,telephone.tel_model,telephone.color,
                 invoice.payment_status,request.abnormality,invoice.cost
                 FROM invoice INNER JOIN Repair_detail JOIN Request JOIN Telephone JOIN Customer
@@ -418,25 +378,25 @@ session_start();
                     $reciept = 0;
                     while ($row3 = $stmt3->fetch()) {
                         if ($reciept == 0) { ?>
-                        <b>โทรศัพท์ที่ค้างชำระ</b><br>
-                        <table border="1" class="inv-table" align="center">
-                            <tr>
-                                <th>รหัสโทรศัพท์</th>
-                                <th>รุ่นโทรศัพท์</th>
-                                <th>สี</th>
-                                <th>อาการผิดปกติ</th>
-                                <th>ราคา</th>
-                            </tr>
-                        <?php }
+                            <b>โทรศัพท์ที่ค้างชำระ</b><br>
+                            <table border="1" class="inv-table" align="center">
+                                <tr>
+                                    <th>รหัสโทรศัพท์</th>
+                                    <th>รุ่นโทรศัพท์</th>
+                                    <th>สี</th>
+                                    <th>อาการผิดปกติ</th>
+                                    <th>ราคา</th>
+                                </tr>
+                            <?php }
                         $reciept = 1; ?>
-                        <tr>
-                            <td><?= $row3["tel_id"] ?></td>
-                            <td><?= $row3["tel_model"] ?></td>
-                            <td><?= $row3["color"] ?></td>
-                            <td><?= $row3["abnormality"] ?></td>
-                            <td align="right"><?= $row3["cost"] ?>.00</td>
-                        </tr>
-                    <?php $total += $row3["cost"];
+                            <tr>
+                                <td><?= $row3["tel_id"] ?></td>
+                                <td><?= $row3["tel_model"] ?></td>
+                                <td><?= $row3["color"] ?></td>
+                                <td><?= $row3["abnormality"] ?></td>
+                                <td align="right"><?= $row3["cost"] ?>.00</td>
+                            </tr>
+                        <?php $total += $row3["cost"];
                     }
                     if ($reciept == 1) { ?>
                         <tr>
@@ -452,28 +412,22 @@ session_start();
                         <b>โทรศัพท์ที่เคยลงทะเบียนกับทางร้าน</b><br>
                         <table border="1" class="tel-reg-table" align="center">
                             <tr>
-                                <th>รหัสโทรศัพท์</th>
-                                <th>รุ่นโทรศัพท์</th>
-                                <th>สี</th>
+                                <td><a href="Search.php?search-by-name-or-telid=<?= $row2["tel_id"] ?>"><?= $row2["tel_id"] ?></a></td>
+                                <td><?= $row2["tel_model"] ?></td>
+                                <td><?= $row2["color"] ?></td>
                             </tr>
-                        <?php }
-                    $check = 2; ?>
-                        <tr>
-                            <td><a href="Search.php?search-by-name-or-telid=<?= $row2["tel_id"] ?>"><?= $row2["tel_id"] ?></a></td>
-                            <td><?= $row2["tel_model"] ?></td>
-                            <td><?= $row2["color"] ?></td>
-                        </tr>
-                    <?php } ?>
-                        </table>
-                    <?php if ($check == 0) {
-                        $str = str_replace(" ", "%", $nameforsearch);
-                        echo "<meta http-equiv=refresh content=0;URL=../Register/Register.php?name=" . $str . ">";
-                    }
-                } ?>
-    </div>
-    <footer>
-        <p><b>Technic telephone since 1987</b></p>
-    </footer>
+                        <?php } ?>
+                            </table>
+                </div>
+            <?php if ($check == 0) {
+                $str = str_replace(" ", "%", $nameforsearch);
+                echo "<meta http-equiv=refresh content=0;URL=../Register/Register.php?name=" . $str . ">";
+            }
+        } ?>
+
+            <footer>
+                <p><b>Technic telephone since 1987</b></p>
+            </footer>
 </body>
 
 </html>
