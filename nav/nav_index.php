@@ -5,6 +5,7 @@ session_start();
 
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Mali&family=Prompt:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             font-family: 'Prompt';
@@ -44,8 +45,6 @@ session_start();
             text-decoration: none;
         }
 
-        .navContainer li a:hover {}
-
         .navContainer #logo {
             width: 30px;
         }
@@ -54,8 +53,8 @@ session_start();
 <div class="navContainer">
     <nav>
         <ul>
-            <li><a href="index.php"><img src="img/logo.png" id="logo"> Technic telephone</a></li>
-            <li style="float:right"><a href="./Login/login-form.php">Login</a></li>
+            <li><a href="index.php"><img src="img/logo.png" id="logo"><b style="margin-left: 10px;"> Technic telephone</b></a></li>
+            <li style="float:right" class="logo"><a href="./Login/login-form.php"><i class="fa-solid fa-user" style="margin-top: 5px;"></i><b style="margin-left: 10px;">Admin</b></a></li>
         </ul>
     </nav>
 </div>

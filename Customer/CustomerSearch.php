@@ -4,6 +4,90 @@
 <html>
     <head>
         <mega charset="utf-8">
+        <style type="text/css">
+            body {
+                margin: 0px auto 0px auto;
+                background-color: #06283D;
+            }
+
+            .search {
+                margin: 15vh 20% 20vh 20%;
+                padding: 5%;
+                background-color: white;
+                border-radius: 10px;
+                text-align: center;
+            }
+
+            .search div {
+                margin-bottom: 20px;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 98%;
+            }
+
+            td {
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+
+            th,
+            td {
+                padding-left: 15px;
+                text-align: left;
+            }
+
+            .search-table tr {
+                border-bottom: 1px solid #ddd;
+            }
+
+            .search-table tr:hover {
+                background-color: whitesmoke;
+            }
+
+            .content {
+                margin: 0px 20px 50px 20px;
+                padding: 20px;
+                background-color: #DFF6FF;
+            }
+
+            .h {
+                font-size: 25px;
+            }
+
+            hr.style1 {
+                border-top: 1px solid #8c8b8b;
+                border-bottom: 1px solid #fff;
+            }
+
+            .submit-button {
+                background-color: #1363DF; 
+                border: none;
+                color: white;
+                padding: 10px 22px;
+                border-radius: 10px;
+                text-align: center;
+                display: inline-block;
+                font-size: 16px;
+                margin-top: 10px;
+            }
+
+            .name-or-tel {
+                margin-bottom: 10px;
+            }
+
+            footer {
+                height: 10%;
+                background: #47B5FF;
+                color: #06283D;
+                margin: 0px;
+                font-size: 20px;
+                text-align: center;
+                padding-top: 2.5%;
+                margin-top: 5%;
+            }
+        </style>
     </head>
     <body>
     <header>
@@ -11,11 +95,12 @@
     </header>
         <div class="search">
         <form>
-            <label>กรอกชื่อ-สกุล/รหัสโทรศัพท์</label><br>
+            <label><b style="font-size: 30px; margin-bottom: 10px;">กรอกชื่อ-สกุล/รหัสโทรศัพท์</b></label><br>
             <input type="text" name="search-by-name-or-telid"><br>
             <input type="submit" value="ค้นหา" class="submit-button">
         </form>
         </div>
+        
         <?php
         if(empty($_GET)){
         }
@@ -40,9 +125,10 @@
             FROM telephone where cus_name like ?"); 
             $check=0;
             ?>
+            <div class="content">
             <?php while($row = $stmt->fetch()){
             if($check==0){ ?>
-                รายละเอียดการซ่อมของโทรศัพท์ <?=$_GET["search-by-name-or-telid"]?><br><br>
+                 <b>รายละเอียดการซ่อมของโทรศัพท์ <?=$_GET["search-by-name-or-telid"]?></b><br><br>
             <?php } 
             $check=1;
             $nameforsearch = str_replace(" ","%",$row["cus_name"]);
@@ -109,7 +195,7 @@
             ?>
             <?php while($row2 = $stmt2->fetch()){
             if($check==0||$check==1){ ?>
-                คุณ<?=$nameforsearch?><br><br>
+                <b style="font-size: 25px;">คุณ<?=$nameforsearch?></b><br><br>
                 <?php $nameforsearch = str_replace(" ","%",$nameforsearch);
                 $stmt3 = $pdo->prepare("SELECT telephone.tel_id,telephone.tel_model,telephone.color,
                 invoice.payment_status,request.abnormality,invoice.cost
@@ -127,7 +213,7 @@
                 $reciept=0;
                 while($row3 = $stmt3->fetch()){
                 if($reciept==0){ ?>
-                    โทรศัพท์ที่ค้างชำระ<br>
+                    <b>โทรศัพท์ที่ค้างชำระ</b><br>
                     <table border="1" class="search-table">
                     <tr>
                         <th>รหัสโทรศัพท์</th>
@@ -152,8 +238,8 @@
                         <td align="right"><?=$total?>.00</td>
                     </tr>
                     <?php }?>
-                </table>
-                โทรศัพท์ที่เคยลงทะเบียนกับทางร้าน<br>
+                </table><br>
+                <b>โทรศัพท์ที่เคยลงทะเบียนกับทางร้าน</b><br>
                 <table border="1" class="search-table">
                     <tr>
                         <th>รหัสโทรศัพท์</th>
@@ -169,9 +255,13 @@
             </tr>
             <?php } ?>
             </table>
+        </div>
             <?php if($check==0){
                 echo "ไม่พบข้อมูล";
             }
-        } ?>     
+        } ?>
+        <footer>
+            <p><b>Technic telaphone since 1987</b></p>
+        </footer>     
     </body>
 </html>
