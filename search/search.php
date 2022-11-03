@@ -426,12 +426,12 @@ include "../connect.php";
                                 </tr>
                             <?php } ?>
                             </table>
+                            <?php=$check=2?>
                 </div>
-        <?php if ($check == 0) {
+        <?php } if ($check == 0) {
                 $str = str_replace(" ", "%", $nameforsearch);
                 echo "<meta http-equiv=refresh content=0;URL=../Register/Register.php?name=" . $str . ">";
             }
-        }
     }
         ?>
 
