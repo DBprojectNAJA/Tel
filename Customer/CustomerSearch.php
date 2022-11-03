@@ -260,8 +260,7 @@
                 echo "ไม่พบข้อมูล";
             }
         } ?>
-        <footer>
-            <p><b>Technic telaphone since 1987</b></p>
-        </footer>     
+
     </body>
+    <?php include "../footer/footer.php"?>
 </html>

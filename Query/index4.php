@@ -3,6 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="style-index.css">
     </head>
     <body style="padding:10px; line-height: 30px;">
         <?php
@@ -21,12 +22,14 @@
             ");
             $stmt->execute();?>
             <?php while($row=$stmt->fetch()){ ?>
+                <div class="query">
                 ID ของโทรศัพท์ : <?=$row["tel_id"]?><br>
                 รุ่นโทรศัพท์ : <?=$row["tel_model"]?>
                 <?=$row["emp_name"]?>
                 <?=$row["finish_date"]?>
                 <?=$row["repair_status"]?>
             <hr>
+                </div>
             <?php
             } ?>
     </body>
