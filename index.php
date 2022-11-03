@@ -86,7 +86,7 @@
 <section>
     <article>
         <div class="caption">
-        <h3>Technic telaphone</h3><br>
+        <h3>Technic telephone</h3><br>
         <p>โทรศัพท์มีปัญหา<br>โทรหาใครไม่ติด<br>ติดต่อเรา</p>
         <p>ปลอดภัย มีฝีมือ มากประสบการณ์</p>
         <a href="./Customer/CustomerSearch.php"><input type="button" value="เช็คสถานะ" id="check"></a>
