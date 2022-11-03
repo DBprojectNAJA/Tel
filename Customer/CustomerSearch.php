@@ -109,7 +109,7 @@
             request.request_date,repair_detail.repair_status,
             telephone.tel_id,invoice.cost,repair_detail.finish_date,
             repair_detail.finish_date,repair_detail.finish_date,
-            request.request_status 
+            request.request_status,invoice.pay_date 
             FROM invoice INNER JOIN Repair_detail JOIN Request JOIN Telephone JOIN Customer
             WHERE invoice.repair_id = Repair_detail.repair_id 
             AND Repair_detail.request_id = Request.request_id 
@@ -136,7 +136,7 @@
                 $warranty_date='';
                 $pick_up_before_date='';
             }else{
-                $warranty_date=date('Y-m-d', strtotime('+3 months',strtotime($row["finish_date"])));
+                $warranty_date=date('Y-m-d', strtotime('+3 months',strtotime($row["pay_date"])));
                 $pick_up_before_date=date('Y-m-d', strtotime('+1 years',strtotime($row["finish_date"])));
             }
             ?>
