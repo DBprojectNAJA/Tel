@@ -1,5 +1,8 @@
 <?php include "../connect.php"?>
 <html>
+    <head>
+    <?php include "../nav/nav_login.php" ?>
+    </head>
     <body>
         <form action="login-check.php" method="post">
         Username: <input type="text" name="employee_id"><br>
