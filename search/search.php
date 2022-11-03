@@ -20,6 +20,7 @@ include "../connect.php";
             .head-search {
                 margin: 15vh 20% 20vh 20%;
                 padding: 5%;
+                border-radius: 10px;
                 background-color: white;
             }
 

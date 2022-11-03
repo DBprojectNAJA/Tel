@@ -12,11 +12,6 @@
             margin-right: auto;
             background:#06283D;
         }
-        #logo::before{
-            font-family: "FontAwesome";
-            content: "\f095";
-            padding: 5px;
-        }
         .caption {
             text-align: center;
             display: block;
@@ -69,7 +64,7 @@
             padding-top: 10px;
         }
         footer {
-            height: 200px;
+            height: 150px;
             background:#47B5FF;
             color: #06283D;
             margin: auto;

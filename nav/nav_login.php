@@ -49,7 +49,7 @@
 <div class="navContainer">
     <nav>
         <ul>
-            <li><a href="../index.php"><img src="../img/logo.png" id="logo"> Technic telephone</a></li>
+            <li><a href="../index.php"><img src="../img/logo.png" id="logo"><b style="margin-left: 10px;"> Technic telephone</b></a></li>
         </ul>
     </nav>
 </div>
