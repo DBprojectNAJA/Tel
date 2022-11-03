@@ -54,7 +54,7 @@ session_start();
 <div class="navContainer">
     <nav>
         <ul>
-            <li><a href="index.html"><img src="img/logo.png" id="logo"> Technic telephone</a></li>
+            <li><a href="index.php"><img src="img/logo.png" id="logo"> Technic telephone</a></li>
             <li style="float:right"><a href="./Login/login-form.php">Login</a></li>
         </ul>
     </nav>

@@ -6,6 +6,9 @@
         <mega charset="utf-8">
     </head>
     <body>
+    <header>
+        <?php include "../nav/nav_login.php" ?>
+    </header>
         <div class="search">
         <form>
             <label>กรอกชื่อ-สกุล/รหัสโทรศัพท์</label><br>
