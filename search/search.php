@@ -424,9 +424,8 @@ include "../connect.php";
                                     <td><?= $row2["tel_model"] ?></td>
                                     <td><?= $row2["color"] ?></td>
                                 </tr>
-                            <?php } ?>
+                            <?php } $check=2;?>
                             </table>
-                            <?php=$check=2?>
                 </div>
         <?php } if ($check == 0) {
                 $str = str_replace(" ", "%", $nameforsearch);
