@@ -54,7 +54,7 @@ session_start();
 <div class="navContainer">
     <nav>
         <ul>
-            <li><a href="/tel/search/search.php"><img src="../img/logo.png" id="logo"> Technic telephone</a></li>
+            <li><a href="../search/search.php"><img src="../img/logo.png" id="logo"> Technic telephone</a></li>
             <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"]; ?></a></li>
             <li style="float:right">
                 <?php
