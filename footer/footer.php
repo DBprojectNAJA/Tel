@@ -6,19 +6,16 @@
                 font-family: 'Prompt';
             }
             footer {
-                height: 10%;
                 background: #47B5FF;
                 color: #06283D;
-                margin: 0px;
                 font-size: 20px;
                 text-align: center;
-                padding-top: 2.5%;
-                margin-top: 5%;
 
                 position: adsolute;
-                left: 0;
                 bottom: 0;
                 width: 100%;
+                height: 60px;
+                padding-top: 10px;
             }
         </style>
     </head>

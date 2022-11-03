@@ -7,9 +7,11 @@
         <style type="text/css">
             body {
                 margin: 0px auto 0px auto;
-                background-color: #06283D;
+                background-color:#06283D;
             }
-
+            .cus_search{
+                min-height:68vh;
+            }
             .search {
                 margin: 15vh 20% 20vh 20%;
                 padding: 5%;
@@ -50,6 +52,7 @@
                 margin: 0px 20px 50px 20px;
                 padding: 20px;
                 background-color: #DFF6FF;
+
             }
 
             .h {
@@ -77,22 +80,13 @@
                 margin-bottom: 10px;
             }
 
-            footer {
-                height: 10%;
-                background: #47B5FF;
-                color: #06283D;
-                margin: 0px;
-                font-size: 20px;
-                text-align: center;
-                padding-top: 2.5%;
-                margin-top: 5%;
-            }
         </style>
     </head>
     <body>
     <header>
         <?php include "../nav/nav_login.php" ?>
     </header>
+    <div class="cus_search">
         <div class="search">
         <form>
             <label><b style="font-size: 30px; margin-bottom: 10px;">กรอกชื่อ-สกุล/รหัสโทรศัพท์</b></label><br>
@@ -260,7 +254,8 @@
                 echo "ไม่พบข้อมูล";
             }
         } ?>
-
+    </div>
     </body>
+
     <?php include "../footer/footer.php"?>
 </html>
