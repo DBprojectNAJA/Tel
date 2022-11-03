@@ -32,7 +32,8 @@ if (!isset($_SESSION['employee_id'])) {
                 include "../connectMysqli.php";
                 $sql = "SELECT * FROM repair_detail 
                                     WHERE repairman_id = '{$repairman_id}'
-                                    AND repair_status NOT LIKE 'repaired'";
+                                    AND repair_status NOT LIKE 'repaired'
+                                    AND repair_status NOT LIKE 'canceled'";
                 $result = $conn->query($sql);
                 $result1 = $conn->query($sql);
                 $canAssign = TRUE;
@@ -68,10 +69,13 @@ if (!isset($_SESSION['employee_id'])) {
                                 if ($row['repair_status'] != "require spare part") { ?>
                                     <input type="button" name="require" value="require" class="action" id="<?php echo $row['repair_id'] ?>" />
                                 <?php
-                                }
-                                ?>
+                                } ?>
+
                             <?php
-                            }
+                            } ?>
+
+                            <input type="button" name="cancel" value="cancel" class="action" id="<?php echo $row['repair_id'] ?>" />
+                            <?php
                             ?>
 
 

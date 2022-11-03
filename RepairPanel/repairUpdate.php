@@ -47,3 +47,17 @@ if ($action == "require") {
         ";
     $conn->query($sql);
 }
+
+if ($action == "cancel") {
+    $sql = "UPDATE repair_detail
+                SET repair_status = 'canceled'
+                WHERE repair_id = '$rpid';
+        ";
+    $sql2 = " UPDATE request as a
+        INNER JOIN repair_detail as b on a.request_id = b.request_id
+        SET a.request_status = 'canceled'
+        WHERE b.repair_id = '$rpid';
+    ";
+    $conn->query($sql);
+    $conn->query($sql2);
+}

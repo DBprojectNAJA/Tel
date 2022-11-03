@@ -6,7 +6,17 @@ if (!isset($_SESSION['employee_id'])) {
     echo "กรุณาเข้าสู่ระบบ";
     header("refresh:2;url=../Login/Login-form.php");
 }
-
+$is_telId = false;
+$name = $_GET['cus_name'];
+$realName = $_GET['cus_name'];
+if ($name[0] == 't') {
+    $is_telId = true;
+}
+if ($is_telId) {
+    $sql = "SELECT cus_name FROM telephone WHERE tel_id = '$name'";
+    $result = $conn->query($sql);
+    $realName = mysqli_fetch_array($result)['cus_name'];
+}
 ?>
 
 <head>
@@ -29,7 +39,7 @@ if (!isset($_SESSION['employee_id'])) {
                 <?php
                 $name = $_GET['cus_name'];
                 if (isset($name)) { ?>
-                    <input type="text" id="name" value="<?php echo $name ?>" readonly disabled />
+                    <input type="text" id="name" value="<?php echo $realName ?>" readonly disabled />
                 <?php
                 }
                 ?>
@@ -39,13 +49,14 @@ if (!isset($_SESSION['employee_id'])) {
                     </label>
 
                     <select name="tel_id" id="tel_id">
-                        <option value="" selected disabled hidden>เลือกเครื่องที่จะซ่อม</option>
+                        <option value="" <?php if (!$is_telId) echo "selected" ?> disabled hidden>เลือกเครื่องที่จะซ่อม</option>
                         <?php
-                        $str = str_replace(" ", "%", $name);
+                        $str = str_replace(" ", "%", $realName);
                         $sql = "SELECT * FROM telephone WHERE cus_name LIKE '{$str}'";
                         $result = $conn->query($sql);
-                        while ($row = mysqli_fetch_array($result)) { ?>
-                            <option value="<?php echo $row['tel_id'] ?>">
+                        while ($row = mysqli_fetch_array($result)) {
+                        ?>
+                            <option <?php if ($is_telId && $row['tel_id'] == $name) echo "selected" ?> value="<?php echo $row['tel_id'] ?>">
                                 <?php echo $row['tel_id'] ?>
                             </option>
                         <?php
@@ -60,10 +71,10 @@ if (!isset($_SESSION['employee_id'])) {
                     <br />
                     <textarea id="abnormality" name="abnormality" rows="5"></textarea>
                 </div>
-                <input type="button" value="ส่งคำร้อง" id="submit"/>
+                <input type="button" value="ส่งคำร้อง" id="submit" />
             </section>
         </div>
-        <a href="../search/search.php?search-by-name-or-telid=<?=$name ?>">Back</a>
+        <a href="../search/search.php?search-by-name-or-telid=<?= $name ?>">Back</a>
     <?php
     }
     ?>
@@ -90,7 +101,7 @@ if (!isset($_SESSION['employee_id'])) {
                     emp_id
                 },
                 success: function(data) {
-                    if (data){
+                    if (data) {
                         alert("เพิ่มคำร้องสำเร็จ")
                     }
                     console.log(data);
