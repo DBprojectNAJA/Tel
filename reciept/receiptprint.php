@@ -22,13 +22,14 @@ $stmt4 = $pdo->prepare("SELECT customer.cus_name,telephone.tel_model,
             AND Request.tel_id = Telephone.tel_id 
             AND Telephone.cus_name = Customer.cus_name
             AND customer.cus_name LIKE 'ขวัญทิพย์%แสนวงศ์'
-            AND invoice.invoice_status = 'completed'
+            AND invoice.payment_status = 'completed'
             ORDER BY Request.request_id DESC;
             ");
 // $stmt4->bindParam(1, $nameforsearch);
 $stmt4->execute();?>
 
 <h1>ใบเสร็จรับเงิน</h1>
+รอแก้sqlก่อน<br>
 เลือกโทรศัพท์ที่ต้องการพิมพ์ใบเสร็จ<br>
 <div class="tel-checkbox">
 <?php while($row4=$stmt4->fetch()){ 
