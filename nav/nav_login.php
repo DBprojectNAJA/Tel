@@ -1,8 +1,3 @@
-<?php
-session_start();
-
-?>
-
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Mali&family=Prompt:wght@200&display=swap" rel="stylesheet">
     <style>
@@ -54,21 +49,7 @@ session_start();
 <div class="navContainer">
     <nav>
         <ul>
-            <li><a href="../search/search.php"><img src="../img/logo.png" id="logo"> Technic telephone</a></li>
-            <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"]; ?></a></li>
-            <li style="float:right">
-                <?php
-                if ($_SESSION['is_repairman']) {
-                ?>
-                    <a href='../RepairPanel/repairPanel.php'>อัพเดทสถานะการซ่อม</a><br>
-
-                <?php
-                }
-                ?>
-            </li>
-            <li style="float:right"><a href="../Query/index1.php">ลูกค้า</a></li>
-            <li style="float:right"><a href="../Query/index4.php">ซ่อมสำเร็จ</a></li>
-            <li style="float:right"><a href="../Query/index3.php">ใบแจ้งหนี้ทั้งหมด</a></li>
+            <li><a href="../index.html"><img src="../img/logo.png" id="logo"> Technic telephone</a></li>
         </ul>
     </nav>
 </div>
