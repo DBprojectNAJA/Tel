@@ -1,5 +1,5 @@
-<?php include "../nav/nav.php";
-?>
+<?php include "../nav/nav.php";?>
+<?php include "../connect.php" ?>
 <html>
     <head>
         <meta charset="utf-8">
