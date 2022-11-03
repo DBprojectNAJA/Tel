@@ -8,7 +8,7 @@ $str = str_replace("%", " ", $name);
 <html>
 
 <head>
-
+<?php include "../nav/nav.php" ?>
 </head>
 
 <body>
