@@ -119,7 +119,7 @@
 </section>
 <footer>
     <h2><b>About</b></h2>
-    <p><b>Technic telaphone since 1987</b></p>
+    <p><b>Technic telephone since 1987</b></p>
     <a href="./contact.php"><input type="button" value="Contact" id="check"></a>
 </footer>
 </body>
