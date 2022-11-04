@@ -11,7 +11,7 @@
                 font-size: 20px;
                 text-align: center;
 
-                position: adsolute;
+                position: absolute;
                 bottom: 0;
                 width: 100%;
                 height: 60px;
@@ -20,6 +20,6 @@
         </style>
     </head>
     <footer>
-        <p><b>Technic telaphone since 1987</b></p>
+        <p><b>Technic telephone since 1987</b></p>
     </footer>     
 </htlm>
