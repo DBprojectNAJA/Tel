@@ -118,11 +118,25 @@ include "../connect.php";
         <div style="font-size: 14px;">
             <?php
             if (isset($_GET["search-by-name-or-telid"])) {
-                $cus_name = $_GET["search-by-name-or-telid"];
+                if(strpos($_GET["search-by-name-or-telid"], 'tel') === 0){
+                    $cus = $pdo->prepare("SELECT customer.cus_name FROM telephone JOIN customer
+                    where customer.cus_name = telephone.cus_name
+                    AND telephone.cus_name like ?");
+                    $cus->bindParam(1, $_GET["search-by-name-or-telid"]);
+                    $cus->execute();
+                    $name=$cus->fetch();
+                    $cus_name=$name["cus_name"];
+                    $nameforsearch = str_replace(" ", "%",$cus_name);
+                }else{
+                    $cus_name=$_GET["search-by-name-or-telid"];
+                    $nameforsearch = str_replace(" ", "%",$cus_name);
+                }
+                
             ?>
                 <a href='../Phone/insert-phone.php?cus_name=<?= $cus_name ?>'>เพิ่มเครื่อง</a>
                 <a href='../Request/request_form.php?cus_name=<?= $cus_name ?>'>เพิ่มคำร้อง</a>
-                <a href=''>ชำระเงิน</a>
+                <a href='../reciept/pay.php?name=<?= $nameforsearch ?>'>ชำระเงิน</a>
+                <a href='../reciept/receiptprint.php?name=<?= $nameforsearch ?>'>พิมพ์ใบเสร็จ</a>
             <?php } ?>
         </div>
     </div>
@@ -260,7 +274,7 @@ include "../connect.php";
                     </tr>
                 </table>
                 <?php if ($row4["request_status"] == 'รอชําระเงิน') { ?>
-                    <button onclick="location.href=' '">ชำระเงิน</button>
+                    <!-- <button onclick="location.href='../reciept/pay.php?name=<?= $nameforsearch ?>'">ชำระเงิน</button> -->
                 <?php } ?>
                 <br><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><br>
             <?php }
@@ -413,9 +427,11 @@ include "../connect.php";
                                 <td align="right"><?= $total ?>.00</td>
                             </tr>
                         <?php } ?>
-                            </table><br>
+                            </table>
+                    <?php if ($reciept == 1) { ?>
+                            <button onclick="location.href='../reciept/pay.php?name=<?= $nameforsearch?>';">ชำระเงิน</button><br>
+                    <?php } ?>
                             <?php /*if ($reciept == 1) { */ ?>
-                            <!-- <button onclick="location.href='../reciept/reciept.php';">พิมพ์ใบเสร็จรับเงิน</button><br> -->
                             <?php /* $_SESSION["cus_reciept"] = $nameforsearch; */ ?>
                             <?php /* } */ ?>
                             <b>โทรศัพท์ที่เคยลงทะเบียนกับทางร้าน</b><br>
