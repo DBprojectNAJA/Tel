@@ -428,8 +428,10 @@ include "../connect.php";
                             </tr>
                         <?php } ?>
                             </table>
-                            <?php /*if ($reciept == 1) { */ ?>
+                    <?php if ($reciept == 1) { ?>
                             <button onclick="location.href='../reciept/pay.php?name=<?= $nameforsearch?>';">ชำระเงิน</button><br>
+                    <?php } ?>
+                            <?php /*if ($reciept == 1) { */ ?>
                             <?php /* $_SESSION["cus_reciept"] = $nameforsearch; */ ?>
                             <?php /* } */ ?>
                             <b>โทรศัพท์ที่เคยลงทะเบียนกับทางร้าน</b><br>
