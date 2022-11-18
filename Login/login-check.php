@@ -1,5 +1,5 @@
 <?php 
-include "../connect.php"; 
+include "../connect/connect.php"; 
 session_start();
 
 $stmt = $pdo->prepare("SELECT * FROM employee WHERE employee_id = ? AND emp_tel = ?");

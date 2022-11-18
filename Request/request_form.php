@@ -1,6 +1,6 @@
 <html>
 <?php
-include "../connectMysqli.php";
+include "../connect/connectMysqli.php";
 session_start();
 if (!isset($_SESSION['employee_id'])) {
     echo "กรุณาเข้าสู่ระบบ";

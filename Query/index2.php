@@ -1,4 +1,6 @@
-<?php include "../connect.php"?>
+<?php 
+    include "../connect/connect.php"; 
+?>
 <html>
     <head><meta charset="utf-8"></head>
     <body style="padding:10px; line-height: 30px;">

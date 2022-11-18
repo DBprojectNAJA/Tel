@@ -1,4 +1,6 @@
-<?php include "../connect.php"?>
+<?php 
+    include "../connect/connect.php"; 
+?>
 
 <?php 
 $stmt = $pdo->prepare("INSERT INTO customer VALUES ( ?, ?, ?)");

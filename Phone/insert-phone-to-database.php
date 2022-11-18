@@ -1,4 +1,4 @@
-<?php include "../connect.php" ?>
+<?php include "../connect/connect.php" ?>
 <?php
 $currentRequestSQL = "SELECT COUNT(*) as count FROM `telephone`";
 $currentRequestData = $pdo->prepare($currentRequestSQL);

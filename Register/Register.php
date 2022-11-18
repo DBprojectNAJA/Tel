@@ -1,4 +1,4 @@
-<?php include "../connect.php";
+<?php include "../connect/connect.php";
     $name = $_GET['name'];
     $str = str_replace("%", " ", $name);
 ?>

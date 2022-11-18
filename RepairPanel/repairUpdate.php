@@ -1,4 +1,4 @@
-<?php include "../connectMysqli.php";
+<?php include "../connect/connectMysqli.php";
 $rpid = $_POST['repair_id'];
 $rmid = $_POST['repairman_id'];
 $action = $_POST['action'];

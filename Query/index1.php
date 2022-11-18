@@ -1,9 +1,9 @@
-<?php include "../connect.php" ?>
+<?php include "../connect/connect.php" ?>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style-index.css">
+    <link rel="stylesheet" href="../css/style-index.css">
 </head>
 <?php include "../nav/nav.php" ?>
 

@@ -1,4 +1,4 @@
-<?php include "../connect.php"?>
+<?php include "../connect/connect.php"?>
 <html>
     <head>
         <?php include "../nav/nav_login.php" ?>
