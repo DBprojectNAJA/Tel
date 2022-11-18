@@ -1,0 +1,88 @@
+* {
+    font-family: 'Prompt';
+}
+
+body {
+    margin: 0px auto 0px auto;
+    background-color: #06283D;
+}
+
+.head-search {
+    margin: 15vh 20% 20vh 20%;
+    padding: 5%;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.head-search div {
+    margin-bottom: 20px;
+}
+
+.head-search div>a {
+    text-decoration: none;
+    margin: 0 5px;
+    color: blue;
+}
+
+/* .search form label{} */
+table {
+    border-collapse: collapse;
+    width: 98%;
+}
+
+td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+th,
+td {
+    padding-left: 15px;
+    text-align: left;
+}
+
+.tel-table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.tel-table tr:hover {
+    background-color: whitesmoke;
+}
+
+.content {
+    margin: 0px 20px 50px 20px;
+    padding: 20px;
+    background-color: white;
+}
+
+.h {
+    font-size: 25px;
+}
+
+hr.style1 {
+    border-top: 1px solid #8c8b8b;
+    border-bottom: 1px solid #fff;
+}
+
+img {
+    width: 2%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button {
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: 1%;
+}
+
+footer {
+    height: 10%;
+    background: #47B5FF;
+    color: #06283D;
+    margin: 0px;
+    font-size: 20px;
+    text-align: center;
+}

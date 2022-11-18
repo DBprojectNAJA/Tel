@@ -10,27 +10,7 @@
 <mega charset="utf-8">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * {
-                font-family: 'Prompt';
-            }
-        .register{display: block;
-            margin-bottom: 50px;
-            justify-content: center;
-            background-color:white;
-            margin: 130px 500px 193.8px;
-            padding: 5%;
-            border-radius: 10px;
-        }
-        body {
-                margin: 0px auto 0px auto;
-                background-color: #7FB5FF;
-            }
-        h1{ 
-            text-align: center;
-            font-size: 72px;
-        }
-    </style>    
+        <link rel="stylesheet" href="../css/register.css">
 </head>
 
 <body>
