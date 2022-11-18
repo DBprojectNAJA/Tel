@@ -1,15 +1,50 @@
-<?php include "../connect/connect.php"?>
 <html>
     <head>
         <?php include "../nav/nav_login.php" ?>
+		<link rel="stylesheet" type="text/css" href="../css/login.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <script>
+            var httpRequest;
+            function send(){
+                
+                httpRequest = new XMLHttpRequest();
+                httpRequest.onreadystatechange = show;
+
+                var employee_id = document.getElementById("employee_id").value;
+                var emp_tel = document.getElementById("emp_tel").value;
+                var url = "login-check.php?employee_id="+employee_id+"&emp_tel="+emp_tel;
+                
+                httpRequest.open("GET",url);
+                httpRequest.send();
+            }
+            function show(){
+                if(httpRequest.readyState==4 && httpRequest.status==200){
+                    if(httpRequest.responseText=="ไม่สำเร็จ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"){
+                        document.getElementById("show").innerHTML = httpRequest.responseText;
+                    }
+                    else{
+                        location.href='../search/search.php';
+                    }
+                }
+            }
+        </script>
     </head>
     <body>
-        <center>
-            <form action="login-check.php" method="post">
-            Username: <input type="text" name="employee_id"><br>
-            Password: <input type="password" name="emp_tel"><br>
-            <input type="submit" value="Login">
-            </form>
-        </center>
+		<div class="center">
+		<div class="bg">
+
+            <b>LOG IN</b><br>
+			<i class="fa-solid fa-user"></i>
+            
+            <input type="text" id="employee_id" placeholder="Username" class="input" name="employee_id"><br>
+			<i class="fa-solid fa-lock"></i>
+            <input type="password" id="emp_tel" placeholder="Password" class="input" name="emp_tel"><br>
+            <p id="show"></p>
+            <input type="button" value="Login" class="button" align="center" onclick=send()>
+            
+       
+		</div>
+</div>
     </body>
+    <?php include "../footer/footer.php"?>
 </html>
