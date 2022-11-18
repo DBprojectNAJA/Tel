@@ -8,7 +8,8 @@
    justify-content: center;
    display: flex;
 }
-.button{
+.button{ 
+    color: white;
     display: inline-block;
   justify-content: center;
   align-items: center;
@@ -18,12 +19,12 @@
   border-radius: 25px;
     background-color: #1363DF;
     margin-top: 10px;
-    color: white;
     outline: none;
-border: none;
+    border: none;
 
 }
 .input{
+    color: white;
 outline: none;
 border: none;
 margin-top: 10px;

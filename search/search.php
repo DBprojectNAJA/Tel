@@ -18,11 +18,12 @@
                 <label>
                     <h1>กรอกชื่อ-สกุล/รหัสโทรศัพท์</h1>
                 </label><br>
-                <input type="text" name="search-by-name-or-telid" style="text-align:center" value='<?php
-                                                                                                    $value = (isset($_GET["search-by-name-or-telid"])) ?
-                                                                                                        $_GET["search-by-name-or-telid"] : "";
-                                                                                                    echo $value;
-                                                                                                    ?>'>
+                <input type="text" name="search-by-name-or-telid" style="text-align:center" value='
+                <?php
+                    $value = (isset($_GET["search-by-name-or-telid"])) ?
+                    $_GET["search-by-name-or-telid"] : "";
+                    echo $value;
+                ?>'>
                 <input type="submit" value="ค้นหา" class="submit-button">
             </form>
         </div>

@@ -49,7 +49,7 @@
 <footer>
     <h2><b>About</b></h2>
     <p><b>Technic telephone since 1987</b></p>
-    <a href="./contact.php"><input type="button" value="Contact" id="check"></a>
+    <a href="./contact/contact.php"><input type="button" value="Contact" id="check"></a>
 </footer>
 </body>
 </html>
