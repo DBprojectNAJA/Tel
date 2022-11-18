@@ -5,73 +5,7 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=Mali&family=Prompt:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style type="text/css">
-        body {
-            margin-top: 0px;
-            margin-left: auto;
-            margin-right: auto;
-            background:#06283D;
-        }
-        .caption {
-            text-align: center;
-            display: block;
-            color: aliceblue;
-            font-size: 20px;
-        }
-        #check {
-            background-color: #1363DF; 
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            border-radius: 10px;
-            text-align: center;
-            display: inline-block;
-            font-size: 16px;
-        }
-        .Service {
-            display: block;
-            margin-bottom: 50px;
-            justify-content: center;
-        }
-        #S1{
-            color: #DFF6FF;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 200px;
-        }
-        #S2 {
-            color: #DFF6FF;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            margin-left: 40%;
-            display: flex;
-        }
-        #S3 {
-            color: #DFF6FF;
-            text-align: center;
-            font-size: 18px;
-            margin-left: 42%;
-            display: flex;
-        }
-        #S3::before {
-        font-family: "FontAwesome";
-        content: "\f00c";
-        padding: 5px;
-        }
-        h2 {
-            padding-top: 10px;
-        }
-        footer {
-            height: 150px;
-            background:#47B5FF;
-            color: #06283D;
-            margin: auto;
-            font-size: 20px;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 
 <body>
