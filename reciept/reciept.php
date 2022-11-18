@@ -1,5 +1,5 @@
 <?php
-include "../connect.php";
+include "../connect/connect.php";
 require('./fpdf/fpdf.php');
 session_start();
 // echo $_POST['request'];

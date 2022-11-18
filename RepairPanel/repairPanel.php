@@ -29,7 +29,7 @@ if (!isset($_SESSION['employee_id'])) {
                     <th>Action</th>
                 </tr>
                 <?php
-                include "../connectMysqli.php";
+                include "../connect/connectMysqli.php";
                 $sql = "SELECT * FROM repair_detail 
                                     WHERE repairman_id = '{$repairman_id}'
                                     AND repair_status NOT LIKE 'repaired'
