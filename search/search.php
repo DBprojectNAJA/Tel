@@ -7,7 +7,7 @@
     <mega charset="utf-8">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-        <link rel="stylesheet" href="../css/search.php">
+        <link rel="stylesheet" href="../css/search.css">
 </head>
 
 <body>
@@ -362,9 +362,7 @@
     }
         ?>
 
-        <footer>
-            <p><b>Technic telephone since 1987</b></p>
-        </footer>
+        <?php include "../footer/footer.php" ?>
 </body>
 
 </html>
