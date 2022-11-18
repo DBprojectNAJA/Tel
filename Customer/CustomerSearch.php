@@ -3,84 +3,8 @@
 ?>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="../css/CustomerSearch.css">
         <mega charset="utf-8">
-        <style type="text/css">
-            body {
-                margin: 0px auto 0px auto;
-                background-color:#06283D;
-            }
-            .cus_search{
-                min-height:68vh;
-            }
-            .search {
-                margin: 15vh 20% 20vh 20%;
-                padding: 5%;
-                background-color: white;
-                border-radius: 10px;
-                text-align: center;
-            }
-
-            .search div {
-                margin-bottom: 20px;
-            }
-
-            table {
-                border-collapse: collapse;
-                width: 98%;
-            }
-
-            td {
-                padding-top: 5px;
-                padding-bottom: 5px;
-            }
-
-            th,
-            td {
-                padding-left: 15px;
-                text-align: left;
-            }
-
-            .search-table tr {
-                border-bottom: 1px solid #ddd;
-            }
-
-            .search-table tr:hover {
-                background-color: whitesmoke;
-            }
-
-            .content {
-                margin: 0px 20px 50px 20px;
-                padding: 20px;
-                background-color: #DFF6FF;
-
-            }
-
-            .h {
-                font-size: 25px;
-            }
-
-            hr.style1 {
-                border-top: 1px solid #8c8b8b;
-                border-bottom: 1px solid #fff;
-            }
-
-            .submit-button {
-                background-color: #1363DF; 
-                border: none;
-                color: white;
-                padding: 10px 22px;
-                border-radius: 10px;
-                text-align: center;
-                display: inline-block;
-                font-size: 16px;
-                margin-top: 10px;
-            }
-
-            .name-or-tel {
-                margin-bottom: 10px;
-            }
-
-        </style>
     </head>
     <body>
     <header>
