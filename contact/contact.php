@@ -4,6 +4,7 @@
 <html>
     <head>
         <mega charset="utf-8">
+        <?php include "../nav/nav_login.php" ?>
         <script>
             async function getDataFromAPI() {
             let response = fetch('./contact.json').then(res => res.json())
@@ -36,9 +37,27 @@
             }
             getDataFromAPI()
         </script>
+        <style>
+            body {
+                background: #06283D;
+                text-align: center;
+            }
+            #tb {
+                margin: 0% 20% 5% 20%;
+                background-color: #DFF6FF;
+            }
+            table, th, td {
+                border: 2px solid #06283D;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 10px;
+            }
+        </style>
     </head>
     <body>
-            สาขาทั้งหมด
+        <div id="Tb">
+            <h1>สาขาทั้งหมด</h1>
             <table border="1" id="tab">
                 <tr id="trr">
                     <th>สาขา</th>
@@ -47,5 +66,9 @@
                     <th>เบอร์ติดต่อ</th>
                 </tr>
             </table>
+        </div>
     </body>
+    <footer>
+        <?php include "../footer/footer2.php" ?>
+    </footer>
 </html>
