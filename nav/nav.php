@@ -31,7 +31,7 @@
             margin: 0px;
             padding: 0px;
             overflow: visible;
-            background-color: #47B5FF;
+            
         }
 
         .navContainer li {
