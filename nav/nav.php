@@ -5,6 +5,7 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Mali&family=Prompt:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0 , maximum-scale = 1.0">
     <style>
         * {
             font-family: 'Prompt';
@@ -14,6 +15,7 @@
 
         .navContainer {
             padding-bottom: 10vh;
+            
         }
 
         .navContainer nav {
@@ -27,7 +29,7 @@
             list-style-type: none;
             margin: 0px;
             padding: 0px;
-            overflow: hidden;
+            overflow: visible;
             background-color: #47B5FF;
         }
 
@@ -59,7 +61,16 @@
             top: 7px;
             left:7px;
         }
+       @media (max-width:480px) {
+        .navContainer li a {
+            
+            display: inline-block;
+            width: auto;
+            
+        }
        
+        
+       }
  
 
     </style>
