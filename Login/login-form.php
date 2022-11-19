@@ -13,11 +13,13 @@
                 var employee_id = document.getElementById("employee_id").value;
                 console.log(employee_id);
                 var emp_tel = document.getElementById("emp_tel").value;
-                var url = "login-check.php?employee_id="+employee_id+"&emp_tel="+emp_tel;
+                var url = "login-check.php";
+                var value="employee_id="+employee_id+"&emp_tel="+emp_tel;
                 
                 if(employee_id!= "" && emp_tel != ""){
-                    httpRequest.open("GET",url);
-                    httpRequest.send();
+                    httpRequest.open("POST",url,true);
+                    httpRequest.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    httpRequest.send(value);
                 }
                 else{
                     document.getElementById("show").innerHTML = "";
@@ -29,6 +31,7 @@
                         document.getElementById("show").innerHTML = httpRequest.responseText;
                     }
                     else{
+                        //document.getElementById("show").innerHTML = httpRequest.responseText;
                         location.href='../search/search.php';
                     }
                 }
