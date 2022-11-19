@@ -5,7 +5,7 @@ body {
 .p1 {
     text-align: left;
     position: relative;
-    margin: 0px 300px 80px 300px;
+    margin: 0px 300px 10px 300px;
     padding: 1% 0% 3% 20%;
     background-color: #DFF6FF;
     line-height: 40px;
@@ -40,5 +40,29 @@ h1 {
     text-align: center;
     display: inline-block;
     font-size: 12px;
+    font-weight: bold;
+}
+#bottonB {
+    background-color: #1363DF; 
+    border: none;
+    color: white;
+    margin: 0px 20px 70px 20px;
+    padding: 10px 22px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+}
+#bottonB:hover {
+    background-color: #47B5FF; 
+    border: none;
+    color: black;
+    margin: 0px 20px 70px 20px;
+    padding: 10px 22px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 13px;
     font-weight: bold;
 }

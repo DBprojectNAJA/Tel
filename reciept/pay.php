@@ -29,7 +29,7 @@ include "../connect/connect.php";
     $stmt4->execute(); ?>
 
     <h1>ชำระเงิน</h1>
-    <div class="p1" style="min-height: 45vh;">
+    <div class="p1" style="min-height: 40vh;">
     คุณ<?=$_GET["name"]?><br>
     <b>เลือกโทรศัพท์ที่ต้องการชำระเงิน</b>
     <div class="tel-checkbox">
@@ -45,6 +45,7 @@ include "../connect/connect.php";
     </div>
     <button id="submit">ชำระเงิน</button><br>
     </div>
+    <a href="../search/search.php?search-by-name-or-telid=<?= $_GET["name"] ?>"><input type="button" value="Back" id="bottonB" /></a>
 </body>
 <script>
     let requestArr = [];
