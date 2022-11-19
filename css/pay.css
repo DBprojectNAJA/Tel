@@ -1,0 +1,44 @@
+body {
+    background:#06283D;
+    text-align: center;
+}
+.p1 {
+    text-align: left;
+    position: relative;
+    margin: 0px 300px 80px 300px;
+    padding: 1% 0% 3% 20%;
+    background-color: #DFF6FF;
+    line-height: 40px;
+}
+h1 {
+    padding-top: 10px;
+    margin: 50px 300px 0px 300px;
+    background-color: #DFF6FF;
+}
+.tel-checkbox {
+    margin-left: 1%;
+}
+#submit {
+    background-color: #1363DF; 
+    border: outset;
+    color: white;
+    margin-top: 5px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+}
+#submit:hover {
+    background-color: #47B5FF; 
+    border: outset;
+    color: black;
+    margin-top: 5px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+}
