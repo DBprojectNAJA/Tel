@@ -197,11 +197,12 @@
             </tr>
             <?php } ?>
             </table>
-        </div>
             <?php if($check==0){
                 echo "ไม่พบข้อมูล";
             }
         } ?>
+        </div>
+            
     </div>
     </body>
 
