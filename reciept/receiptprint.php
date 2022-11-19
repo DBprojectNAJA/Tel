@@ -32,7 +32,8 @@ session_start(); ?>
     $stmt4->execute(); ?>
 
     <h1>ใบเสร็จรับเงิน</h1>
-    เลือกโทรศัพท์ที่ต้องการพิมพ์ใบเสร็จ<br>
+    คุณ<?=$_GET["name"]?><br>
+    <b>เลือกโทรศัพท์ที่ต้องการพิมพ์ใบเสร็จ</b><br>
     <div class="tel-checkbox">
         <?php while ($row4 = $stmt4->fetch()) {
             if ($row4["pay_date"]) {
@@ -40,10 +41,7 @@ session_start(); ?>
             }
         ?>
             <input type="checkbox" id="print" onclick="addDelete('<?= $row4['request_id'] ?>');" name="print" value="<?= $row4["request_id"] ?>">
-            คำร้อง <?= $row4["request_id"] ?> รหัสโทรศัพท์ <?= $row4["tel_id"] ?> ราคา <?= $row4["cost"] ?> บาท
-            <?php if ($row4["pay_date"]) { ?>
-                - วันที่จ่าย <?= $row4["pay_date"] ?><br>
-            <?php } ?>
+            <?= $row4["request_id"] ?> รหัสโทรศัพท์ <?= $row4["tel_id"] ?> รุ่น <?= $row4["tel_model"] ?> ราคา <?= $row4["cost"] ?> บาท - วันที่จ่าย <?= $row4["pay_date"] ?><br>
             <br>
         <?php } ?>
     </div>
