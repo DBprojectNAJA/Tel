@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
 ?>
 
 <head>
@@ -52,13 +52,12 @@ session_start();
     <nav>
         <ul>
             <li><a href="../search/search.php"><img src="../img/logo.png" id="logo"><b style="margin-left: 10px;"> Technic telephone</b></a></li>
-            <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"]; ?></a></li>
+            <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"]; ?></a><a href="../index.php">LOG OUT</a></li>
             <li style="float:right">
                 <?php
                 if ($_COOKIE['is_repairman']==1) {
                 ?>
-                    <a href='../RepairPanel/repairPanel.php'>อัพเดทสถานะการซ่อม</a><br>
-
+                <a href='../RepairPanel/repairPanel.php'>อัพเดทสถานะการซ่อม</a><br>
                 <?php
                 }
                 ?>
