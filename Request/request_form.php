@@ -22,17 +22,72 @@ if ($is_telId) {
 <head>
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <?php include "../nav/nav_login.php" ?>
+    <?php include "../nav/nav.php" ?>
     <style>
         body {
             background:#06283D;
             text-align: center;
         }
         .r1 {
+            text-align: left;
             position: relative;
-            margin: 0px 20px 10px 20px;
-            padding: 10px;
+            margin: 0px 200px 0px 200px;
+            padding: 1% 0% 0% 30%;
             background-color: #DFF6FF;
+            line-height: 40px;
+        }
+        h1 {
+            padding-top: 10px;
+            margin: 0px 200px 0px 200px;
+            background-color: #DFF6FF;
+        }
+        #submit {
+            background-color: #1363DF; 
+            border: outset;
+            color: white;
+            margin-top: 5px;
+            padding: 2px 5px;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        #submit:hover {
+            background-color: #47B5FF; 
+            border: outset;
+            color: black;
+            margin-top: 5px;
+            padding: 2px 5px;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        #bottonB {
+            background-color: #1363DF; 
+            border: none;
+            color: white;
+            margin: 10px 20px 10px 20px;
+            padding: 10px 22px;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        #bottonB:hover {
+            background-color: #47B5FF; 
+            border: none;
+            color: black;
+            margin: 10px 20px 10px 20px;
+            padding: 10px 22px;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            font-size: 13px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -42,8 +97,8 @@ if ($is_telId) {
     if (isset($_SESSION['employee_id'])) {
         $employee_id = $_SESSION['employee_id'];
     ?>
+    <h1>แจ้งคำร้อง</h1>
         <div class="r1">
-            <h1>แจ้งคำร้อง</h1>
             <section style="min-height: 65vh;">
                 <label>
                     เจ้าของคำร้อง
@@ -86,7 +141,7 @@ if ($is_telId) {
                 <input type="button" value="ส่งคำร้อง" id="submit" />
             </section>
         </div>
-        <a href="../search/search.php?search-by-name-or-telid=<?= $name ?>">Back</a>
+        <a href="../search/search.php?search-by-name-or-telid=<?= $name ?>"><input type="button" value="Back" id="bottonB" /></a>
     <?php
     }
     ?>
