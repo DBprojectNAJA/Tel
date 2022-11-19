@@ -73,3 +73,36 @@ hr.style1 {
     margin-bottom: 10px;
 }
 
+@media (max-width: 480px){
+    .search {
+        margin: 15vh 20% 20vh 20%;
+        padding: 5%;
+        background-color: rgb(193, 202, 24);
+        border-radius: 10px;
+        text-align: center;
+    }
+    .cus_search{
+        min-height:30vh;
+    }
+    table {
+        border-collapse: separate;
+        border-spacing: 10px;
+    }
+    
+}
+@media (max-height: 400px) and (max-width: 900px) {
+    .search {
+        margin: 15vh 20% 20vh 20%;
+        padding: 5%;
+        background-color: rgb(24, 202, 157);
+        border-radius: 10px;
+        text-align: center;
+    }
+    .cus_search{
+        min-height:30vh;
+    }
+    table {
+        border-collapse: separate;
+        border-spacing: 10px;
+    }
+}
