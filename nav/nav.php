@@ -4,7 +4,7 @@
 
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Mali&family=Prompt:wght@200&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <style>
         * {
             font-family: 'Prompt';
@@ -59,10 +59,14 @@
             top: 7px;
             left:7px;
         }
+       
+ 
+
     </style>
 </head>
 <div class="navContainer">
     <nav>
+    
         <ul>
             <li><a href="../search/search.php"><img src="../img/logo.png" id="logo"><b style="margin-left: 10px;" id="TextLogo"> Technic telephone</b></a></li>
             <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"]; ?></a><a href="../index.php">LOG OUT<i class="fa-solid fa-right-from-bracket"></i></li>
@@ -76,9 +80,11 @@
                 }
                 ?>
             </li>
+            
             <li style="float:right" id="i1"><a href="../Query/index1.php">ลูกค้า</a></li>
             <li style="float:right" id="i1"><a href="../Query/index4.php">ซ่อมสำเร็จ</a></li>
             <li style="float:right" id="i1"><a href="../Query/index3.php">ใบแจ้งหนี้ทั้งหมด</a></li>
         </ul>
+        
     </nav>
 </div>
