@@ -81,14 +81,26 @@ button {
 @media (max-width: 480px){
     .content {
         margin: 0px 20px 50px 20px;
-        padding: 20px;
+        padding: 10px;
         background-color: rgb(229, 195, 160);
     }
+    .head-search {
+        margin: 15vh 20% 20vh 20%;
+        padding: 5%;
+        border-radius: 10px;
+        background-color: rgb(222, 132, 223);
+    }
 }
-@media (max-width: 480px) and (min-height:600px){
+@media (max-width: 300px) and (min-height:600px){
     .content {
         margin: 0px 20px 50px 20px;
-        padding: 20px;
+        padding: 10px;
         background-color: rgb(83, 236, 187);
+    }
+    .head-search {
+        margin: 15vh 20% 20vh 20%;
+        padding: 5%;
+        border-radius: 10px;
+        background-color: rgb(152, 83, 236);
     }
 }
