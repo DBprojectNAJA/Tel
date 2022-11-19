@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
 ?>
 
 <head>
@@ -62,7 +62,7 @@ session_start();
             <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"]; ?></a></li>
             <li style="float:right">
                 <?php
-                if ($_SESSION['is_repairman']) {
+                if ($_COOKIE['is_repairman']==1) {
                 ?>
                     <a href='../RepairPanel/repairPanel.php' id="i1">อัพเดทสถานะการซ่อม</a><br>
 

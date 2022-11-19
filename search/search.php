@@ -29,22 +29,22 @@ include "../connect/connect.php";
                 <?php
                 if (isset($_GET["search-by-name-or-telid"])) {
                     if (strpos($_GET["search-by-name-or-telid"], 'tel') === 0) {
-                        $cus = $pdo->prepare("SELECT customer.cus_name FROM telephone JOIN customer
+                        $cus = $pdo->prepare("SELECT distinct customer.cus_name FROM telephone JOIN customer
                     where customer.cus_name = telephone.cus_name
-                    AND telephone.cus_name like ?");
+                    AND telephone.tel_id like ?");
                         $cus->bindParam(1, $_GET["search-by-name-or-telid"]);
                         $cus->execute();
-                        $name = $cus->fetch();
-                        $cus_name = $name["cus_name"];
-                        $nameforsearch = str_replace(" ", "%", $cus_name);
+                        $cname = $cus->fetch();
+                        $customer_name = $cname["cus_name"];
+                        $nameforsearch = str_replace(" ", "%", $customer_name);
                     } else {
-                        $cus_name = $_GET["search-by-name-or-telid"];
-                        $nameforsearch = str_replace(" ", "%", $cus_name);
+                        $customer_name = $_GET["search-by-name-or-telid"];
+                        $nameforsearch = str_replace(" ", "%", $customer_name);
                     }
 
                 ?>
-                    <a href='../Phone/insert-phone.php?cus_name=<?= $cus_name ?>'>เพิ่มเครื่อง</a>
-                    <a href='../Request/request_form.php?cus_name=<?= $cus_name ?>'>เพิ่มคำร้อง</a>
+                    <a href='../Phone/insert-phone.php?cus_name=<?= $customer_name ?>'>เพิ่มเครื่อง</a>
+                    <a href='../Request/request_form.php?cus_name=<?= $customer_name ?>'>เพิ่มคำร้อง</a>
                     <a href='../reciept/pay.php?name=<?= $nameforsearch ?>'>ชำระเงิน</a>
                     <a href='../reciept/receiptprint.php?name=<?= $nameforsearch ?>'>พิมพ์ใบเสร็จ</a>
                 <?php } ?>
@@ -57,7 +57,7 @@ include "../connect/connect.php";
             request.request_date,repair_detail.repair_status,
             telephone.tel_id,invoice.cost,repair_detail.finish_date,
             repair_detail.finish_date,repair_detail.finish_date,
-            request.request_status,invoice.pay_date 
+            invoice.payment_status,invoice.pay_date 
             FROM invoice INNER JOIN Repair_detail JOIN Request JOIN Telephone JOIN Customer
             WHERE invoice.repair_id = Repair_detail.repair_id 
             AND Repair_detail.request_id = Request.request_id 
@@ -79,7 +79,7 @@ include "../connect/connect.php";
             request.request_date,repair_detail.repair_status,
             telephone.tel_id,invoice.cost,repair_detail.finish_date,
             repair_detail.finish_date,repair_detail.finish_date,
-            request.request_status,request.request_id,invoice.pay_date 
+            invoice.payment_status,request.request_id,invoice.pay_date 
             FROM invoice INNER JOIN Repair_detail JOIN Request JOIN Telephone JOIN Customer
             WHERE invoice.repair_id = Repair_detail.repair_id 
             AND Repair_detail.request_id = Request.request_id 
@@ -120,18 +120,15 @@ include "../connect/connect.php";
                             $row4["repair_status"] = 'อยู่ระหว่างการซ่อม';
                             break;
                     }
-                    switch ($row4["request_status"]) {
+                    switch ($row4["payment_status"]) {
                         case 'awaiting':
-                            $row4["request_status"] = 'อยู่ระหว่างการซ่อม';
+                            $row4["payment_status"] = 'อยู่ระหว่างการซ่อม';
                             break;
                         case 'pending':
-                            $row4["request_status"] = 'รอชําระเงิน';
+                            $row4["payment_status"] = 'รอชําระเงิน';
                             break;
-                        case 'fulfill':
-                            $row4["request_status"] = 'สําเร็จ';
-                            break;
-                        case 'canceled':
-                            $row4["request_status"] = 'ยกเลิกคําร้อง';
+                        case 'completed':
+                            $row4["payment_status"] = 'ชำระเงินสําเร็จ';
                             break;
                     }
                     ?>
@@ -180,10 +177,10 @@ include "../connect/connect.php";
                         <?php } ?>
                         <tr>
                             <th>สถานะการจ่ายเงิน</th>
-                            <td><?= $row4["request_status"] ?></td>
+                            <td><?= $row4["payment_status"] ?></td>
                         </tr>
                     </table>
-                    <?php if ($row4["request_status"] == 'รอชําระเงิน') { ?>
+                    <?php if ($row4["payment_status"] == 'รอชําระเงิน') { ?>
                         <!-- <button onclick="location.href='../reciept/pay.php?name=<?= $nameforsearch ?>'">ชำระเงิน</button> -->
                     <?php } ?>
                     <br><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><br>
@@ -216,18 +213,15 @@ include "../connect/connect.php";
                             $row["repair_status"] = 'อยู่ระหว่างการซ่อม';
                             break;
                     }
-                    switch ($row["request_status"]) {
+                    switch ($row["payment_status"]) {
                         case 'awaiting':
-                            $row["request_status"] = 'อยู่ระหว่างการซ่อม';
+                            $row["payment_status"] = 'อยู่ระหว่างการซ่อม';
                             break;
                         case 'pending':
-                            $row["request_status"] = 'รอชําระเงิน';
+                            $row["payment_status"] = 'รอชําระเงิน';
                             break;
-                        case 'fulfill':
-                            $row["request_status"] = 'สําเร็จ';
-                            break;
-                        case 'canceled':
-                            $row["request_status"] = 'ยกเลิกคําร้อง';
+                        case 'completed':
+                            $row["payment_status"] = 'ชำระเงินสําเร็จ';
                             break;
                     }
                     ?>
@@ -272,7 +266,7 @@ include "../connect/connect.php";
                         <?php } ?>
                         <tr>
                             <th>สถานะการจ่ายเงิน</th>
-                            <td><?= $row["request_status"] ?></td>
+                            <td><?= $row["payment_status"] ?></td>
                         </tr>
                     </table>
                     <br><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><br>
