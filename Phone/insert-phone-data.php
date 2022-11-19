@@ -3,22 +3,19 @@
 <head><meta charset="utf-8"></head>
 <body>
 <?php
-    $stmt = $pdo->prepare("SELECT tel_model,color FROM telephone
-        join 
-        where
+    $stmt = $pdo->prepare("SELECT telephone.tel_id,telephone.tel_model,telephone.color,telephone.cus_name
+    FROM telephone WHERE telephone.tel_id like ?
     ");
+    $stmt->bindParam(1,$_GET["tel_id"]);
     $stmt->execute();
+    $row = $stmt->fetch();
 ?>
 
-<?php while ($row = $stmt->fetch()): ?>
-    username: <?=$row["username"]?><br>
-    password: <?=$row["password"]?><br>
-    ชื่อ : <?=$row["name"]?><br>
-    ที่อยู่ : <?=$row["address"]?><br>
-    เบอร์: <?=$row["mobile"]?><br>
-    อีเมล์: <?=$row["email"]?><br>
-    <a href="editform.php?username=<?=$row["username"]?>">แก้ไข</a>
-    <hr><br>
-<?php endwhile; ?>    
+    <h1>รายละเอียดโทรศัพท์</h1>
+    tel_id : <?=$row["tel_id"]?><br>
+    name : <br>
+    tel_model : <?=$row["tel_model"]?><br>
+    color : <?=$row["color"]?><br>
+    <a href="edit-phone.php?username=<?=$row["cus_name"]?>">แก้ไข</a> 
 </body>
 </html>
