@@ -80,27 +80,37 @@ button {
 
 @media (max-width: 480px){
     .content {
-        margin: 0px 20px 50px 20px;
-        padding: 10px;
+        
         background-color: rgb(229, 195, 160);
     }
     .head-search {
-        margin: 15vh 20% 20vh 20%;
-        padding: 5%;
-        border-radius: 10px;
+        
         background-color: rgb(222, 132, 223);
     }
+    .tel-table tr {
+        border-bottom: 1px solid rgb(175, 20, 20);
+    }
+    
+    hr.style1 {
+    border-top: 1px solid #3adc50;
+    border-bottom: 1px solid rgb(118, 6, 124);
+}
 }
 @media (max-width: 300px) and (min-height:600px){
     .content {
-        margin: 0px 20px 50px 20px;
-        padding: 10px;
+        
         background-color: rgb(83, 236, 187);
     }
     .head-search {
-        margin: 15vh 20% 20vh 20%;
-        padding: 5%;
-        border-radius: 10px;
+        
         background-color: rgb(152, 83, 236);
     }
+    .tel-table tr {
+        border-bottom: 1px solid rgb(227, 189, 200);
+    }
+    
+    hr.style1 {
+    border-top: 1px solid #dd2424;
+    border-bottom: 1px solid rgb(201, 86, 86);
+}
 }
