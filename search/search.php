@@ -29,22 +29,22 @@ include "../connect/connect.php";
                 <?php
                 if (isset($_GET["search-by-name-or-telid"])) {
                     if (strpos($_GET["search-by-name-or-telid"], 'tel') === 0) {
-                        $cus = $pdo->prepare("SELECT customer.cus_name FROM telephone JOIN customer
+                        $cus = $pdo->prepare("SELECT distinct customer.cus_name FROM telephone JOIN customer
                     where customer.cus_name = telephone.cus_name
-                    AND telephone.cus_name like ?");
+                    AND telephone.tel_id like ?");
                         $cus->bindParam(1, $_GET["search-by-name-or-telid"]);
                         $cus->execute();
-                        $name = $cus->fetch();
-                        $cus_name = $name["cus_name"];
-                        $nameforsearch = str_replace(" ", "%", $cus_name);
+                        $cname = $cus->fetch();
+                        $customer_name = $cname["cus_name"];
+                        $nameforsearch = str_replace(" ", "%", $customer_name);
                     } else {
-                        $cus_name = $_GET["search-by-name-or-telid"];
-                        $nameforsearch = str_replace(" ", "%", $cus_name);
+                        $customer_name = $_GET["search-by-name-or-telid"];
+                        $nameforsearch = str_replace(" ", "%", $customer_name);
                     }
 
                 ?>
-                    <a href='../Phone/insert-phone.php?cus_name=<?= $cus_name ?>'>เพิ่มเครื่อง</a>
-                    <a href='../Request/request_form.php?cus_name=<?= $cus_name ?>'>เพิ่มคำร้อง</a>
+                    <a href='../Phone/insert-phone.php?cus_name=<?= $customer_name ?>'>เพิ่มเครื่อง</a>
+                    <a href='../Request/request_form.php?cus_name=<?= $customer_name ?>'>เพิ่มคำร้อง</a>
                     <a href='../reciept/pay.php?name=<?= $nameforsearch ?>'>ชำระเงิน</a>
                     <a href='../reciept/receiptprint.php?name=<?= $nameforsearch ?>'>พิมพ์ใบเสร็จ</a>
                 <?php } ?>
