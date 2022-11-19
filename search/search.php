@@ -40,7 +40,7 @@ include "../connect/connect.php";
                         $nameforsearch = str_replace(" ", "%", $customer_name);
                     } else {
                         $customer_name = $_GET["search-by-name-or-telid"];
-                        $nameforsearch = str_replace(" ", "%", $customer_name);
+                        $nameforsearch = str_replace("%", " ", $customer_name);
                     }
 
                 ?>
