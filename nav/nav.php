@@ -46,26 +46,33 @@ session_start();
         .navContainer #logo {
             width: 30px;
         }
+
+        #i1:hover {
+            background-color: #1363DF;
+        }
+        #Textlogo:hover {
+            color: #06283D;
+        }
     </style>
 </head>
 <div class="navContainer">
     <nav>
         <ul>
-            <li><a href="../search/search.php"><img src="../img/logo.png" id="logo"><b style="margin-left: 10px;"> Technic telephone</b></a></li>
+            <li><a href="../search/search.php"><img src="../img/logo.png" id="logo"><b style="margin-left: 10px;" id="TextLogo"> Technic telephone</b></a></li>
             <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"]; ?></a></li>
             <li style="float:right">
                 <?php
                 if ($_SESSION['is_repairman']) {
                 ?>
-                    <a href='../RepairPanel/repairPanel.php'>อัพเดทสถานะการซ่อม</a><br>
+                    <a href='../RepairPanel/repairPanel.php' id="i1">อัพเดทสถานะการซ่อม</a><br>
 
                 <?php
                 }
                 ?>
             </li>
-            <li style="float:right"><a href="../Query/index1.php">ลูกค้า</a></li>
-            <li style="float:right"><a href="../Query/index4.php">ซ่อมสำเร็จ</a></li>
-            <li style="float:right"><a href="../Query/index3.php">ใบแจ้งหนี้ทั้งหมด</a></li>
+            <li style="float:right" id="i1"><a href="../Query/index1.php">ลูกค้า</a></li>
+            <li style="float:right" id="i1"><a href="../Query/index4.php">ซ่อมสำเร็จ</a></li>
+            <li style="float:right" id="i1"><a href="../Query/index3.php">ใบแจ้งหนี้ทั้งหมด</a></li>
         </ul>
     </nav>
 </div>
