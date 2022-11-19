@@ -6,7 +6,7 @@ body {
     text-align: left;
     position: relative;
     margin: 0px 300px 10px 300px;
-    padding: 1% 0% 3% 20%;
+    padding: 1% 0% 3% 10%;
     background-color: #DFF6FF;
     line-height: 40px;
 }
@@ -35,12 +35,18 @@ h1 {
     border: outset;
     color: black;
     margin-top: 5px;
-    padding: 2px 5px;
+    padding: 1px 1px;
     border-radius: 5px;
     text-align: center;
     display: inline-block;
     font-size: 12px;
     font-weight: bold;
+}
+#submit::before {
+    font-family: "FontAwesome";
+    content: "\f02f";
+    padding: 5px;
+    
 }
 #CusName::before {
     font-family: "FontAwesome";
