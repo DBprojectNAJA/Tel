@@ -17,5 +17,7 @@ $stmt->bindParam(2,$_GET["cus_name"]);
 $stmt->bindParam(3,$_POST["tel_model"]);
 $stmt->bindParam(4,$_POST["color"]);
 $stmt->execute();
-header("location:./insert-phone-data/tel_id=".$realRequestID);
+
+header("location:./insert-phone-data.php?tel_id=".$realRequestID);
+
 ?>

@@ -13,9 +13,10 @@
 
     <h1>รายละเอียดโทรศัพท์</h1>
     tel_id : <?=$row["tel_id"]?><br>
-    name : <br>
+    name : <?=$row["cus_name"]?><br>
     tel_model : <?=$row["tel_model"]?><br>
     color : <?=$row["color"]?><br>
-    <a href="edit-phone.php?username=<?=$row["cus_name"]?>">แก้ไข</a> 
+    <a href="edit-phone.php?tel_id=<?=$row["tel_id"]?>">แก้ไข</a> 
+    <a href="delect-phone.php?tel_id=<?=$row["tel_id"]?>">ลบ</a>
 </body>
 </html>
