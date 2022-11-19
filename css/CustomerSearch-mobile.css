@@ -3,23 +3,23 @@ body {
     background-color:#06283D;
 }
 .cus_search{
-    min-height:68vh;
+    min-height:30vh;
 }
 .search {
     margin: 15vh 20% 20vh 20%;
     padding: 5%;
-    background-color: white;
+    background-color: rgb(193, 202, 24);
     border-radius: 10px;
     text-align: center;
 }
 
 .search div {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 table {
-    border-collapse: collapse;
-    width: 98%;
+    border-collapse: separate;
+    border-spacing: 10px;
 }
 
 td {

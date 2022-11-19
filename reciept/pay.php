@@ -15,7 +15,7 @@ include "../connect/connect.php";
 
 <body>
     <?php
-    $stmt4 = $pdo->prepare("SELECT customer.cus_name,telephone.tel_model,
+    $stmt4 = $pdo->prepare("SELECT customer.cus_name,telephone.tel_model,telephone.color,
             request.request_date,repair_detail.repair_status,
             telephone.tel_id,invoice.cost,repair_detail.finish_date,
             repair_detail.finish_date,repair_detail.finish_date,
@@ -33,7 +33,8 @@ include "../connect/connect.php";
     $stmt4->execute(); ?>
 
     <h1>ชำระเงิน</h1>
-    เลือกโทรศัพท์ที่ต้องการชำระเงิน<br>
+    คุณ<?=$_GET["name"]?><br>
+    <b>เลือกโทรศัพท์ที่ต้องการชำระเงิน</b>
     <div class="tel-checkbox">
         <?php while ($row4 = $stmt4->fetch()) {
             if ($row4["pay_date"]) {
@@ -41,7 +42,7 @@ include "../connect/connect.php";
             }
         ?>
             <input type="checkbox" id="print" name="print" onclick="addDelete('<?= $row4['request_id'] ?>');" value="<?= $row4["request_id"] ?>">
-            คำร้อง <?= $row4["request_id"] ?> รหัสโทรศัพท์ <?= $row4["tel_id"] ?> ราคา <?= $row4["cost"] ?> บาท
+            <?= $row4["tel_id"] ?> รุ่น <?= $row4["tel_model"] ?> สี <?= $row4["color"] ?> ราคา <?= $row4["cost"] ?> บาท
             <br>
         <?php } ?>
     </div>
