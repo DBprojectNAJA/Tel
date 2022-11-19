@@ -53,13 +53,18 @@
         #Textlogo:hover {
             color: #06283D;
         }
+        i{
+            position:relative;
+            top: 7px;
+            left:7px;
+        }
     </style>
 </head>
 <div class="navContainer">
     <nav>
         <ul>
             <li><a href="../search/search.php"><img src="../img/logo.png" id="logo"><b style="margin-left: 10px;" id="TextLogo"> Technic telephone</b></a></li>
-            <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"]; ?></a><a href="../sear">LOG OUT></li>
+            <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"]; ?></a><a href="../index.php">LOG OUT<i class="fa-solid fa-right-from-bracket"></i></li>
             <li style="float:right">
                 <?php
                 if ($_COOKIE['is_repairman']==1) {
