@@ -22,4 +22,4 @@
     <footer>
         <p><b>Technic telephone since 1987</b></p>
     </footer>     
-</htlm>
+</html>
