@@ -23,11 +23,11 @@ if(!empty($row)){
 
     if(empty($row2)){
        // echo "hi<a href='../search/search.php'>ไปยังหน้าหลัก</a><br>";
-        setcookie("is_repairman",0,time() +3600);
+       setcookie("is_repairman",0,time() +3600,"/");
     }
     else{
         //$_SESSION["is_repairman"]=true;
-        setcookie("is_repairman",1,time() +3600);
+        setcookie("is_repairman",1,time() +3600,"/");
         $_SESSION["repairman"]=$row2['repairman_id'];
         
         //echo "hi2<a href='../search/search.php'>ไปยังหน้าหลัก</a><br>";
