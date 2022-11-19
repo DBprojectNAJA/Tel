@@ -43,8 +43,6 @@ session_start();
             text-decoration: none;
         }
 
-        .navContainer li a:hover {}
-
         .navContainer #logo {
             width: 30px;
         }
