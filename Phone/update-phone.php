@@ -8,8 +8,7 @@ $stmt->bindParam(1,$_GET["tel_model"]);
 $stmt->bindParam(2,$_GET["color"]); 
 $stmt->bindParam(3,$_GET["tel_id"]); 
 if($stmt->execute()){
-    echo "<script>alert('แก้ไขข้อมูลสำเร็จ');</script>"; 
-    header("location:./insert-phone.php?tel_id=".$_GET["tel_id"]);
+    header("location:./insert-phone.php?cus_name=".$_GET["cus_name"]);
 }
 ?>
 </body>
