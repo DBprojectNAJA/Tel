@@ -22,17 +22,29 @@ if ($is_telId) {
 <head>
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+    <?php include "../nav/nav_login.php" ?>
+    <style>
+        body {
+            background:#06283D;
+            text-align: center;
+        }
+        .r1 {
+            position: relative;
+            margin: 0px 20px 10px 20px;
+            padding: 10px;
+            background-color: #DFF6FF;
+        }
+    </style>
 </head>
 
-<body style="margin:0">
+<body>
     <?php
     if (isset($_SESSION['employee_id'])) {
         $employee_id = $_SESSION['employee_id'];
     ?>
-        <div>
+        <div class="r1">
             <h1>แจ้งคำร้อง</h1>
-            <section>
+            <section style="min-height: 65vh;">
                 <label>
                     เจ้าของคำร้อง
                 </label>
@@ -80,7 +92,6 @@ if ($is_telId) {
     ?>
 
 
-
 </body>
 <script>
     $(document).ready(function() {
@@ -113,5 +124,7 @@ if ($is_telId) {
         })
     })
 </script>
-
+<footer>
+    <?php include "../footer/footer2.php" ?>
+</footer>
 </html>
