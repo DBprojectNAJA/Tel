@@ -47,13 +47,16 @@ session_start();
         .navContainer #logo {
             width: 30px;
         }
+        #TextNav:hover {
+            color: #06283D;
+        }
     </style>
 </head>
 <div class="navContainer">
     <nav>
         <ul>
-            <li><a href="index.php"><img src="img/logo.png" id="logo"><b style="margin-left: 10px;"> Technic telephone</b></a></li>
-            <li style="float:right" class="logo"><a href="./Login/login-form.php"><i class="fa-solid fa-user" style="margin-top: 5px;"></i><b style="margin-left: 10px;">Admin</b></a></li>
+            <li><a href="index.php"><img src="img/logo.png" id="logo"><b style="margin-left: 10px;" id="TextNav"> Technic telephone</b></a></li>
+            <li style="float:right" class="logo"><a href="./Login/login-form.php"><i class="fa-solid fa-user" style="margin-top: 5px;"></i><b style="margin-left: 10px; " id="TextNav">Admin</b></a></li>
         </ul>
     </nav>
 </div>
