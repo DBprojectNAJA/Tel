@@ -11,11 +11,17 @@
                 httpRequest.onreadystatechange = show;
 
                 var employee_id = document.getElementById("employee_id").value;
+                console.log(employee_id);
                 var emp_tel = document.getElementById("emp_tel").value;
                 var url = "login-check.php?employee_id="+employee_id+"&emp_tel="+emp_tel;
                 
-                httpRequest.open("GET",url);
-                httpRequest.send();
+                if(employee_id!= "" && emp_tel != ""){
+                    httpRequest.open("GET",url);
+                    httpRequest.send();
+                }
+                else{
+                    document.getElementById("show").innerHTML = "";
+                }
             }
             function show(){
                 if(httpRequest.readyState==4 && httpRequest.status==200){
@@ -36,13 +42,12 @@
             <b>LOG IN</b><br>
 			<i class="fa-solid fa-user"></i>
             
-            <input type="text" id="employee_id" placeholder="Username" class="input" name="employee_id"><br>
+            <input type="text" id="employee_id" placeholder="Username" class="input"><br>
 			<i class="fa-solid fa-lock"></i>
-            <input type="password" id="emp_tel" placeholder="Password" class="input" name="emp_tel"><br>
+            <input type="password" id="emp_tel" placeholder="Password" class="input"><br>
             <p id="show"></p>
             <input type="button" value="Login" class="button" align="center" onclick=send()>
             
-       
 		</div>
 </div>
     </body>
