@@ -77,3 +77,18 @@ button {
     margin-left: auto;
     margin-right: 1%;
 }
+
+@media (max-width: 480px){
+    .content {
+        margin: 0px 20px 50px 20px;
+        padding: 20px;
+        background-color: rgb(229, 195, 160);
+    }
+}
+@media (max-width: 480px) and (min-height:600px){
+    .content {
+        margin: 0px 20px 50px 20px;
+        padding: 20px;
+        background-color: rgb(83, 236, 187);
+    }
+}

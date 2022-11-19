@@ -361,6 +361,6 @@ include "../connect/connect.php";
 
 
 </body>
-<?php include "../footer/footer.php" ?>
+<?php include "../footer/footer2.php" ?>
 
 </html>
