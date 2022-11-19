@@ -4,13 +4,9 @@ include "../connect/connect.php";
 <html>
 
 <head>
-    <style>
-        .tel-checkbox {
-            margin-left: 1%;
-        }
-    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+    <?php include "../nav/nav.php" ?>
+    <link rel="stylesheet" type="text/css" href="../css/pay.css">
 </head>
 
 <body>
@@ -33,6 +29,7 @@ include "../connect/connect.php";
     $stmt4->execute(); ?>
 
     <h1>ชำระเงิน</h1>
+    <div class="p1" style="min-height: 45vh;">
     คุณ<?=$_GET["name"]?><br>
     <b>เลือกโทรศัพท์ที่ต้องการชำระเงิน</b>
     <div class="tel-checkbox">
@@ -47,6 +44,7 @@ include "../connect/connect.php";
         <?php } ?>
     </div>
     <button id="submit">ชำระเงิน</button><br>
+    </div>
 </body>
 <script>
     let requestArr = [];
@@ -86,5 +84,7 @@ include "../connect/connect.php";
         })
     })
 </script>
-
+<footer>
+    <?php include "../footer/footer2.php" ?>
+</footer>
 </html>
