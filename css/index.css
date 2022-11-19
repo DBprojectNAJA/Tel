@@ -63,15 +63,3 @@ footer {
     font-size: 20px;
     text-align: center;
 }
-@media (max-width : 680px){
-    section {
-        display: block; 
-    }
-    .caption{
-        width: 30%;
-    }
-    .Service{
-        width: 60%;
-    }
-        
-}
