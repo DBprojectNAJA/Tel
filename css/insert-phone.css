@@ -5,6 +5,7 @@ h1{
 text-align: center;
 font-weight: bold;
 font-size: 72px;
+color: white;
 }
 
 .add{display: block;
@@ -18,7 +19,7 @@ border-radius: 10px;
 }
 body {
     margin: 0px auto 0px auto;
-    background-color: #7FB5FF;
+    background-color: #06283D;
 }
 .main{
 margin: 130px 370px 193.8px;
