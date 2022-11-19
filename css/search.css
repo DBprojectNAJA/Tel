@@ -101,7 +101,7 @@ button {
     }
 
 }
-@media (orientation: landscape){
+@media  (max-height:500px) and (max-width:460px) {
     .content {
         
         background-color: rgb(83, 236, 187);
