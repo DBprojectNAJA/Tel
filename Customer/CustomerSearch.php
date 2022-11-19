@@ -15,7 +15,11 @@
         <div class="search">
         <form>
             <label><b style="font-size: 30px; margin-bottom: 10px;">กรอกชื่อ-สกุล/รหัสโทรศัพท์</b></label><br>
-            <input type="text" name="search-by-name-or-telid"><br>
+            <input type="text" name="search-by-name-or-telid" style="text-align:center" value='<?php
+                $value = (isset($_GET["search-by-name-or-telid"])) ?
+                    $_GET["search-by-name-or-telid"] : "";
+                echo $value;
+                ?>'><br>
             <input type="submit" value="ค้นหา" class="submit-button">
         </form>
         </div>
@@ -28,7 +32,7 @@
             request.request_date,repair_detail.repair_status,
             telephone.tel_id,invoice.cost,repair_detail.finish_date,
             repair_detail.finish_date,repair_detail.finish_date,
-            request.request_status,invoice.pay_date 
+            invoice.payment_status,invoice.pay_date 
             FROM invoice INNER JOIN Repair_detail JOIN Request JOIN Telephone JOIN Customer
             WHERE invoice.repair_id = Repair_detail.repair_id 
             AND Repair_detail.request_id = Request.request_id 
@@ -58,6 +62,28 @@
                 $warranty_date=date('Y-m-d', strtotime('+3 months',strtotime($row["pay_date"])));
                 $pick_up_before_date=date('Y-m-d', strtotime('+1 years',strtotime($row["finish_date"])));
             }
+            switch ($row["repair_status"]) {
+                case 'repaired':
+                    $row["repair_status"] = 'ซ่อมสำเร็จ';
+                    break;
+                case 'require spare part':
+                    $row["repair_status"] = 'กำลังจัดหาอะไหล่';
+                    break;
+                case 'repaired in progress':
+                    $row["repair_status"] = 'อยู่ระหว่างการซ่อม';
+                    break;
+            }
+            switch ($row["payment_status"]) {
+                case 'awaiting':
+                    $row["payment_status"] = 'อยู่ระหว่างการซ่อม';
+                    break;
+                case 'pending':
+                    $row["payment_status"] = 'รอชําระเงิน';
+                    break;
+                case 'completed':
+                    $row["payment_status"] = 'ชำระเงินสําเร็จ';
+                    break;
+            }
             ?>
             <table border="1" class="search-table">
             <tr>
@@ -76,32 +102,29 @@
                 <th>สถานะของโทรศัพท์</th>
                 <td><?=$row["repair_status"]?></td>
             </tr>
-            <tr>
-                <th>รหัสโทรศัพท์</th>
-                <td><?=$row["tel_id"]?></td>
-            </tr>
-            <tr>
-                <th>ราคา</th>
-                <td><?=$row["cost"]?></td>
-            </tr>
-            <tr>
-                <th>วันที่ซ่อมเสร็จ</th>
-                <td><?=$row["finish_date"]?></td>
-            </tr>
-            <tr>
-                <th>วันที่หมดประกัน</th>
-                <td><?=$warranty_date?></td>
-            </tr>
-            <tr>
-                <th>ควรมารับก่อน</th>
-                <td><?=$pick_up_before_date?></td>
-            </tr>
-            <tr>
+            <?php if ($row["finish_date"]) { ?>
+                <tr>
+                    <th>ราคา</th>
+                    <td><?= $row["cost"] ?></td>
+                </tr>
+                <tr>
+                    <th>วันที่ซ่อมเสร็จ</th>
+                    <td><?= $row["finish_date"] ?></td>
+                </tr>
+                <tr>
+                    <th>วันที่หมดประกัน</th>
+                    <td><?= $warranty_date ?></td>
+                </tr>
+                <tr>
+                    <th>ควรมารับก่อน</th>
+                    <td><?= $pick_up_before_date ?></td>
+                </tr>
+            <?php } ?>
                 <th>สถานะการจ่ายเงิน</th>
-                <td><?=$row["request_status"]?></td>
+                <td><?=$row["payment_status"]?></td>
             </tr>
             </table>
-            <br>
+            <br><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><img src="../img/screwdriver.png"><br>
             <?php } ?>
             <?php
             if($check==0){
@@ -164,13 +187,13 @@
                         <th>รหัสโทรศัพท์</th>
                         <th>รุ่นโทรศัพท์</th>
                         <th>สี</th>
-                    </tr>
+                    </tr>                                  
             <?php }  
             $check=2; ?>
             <tr>
-                <td><?=$row2["tel_id"]?></td>
-                <td><?=$row2["tel_model"]?></td>
-                <td><?=$row2["color"]?></td>
+                <td><a href="CustomerSearch.php?search-by-name-or-telid=<?= $row2["tel_id"] ?>"><?= $row2["tel_id"] ?></a></td>
+                <td><?= $row2["tel_model"] ?></td>
+                <td><?= $row2["color"] ?></td>
             </tr>
             <?php } ?>
             </table>
