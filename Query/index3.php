@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="style-index.css">
     <?php include "../nav/nav.php" ?>
+    <link rel="stylesheet" type="text/css" href="../css/Query.css">
 </head>
 
 <body style="padding:10px; line-height: 30px;">
@@ -22,7 +23,6 @@
         <div class="query">
         รหัสใบแจ้งหนี้ : <?= $row["invoice_id"] ?><br>
         ชื่อ-สกุล : <?= $row["cus_name"] ?><br>
-        <hr>
         </div>
     <?php } ?>
 </body>

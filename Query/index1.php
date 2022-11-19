@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/style-index.css">
+    <link rel="stylesheet" type="text/css" href="../css/Query.css">
 </head>
 <?php include "../nav/nav.php" ?>
 

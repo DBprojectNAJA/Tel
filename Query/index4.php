@@ -6,6 +6,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="style-index.css">
+        <link rel="stylesheet" type="text/css" href="../css/Query.css">
     </head>
     <body style="padding:10px; line-height: 30px;">
         <?php
@@ -30,7 +31,6 @@
                 <?=$row["emp_name"]?>
                 <?=$row["finish_date"]?>
                 <?=$row["repair_status"]?>
-            <hr>
                 </div>
             <?php
             } ?>

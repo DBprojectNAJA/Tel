@@ -13,7 +13,7 @@ if (!isset($_SESSION['employee_id'])) {
     <?php include "../nav/nav.php" ?>
 </head>
 
-<body>
+<body style=" line-height: 30px;">
     <?php
     if (isset($_SESSION['employee_id'])) {
         $repairman_id = $_SESSION['repairman'];
