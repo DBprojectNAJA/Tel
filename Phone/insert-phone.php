@@ -1,6 +1,4 @@
-<?php include "../connect/connect.php" 
-
-?>
+<?php include "../connect/connect.php" ?>
 <html>
     <head>
     <mega charset="utf-8">
@@ -14,7 +12,7 @@
     <?php include "../nav/nav.php" ?>
     <h1> เพิ่มเครื่องเข้าระบบ </h1>
     <div class="main">
-        <div class="add">
+        <div>
         <form action="insert-phone-to-database.php?cus_name=<?=$_GET['cus_name'] ?>" method="post">
             tel_model: <input type="text" name="tel_model"><br>
             color: <input type="text" name="color"><br>
