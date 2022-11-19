@@ -1,6 +1,4 @@
-<?php include "../connect/connect.php" 
-
-?>
+<?php include "../connect/connect.php" ?>
 <html>
     <head>
     <mega charset="utf-8">

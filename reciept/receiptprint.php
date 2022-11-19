@@ -4,12 +4,10 @@ session_start(); ?>
 <html>
 
 <head>
-    <style>
-        .tel-checkbox {
-            margin-left: 1%;
-        }
-    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <?php include "../nav/nav.php" ?>
+    <link rel="stylesheet" type="text/css" href="../css/reciptprint.css">
 </head>
 
 <body>
@@ -32,8 +30,9 @@ session_start(); ?>
     $stmt4->execute(); ?>
 
     <h1>ใบเสร็จรับเงิน</h1>
-    คุณ<?=$_GET["name"]?><br>
-    <b>เลือกโทรศัพท์ที่ต้องการพิมพ์ใบเสร็จ</b><br>
+    <div class="p1" style="min-height: 40vh;">
+    <b id ="CusName">คุณ <?=$_GET["name"]?></b><br>
+    <b><u>เลือกโทรศัพท์ที่ต้องการพิมพ์ใบเสร็จ</u></b><br>
     <div class="tel-checkbox">
         <?php while ($row4 = $stmt4->fetch()) {
             if ($row4["pay_date"]) {
@@ -46,6 +45,8 @@ session_start(); ?>
         <?php } ?>
     </div>
     <button id="submit">พิมพ์ใบเสร็จรับเงิน</button><br>
+    </div>
+    <a href="../search/search.php?search-by-name-or-telid=<?= $_GET["name"] ?>"><input type="button" value="Back" id="bottonB" /></a>
 </body>
 <script>
     let requestArr = [];
@@ -72,5 +73,7 @@ session_start(); ?>
         })
     })
 </script>
-
+<footer>
+    <?php include "../footer/footer2.php" ?>
+</footer>
 </html>

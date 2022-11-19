@@ -5,6 +5,7 @@ include "../connect/connect.php";
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <?php include "../nav/nav.php" ?>
     <link rel="stylesheet" type="text/css" href="../css/pay.css">
 </head>
@@ -30,8 +31,8 @@ include "../connect/connect.php";
 
     <h1>ชำระเงิน</h1>
     <div class="p1" style="min-height: 40vh;">
-    คุณ<?=$_GET["name"]?><br>
-    <b>เลือกโทรศัพท์ที่ต้องการชำระเงิน</b>
+    <b id ="CusName">คุณ<?=$_GET["name"]?></b><br>
+    <b><u>เลือกโทรศัพท์ที่ต้องการชำระเงิน</u></b>
     <div class="tel-checkbox">
         <?php while ($row4 = $stmt4->fetch()) {
             if ($row4["pay_date"]) {
