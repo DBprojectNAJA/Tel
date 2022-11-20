@@ -25,7 +25,6 @@
             let td2 = document.createElement('td')
             td2.innerHTML = address
             let td3 = document.createElement('td')
-            td3.id="hid"
             td3.innerHTML = map
             let td4 = document.createElement('td')
             td4.innerHTML = tel
@@ -47,7 +46,7 @@
                 <tr id="trr">
                     <th>สาขา</th>
                     <th>ที่อยู่</th>
-                    <th id="hid">แผนที่</th>
+                    <th>แผนที่</th>
                     <th>เบอร์ติดต่อ</th>
                 </tr>
             </table>
