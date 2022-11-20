@@ -93,7 +93,7 @@ if(!isset($_SESSION))
             display:block;
         }
        }
-       @media (max-height: 786px) and (max-width: 686px) {/*ipad*/
+       @media (max-height: 686px) and (max-width: 786px) {/*ipad*/
         .toggle{
             display:block;
         }

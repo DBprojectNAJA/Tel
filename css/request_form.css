@@ -12,8 +12,9 @@ body {
 }
 h1 {
     padding-top: 10px;
-    margin: 0px 350px 0px 350px;
+    margin: 10px 350px 0px 350px;
     background-color: #DFF6FF;
+    
 }
 #submit {
     background-color: #1363DF; 
@@ -62,4 +63,19 @@ h1 {
     display: inline-block;
     font-size: 13px;
     font-weight: bold;
+}
+
+@media (max-width: 480px) {
+    body{
+        width: max-content;
+        min-width: 480;
+    }
+    h1{
+        
+        font-size: 28px;
+        width: max-content;
+    }
+    .r1{
+        padding: 1% 0% 3% 10%;
+    }
 }
