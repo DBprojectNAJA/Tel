@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 
-<body>
+<body><img src="img/background.jpg">
 <header>
     <?php include "nav/nav_index.php" ?>
 </header>
@@ -28,20 +28,20 @@
         <div class="Service">
         <p id="S1">ขั้นตอนการใช้บริการ</p>
         <div>
-        <img src="img/1.png" class="pic">
+        
         <p id="S2">1. มาที่ร้านและสมัครสมาชิก</p>
         <p id="S3">ใช้เวลาไม่นาน </p>
         <p id="S3">สามารถส่งซ่อมได้เลย </p>
         <p id="S3">ถ้าเคยสมัครแล้วไม่ต้องสมัครซ้ำ </p>
         </div>
         <div>
-        <img src="img/2.png" class="pic">
+        
         <p id="S2">2. ส่งโทรศัพท์ซ่อม</p>
         <p id="S3">สามารถเช็ตสถานะการซ่อมได้ </p>
         <p id="S3">ใช้เวลาซ่อมไม่นาน </p>
         </div>
         <div>
-        <img src="img/3.png" class="pic">
+        
         <p id="S2">3. ชำระเงินและรับเครื่องคืน</p>
         <p id="S3">สะดวกต่อลูกค้า </p>
         <p id="S3">ปลอดภัยแน่นอน 100% </p>
@@ -55,5 +55,6 @@
     <p><b>Technic telephone since 1987</b></p>
     <a href="./contact/contact.php"><input type="button" value="Contact" id="check"></a>
 </footer>
+
 </body>
 </html>
