@@ -7,15 +7,15 @@ body {
     text-align: left;
     /* position: relative; */
     background-color: white;
-    margin: 0px 300px 10px 300px;
-    padding: 1% 0% 3% 20%;
+    margin: 0px 200px 10px 200px;
+    padding: 1% 0% 10% 25%;
     background-color: #DFF6FF;
     line-height: 40px;
 }
 
 h1 {
     padding-top: 10px;
-    margin: 50px 300px 0px 300px;
+    margin: 50px 200px 0px 200px;
     background-color: #DFF6FF;
 }
 
@@ -80,4 +80,29 @@ h1 {
     display: inline-block;
     font-size: 13px;
     font-weight: bold;
+}
+
+@media (max-width: 480px) { /*Phone*/
+    body {
+        min-width: 480;
+        width: 480;
+    }
+    .p1 {
+        margin: 0px 50px 10px 50px;
+        padding: 1% 0% 3% 10%;
+    }
+    
+    h1 {
+        margin: 50px 50px 0px 50px;
+    }
+}
+@media (max-height: 686px) and (max-width: 786px) {/*ipad*/
+    .p1 {
+        margin: 0px 70px 10px 70px;
+        padding: 1% 0% 3% 10%;
+    }
+    
+    h1 {
+        margin: 50px 70px 0px 70px;
+    }
 }
