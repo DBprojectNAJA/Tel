@@ -32,8 +32,8 @@ if ($is_telId) {
         $employee_id = $_SESSION['employee_id'];
     ?>
     <h1>แจ้งคำร้อง</h1>
-        <div class="r1">
-            <section style="min-height: 65vh;">
+        <div class="r1" style="min-height: 55vh;">
+            <section>
                 <label>
                     เจ้าของคำร้อง
                 </label>
