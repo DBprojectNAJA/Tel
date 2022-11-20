@@ -69,6 +69,8 @@ h1 {
     body{
         width: max-content;
         min-width: 480;
+        margin: 0px 50px 10px 50px;
+        padding: 1% 0% 3% 10%;
     }
     h1{
         
@@ -77,6 +79,7 @@ h1 {
     }
     .r1{
         padding: 1% 0% 3% 10%;
+        margin: 0px 50px 10px 50px;
     }
 }
 
@@ -84,6 +87,8 @@ h1 {
     body{
         width: max-content;
         min-width: 480;
+        margin: 0px 90px 10px 90px;
+        padding: 1% 0% 3% 10%;
     }
     h1{
         
@@ -92,5 +97,7 @@ h1 {
     }
     .r1{
         padding: 1% 0% 3% 15%;
+        margin: 0px 90px 10px 90px;
     }
+    
 }
