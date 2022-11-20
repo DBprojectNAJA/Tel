@@ -1,5 +1,8 @@
-<?php
-    session_start();
+<?php 
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 ?>
 
 <head>
@@ -94,6 +97,7 @@
         .toggle{
             display:block;
         }
+
         ul{
             width: 100%;
             display:none;
@@ -139,7 +143,6 @@
         $(document).ready(function(){
             $('.menu').click(function(){
                 $('ul').toggleClass('active');
-                console.log("hi");
             })
         })
     </script>
