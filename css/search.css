@@ -78,7 +78,7 @@ button {
     margin-right: 1%;
 }
 
-@media (max-width: 453px) {
+@media (max-width: 480px) { /*Phone*/
     .content {
     margin: 10px;
     padding: 10px;
@@ -94,7 +94,7 @@ button {
     }
 }
 
-@media (max-height: 600px) and (max-width: 500px) {
+@media (max-height: 786px) and (max-width: 686px) {/*ipad*/
     table {
         border-collapse: separate;
         
@@ -103,7 +103,7 @@ button {
         margin-bottom: 10px;
     }
     .head-search {
-        margin: 0 10% 0 10%;
+        margin: 10px 10% 10px 10%;
         padding: 5%;
         border-radius: 10px;
         background-color: white;
