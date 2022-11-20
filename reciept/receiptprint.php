@@ -8,15 +8,6 @@ session_start(); ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <?php include "../nav/nav.php" ?>
     <link rel="stylesheet" type="text/css" href="../css/reciptprint.css">
-    <script>
-    function Checkbox() {
-        var v = $('input:checkbox:checked').length;
-        if( parseInt( v ) <= 0 ) {
-            alert("กรุณาเลือกโทรศัพท์อย่างน้อย 1 เครื่อง");
-            document.location("receiptprint.php?name=<?=$_GET["name"]?>");
-        }
-    }
-    </script>
 </head>
 
 <body>
@@ -43,7 +34,6 @@ session_start(); ?>
     <b id ="CusName">คุณ <?=$_GET["name"]?></b><br>
     <b><u>เลือกโทรศัพท์ที่ต้องการพิมพ์ใบเสร็จ</u></b><br>
     <div class="tel-checkbox">
-    <form onsubmit="Checkbox()">
         <?php while ($row4 = $stmt4->fetch()) {
             if ($row4["pay_date"]) {
                 $row4["pay_date"] = date('d-m-Y', strtotime($row4["pay_date"]));
@@ -54,7 +44,7 @@ session_start(); ?>
             <br>
         <?php } ?>
     </div>
-    <button id="submit">พิมพ์ใบเสร็จรับเงิน</button></form><br>
+    <button id="submit">พิมพ์ใบเสร็จรับเงิน</button><br>
     </div>
     <a href="../search/search.php?search-by-name-or-telid=<?= $_GET["name"] ?>"><input type="button" value="Back" id="bottonB" /></a>
 </body>
