@@ -4,7 +4,7 @@
 
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Mali&family=Prompt:wght@200&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale = 1.0 , maximum-scale = 1.0">
     <style>
         * {
@@ -69,6 +69,12 @@
             
         }
 
+        #logout::after {
+            font-family: "FontAwesome";
+            content: "\f2f5";
+            padding-left: 5px;
+        }
+
        @media (max-width:480px) {
         .toggle{
             display:block;
@@ -110,7 +116,7 @@
         </div>
         <ul>
             <li><a href="../search/search.php"><img src="../img/logo.png" id="logo"><b style="margin-left: 10px;" id="TextLogo"> Technic telephone</b></a></li>
-            <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"]; ?></a><a href="../index.php">LOG OUT<i class="fas fa-sign-out-alt"></i></li>
+            <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"]; ?></a><a href="../index.php" id="logout">LOG OUT</a></li>
             <li style="float:right">
                 <?php
                 if ($_COOKIE['is_repairman']==1) {
