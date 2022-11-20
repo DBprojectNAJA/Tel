@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="img/logo.png">
     <title>Technic telephone</title>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=Mali&family=Prompt:wght@200&display=swap" rel="stylesheet">
@@ -8,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 
-<body><img src="img/background.jpg">
+<body>
 <header>
     <?php include "nav/nav_index.php" ?>
 </header>
