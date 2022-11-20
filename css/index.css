@@ -76,3 +76,10 @@ footer {
 p+p{
     padding-bottom: 10px;
 }
+
+@media (max-width: 480px) { /*Phone*/
+    body {
+        min-width: 480;
+        width: 480;
+    }
+}
