@@ -38,16 +38,18 @@ include "../connect/connect.php";
                         $cname = $cus->fetch();
                         $customer_name = $cname["cus_name"];
                         $nameforsearch = str_replace(" ", "%", $customer_name);
+                        $sendcusname = str_replace(" ", "%C2%A0", $customer_name);
                     } else {
                         $customer_name = $_GET["search-by-name-or-telid"];
                         $nameforsearch = str_replace("%", " ", $customer_name);
+                        $sendcusname = str_replace(" ", "%C2%A0", $_GET["search-by-name-or-telid"]);
                     }
 
                 ?>
-                    <a href='../Phone/insert-phone.php?cus_name=<?= $customer_name ?>'>เพิ่มเครื่อง</a>
-                    <a href='../Request/request_form.php?cus_name=<?= $customer_name ?>'>เพิ่มคำร้อง</a>
-                    <a href='../reciept/pay.php?name=<?= $nameforsearch ?>'>ชำระเงิน</a>
-                    <a href='../reciept/receiptprint.php?name=<?= $nameforsearch ?>'>พิมพ์ใบเสร็จ</a>
+                    <a href='../Phone/insert-phone.php?cus_name=<?= $sendcusname ?>'>เพิ่มเครื่อง</a>
+                    <a href='../Request/request_form.php?cus_name=<?= $sendcusname ?>'>เพิ่มคำร้อง</a>
+                    <a href='../reciept/pay.php?name=<?= $sendcusname ?>'>ชำระเงิน</a>
+                    <a href='../reciept/receiptprint.php?name=<?= $sendcusname ?>'>พิมพ์ใบเสร็จ</a>
                 <?php } ?>
             </div>
         </div>
