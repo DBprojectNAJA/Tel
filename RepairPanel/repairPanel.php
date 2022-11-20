@@ -57,7 +57,7 @@ if (!isset($_SESSION['employee_id'])) {
                         <td>
                             <?php echo $row['repair_status'] ?>
                         </td>
-                        <td>
+                        <td class="actions">
 
                             <?php
                             if ($row['repair_status'] == "awaiting") { ?>
@@ -97,7 +97,7 @@ if (!isset($_SESSION['employee_id'])) {
 </body>
 <script>
     $(document).ready(function() {
-        $('.action').click(function() {
+        $('.actions > input').click(function() {
             var repair_id = $(this).attr("id");
             var action = $(this).attr("name");
             var repairman_id = "<?php echo $repairman_id ?>";
