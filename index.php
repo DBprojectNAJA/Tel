@@ -18,7 +18,7 @@
         <h3>Technic telephone</h3><br>
         <p>โทรศัพท์มีปัญหา<br>โทรหาใครไม่ติด<br>ติดต่อเรา</p>
         <p>ปลอดภัย มีฝีมือ มากประสบการณ์</p>
-        <a href=""><input type="button" value="ขั้นตอนการรับบริการ" id="check"></a>
+        <a href="#S1"><input type="button" value="ขั้นตอนการรับบริการ" id="check"></a>
         <a href="./Customer/CustomerSearch.php"><input type="button" value="เช็คสถานะ" id="check"></a>
         <a href="./contact/contact.php"><input type="button" value="ติดต่อเรา" id="check"></a>
         </div>
