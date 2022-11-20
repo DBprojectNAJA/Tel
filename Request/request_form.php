@@ -31,50 +31,54 @@ if ($is_telId) {
     if (isset($_SESSION['employee_id'])) {
         $employee_id = $_SESSION['employee_id'];
     ?>
-       <center> <h1>แจ้งคำร้อง</h1></center>
-        <center><div class="r1" style="min-height: 55vh;">
-            <section>
-                <label>
-                    เจ้าของคำร้อง
-                </label>
-                <?php
-                $name = $_GET['cus_name'];
-                if (isset($name)) { ?>
-                    <input type="text" id="name" value="<?php echo $realName ?>" readonly disabled />
-                <?php
-                }
-                ?>
-                <div>
+        <center>
+            <h1>แจ้งคำร้อง</h1>
+        </center>
+        <center>
+            <div class="r1" style="min-height: 55vh;">
+                <section>
                     <label>
-                        เครื่องที่จะซ่อม
+                        เจ้าของคำร้อง
                     </label>
+                    <?php
+                    $name = $_GET['cus_name'];
+                    if (isset($name)) { ?>
+                        <input type="text" id="name" value="<?php echo $realName ?>" readonly disabled />
+                    <?php
+                    }
+                    ?>
+                    <div>
+                        <label>
+                            เครื่องที่จะซ่อม
+                        </label>
 
-                    <select name="tel_id" id="tel_id">
-                        <option value="" <?php if (!$is_telId) echo "selected" ?> disabled hidden>เลือกเครื่องที่จะซ่อม</option>
-                        <?php
-                        $str = str_replace(" ", "%", $realName);
-                        $sql = "SELECT * FROM telephone WHERE cus_name LIKE '{$str}'";
-                        $result = $conn->query($sql);
-                        while ($row = mysqli_fetch_array($result)) {
-                        ?>
-                            <option <?php if ($is_telId && $row['tel_id'] == $name) echo "selected" ?> value="<?php echo $row['tel_id'] ?>">
-                                <?php echo $row['tel_id'] ?>
-                            </option>
-                        <?php
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div>
-                    <label>
-                        อาการผิดปกติ
-                    </label>
-                    <br />
-                    <textarea id="abnormality" name="abnormality" rows="5" required></textarea>
-                </div>
-                <input type="button" value="ส่งคำร้อง" id="submit" />
-            </section>
-        </div></center>
+                        <select name="tel_id" id="tel_id">
+                            <option value="" <?php if (!$is_telId) echo "selected" ?> disabled hidden>เลือกเครื่องที่จะซ่อม</option>
+                            <?php
+                            $str = str_replace(" ", "%", $realName);
+                            $sql = "SELECT * FROM telephone WHERE cus_name LIKE '{$str}'";
+                            $result = $conn->query($sql);
+                            while ($row = mysqli_fetch_array($result)) {
+                            ?>
+                                <option <?php if ($is_telId && $row['tel_id'] == $name) echo "selected" ?> value="<?php echo $row['tel_id'] ?>">
+                                    <?php echo $row['tel_id'] ?>
+                                </option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label>
+                            อาการผิดปกติ
+                        </label>
+                        <br />
+                        <textarea id="abnormality" name="abnormality" rows="5" required></textarea>
+                    </div>
+                    <input type="button" value="ส่งคำร้อง" id="submit" />
+                </section>
+            </div>
+        </center>
         <a href="../search/search.php?search-by-name-or-telid=<?= $name ?>"><input type="button" value="Back" id="bottonB" /></a>
     <?php
     }
