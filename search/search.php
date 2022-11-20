@@ -10,7 +10,7 @@ include "../connect/connect.php";
 </head>
 
 <body style="line-height: 30px;">
-    <div style="min-height: 90vh;">
+    <div style="min-height: 93vh;">
         <?php include "../nav/nav.php" ?>
         <div class="head-search" align="center">
             <div class="search">
