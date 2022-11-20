@@ -133,6 +133,11 @@ tr+tr {
 @media (max-width: 480px) {
 
     /*Phone*/
+    body{
+        width: 480;
+        min-width: 480;
+        
+    }
     table,
     th,
     td {
