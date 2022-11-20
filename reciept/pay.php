@@ -74,7 +74,7 @@ include "../connect/connect.php";
                     if (data) {
                         var url = 'reciept.php';
                         var form = $('<form style="display: none;" action="' + url + '" method="post">' +
-                            '<input type="text" name="api_url" value="' + requestArr + '" />' +
+                            '<input type="text" name="request" value="' + requestArr + '" />' +
                             '</form>');
                         $('body').append(form);
                         form.submit();

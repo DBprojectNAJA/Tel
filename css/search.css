@@ -78,3 +78,29 @@ button {
     margin-right: 1%;
 }
 
+@media (max-width: 453px) {
+    .content {
+    margin: 0px;
+    padding: 0px;
+    }
+    table {
+        border-collapse: separate;
+        
+    }
+}
+
+@media (max-height: 600px) and (max-width: 500px) {
+    table {
+        border-collapse: separate;
+        
+    }
+    .head-search div {
+        margin-bottom: 0px;
+    }
+    .head-search {
+        margin: 0 10% 0 10%;
+        padding: 5%;
+        border-radius: 10px;
+        background-color: white;
+    }
+}

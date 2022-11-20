@@ -98,7 +98,7 @@ hr.style1 {
     }
     
 }
-@media (max-height: 400px) and (max-width: 900px) {
+@media (max-height: 600px) and (max-width: 500px) {
     .search {
         margin: 15vh 20% 20vh 20%;
         padding: 5%;
