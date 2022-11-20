@@ -79,3 +79,18 @@ h1 {
         padding: 1% 0% 3% 10%;
     }
 }
+
+@media (max-height: 686px) and (max-width: 786px){
+    body{
+        width: max-content;
+        min-width: 480;
+    }
+    h1{
+        
+        font-size: 30px;
+        width: max-content;
+    }
+    .r1{
+        padding: 1% 0% 3% 15%;
+    }
+}
