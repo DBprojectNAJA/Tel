@@ -10,7 +10,7 @@ include "../connect/connect.php";
 </head>
 
 <body style="line-height: 30px;">
-    <div style="min-height: 100vh;">
+    <div style="min-height: 90vh;">
         <?php include "../nav/nav.php" ?>
         <div class="head-search" align="center">
             <div class="search">
@@ -18,7 +18,7 @@ include "../connect/connect.php";
                     <label>
                         <h1>กรอกชื่อ-สกุล/รหัสโทรศัพท์</h1>
                     </label><br>
-                    <input type="text" name="search-by-name-or-telid" style="text-align:center" value='<?php
+                    <input type="text" name="search-by-name-or-telid" style="text-align:center" required value='<?php
                                                                                                         $value = (isset($_GET["search-by-name-or-telid"])) ?
                                                                                                             $_GET["search-by-name-or-telid"] : "";
                                                                                                         echo $value;
