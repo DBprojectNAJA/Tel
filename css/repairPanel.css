@@ -37,6 +37,9 @@ th, td {
     font-size: 13px;
     font-weight: bold;
 }
+tr+tr{
+    background-color: #f1f7ff; 
+}
 .action {
     background-color: #1363DF; 
     border: outset;
