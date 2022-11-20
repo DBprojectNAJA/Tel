@@ -12,7 +12,6 @@
             margin: 0;
             padding: 0;
         }
-
         .navContainer {
             padding-bottom: 10vh;
             
@@ -58,15 +57,32 @@
             color: #06283D;
         }
 
-       @media (max-width:480px) {
-        .navContainer li a {
-            
-            display: inline-block;
-            width: auto;
+        .toggle{
+            width:100%;
+            padding:10px 20px;
+            background: #47B5FF;
+            text-align: right;
+            box-sizing:border-box;
+            color: black;
+            font-size: 30px;
+            display:none;
             
         }
-       
-        
+
+       @media (max-width:480px) {
+        .toggle{
+            display:block;
+        }
+        ul{
+            width: 100%;
+            display:none;
+        }
+        ul li{
+            display: block;
+        }
+        .active{
+            display:block;
+        }
        }
  
 
@@ -74,10 +90,12 @@
 </head>
 <div class="navContainer">
     <nav>
-    
+       <div class="toggle">
+            <i class="fas fa-bars menu"></i>
+        </div>
         <ul>
             <li><a href="../search/search.php"><img src="../img/logo.png" id="logo"><b style="margin-left: 10px;" id="TextLogo"> Technic telephone</b></a></li>
-            <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"]; ?></a><a href="../index.php">LOG OUT</li>
+            <li style="float:right; background-color:black;"><a href=""><?php echo $_SESSION["emp_name"]; ?></a><a href="../index.php">LOG OUT<i class="fas fa-sign-out-alt"></i></li>
             <li style="float:right">
                 <?php
                 if ($_COOKIE['is_repairman']==1) {
@@ -95,4 +113,13 @@
         </ul>
         
     </nav>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.menu').click(function(){
+                $('ul').toggleClass('active');
+                console.log("hi");
+            })
+        })
+    </script>
 </div>

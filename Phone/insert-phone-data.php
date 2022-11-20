@@ -17,6 +17,6 @@
     tel_model : <?=$row["tel_model"]?><br>
     color : <?=$row["color"]?><br>
     <a href="edit-phone.php?tel_id=<?=$row["tel_id"]?>">แก้ไข</a> |
-    <a href="delect-phone.php?tel_id=<?=$row["tel_id"]?>">ลบ</a>
+    <a href="delect-phone.php?tel_id=<?=$row["tel_id"]?>&cus_name=<?=$row["cus_name"]?>"> ลบ</a>
 </body>
 </html>
