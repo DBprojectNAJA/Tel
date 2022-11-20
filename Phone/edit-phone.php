@@ -22,7 +22,7 @@ $row = $stmt->fetch();?>
     <input type="submit" value="แก้ไขข้อมูล" id="submit">
 </form>
 </div>
-<a href="../search/search.php?search-by-name-or-telid=<?= $_GET["name"] ?>"><input type="button" value="Back" id="bottonB" /></a>
+<a href="../search/search.php?search-by-name-or-telid=<?= $row["cus_name"] ?>"><input type="button" value="Back" id="bottonB" /></a>
 </body>
 <footer>
     <?php include "../footer/footer2.php" ?>
