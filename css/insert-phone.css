@@ -84,3 +84,34 @@ right: 0;
     font-size: 13px;
     font-weight: bold;
 }
+
+@media (max-width: 480px) { /*Phone*/
+    h1{
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .main>div{
+        display: block;
+        margin: 5vh 5% 5vh 5%;
+        padding: 2%;
+    }
+    .main{
+        margin: 0px 10px 0px 10px;
+        min-height: 52vh;
+    }
+    #bottonB {
+        margin: 0px 40% 30px 40%;
+    }
+    #bottonB:hover {
+        background-color: #47B5FF; 
+        border: none;
+        color: black;
+        margin: 0px 40% 30px 40%;
+        padding: 10px 22px;
+        border-radius: 5px;
+        text-align: center;
+        display: inline-block;
+        font-size: 13px;
+        font-weight: bold;
+    }
+}

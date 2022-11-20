@@ -5,14 +5,14 @@ body {
 .r1 {
     text-align: left;
     position: relative;
-    margin: 0px 300px 10px 300px;
+    margin: 0px 350px 10px 350px;
     padding: 1% 0% 3% 20%;
     background-color: #DFF6FF;
     line-height: 40px;
 }
 h1 {
     padding-top: 10px;
-    margin: 0px 200px 0px 200px;
+    margin: 0px 350px 0px 350px;
     background-color: #DFF6FF;
 }
 #submit {

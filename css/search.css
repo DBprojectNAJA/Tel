@@ -94,7 +94,7 @@ button {
     }
 }
 
-@media (max-height: 786px) and (max-width: 686px) {/*ipad*/
+@media (max-height: 686px) and (max-width: 786px) {/*ipad*/
     table {
         border-collapse: separate;
         

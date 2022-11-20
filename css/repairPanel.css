@@ -13,6 +13,9 @@ th, td {
     padding: 10px;
     background-color: #DFF6FF;
 }
+h1.reP {
+    margin: 20px 20px 0px 20px;
+}
 .bottonB {
     background-color: #1363DF; 
     border: none;
@@ -127,4 +130,22 @@ tr+tr{
     display: inline-block;
     font-size: 12px;
     font-weight: bold;
+}
+@media (max-width: 480px) { /*Phone*/
+    table, th, td {
+        border: 1px solid #06283D;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 2px;
+    }
+    div.reP {
+        font-size: 10px;
+        margin: 0px 10px 0px 10px;
+        padding: 5px;
+    }
+    h1.reP {
+        font-size: 22px;
+        margin: 10px 10px 0px 10px;
+    }
 }
