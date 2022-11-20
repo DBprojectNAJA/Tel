@@ -84,7 +84,7 @@ hr.style1 {
     .search {
         margin: 15vh 20% 20vh 20%;
         padding: 5%;
-        background-color: rgb(193, 202, 24);
+        
         border-radius: 10px;
         text-align: center;
     }
@@ -101,12 +101,12 @@ hr.style1 {
     .search {
         margin: 15vh 20% 20vh 20%;
         padding: 5%;
-        background-color: rgb(24, 202, 157);
+        
         border-radius: 10px;
         text-align: center;
     }
     .cus_search{
-        min-height:30vh;
+        min-height:20vh;
     }
     table {
         border-collapse: separate;

@@ -24,7 +24,7 @@
     <a href="edit-phone.php?tel_id=<?=$row["tel_id"]?>"><input type="button" value="แก้ไข" id="submit" /></a> 
     <a href="delect-phone.php?tel_id=<?=$row["tel_id"]?>&cus_name=<?=$row["cus_name"]?>"><input type="button" value="ลบ" id="submit" /></a>
     </div>
-    <a href="../search/search.php?search-by-name-or-telid=<?= $_GET["name"] ?>"><input type="button" value="Back" id="bottonB" /></a>
+    <a href="../search/search.php?search-by-name-or-telid=<?=$row["cus_name"]?>"><input type="button" value="Back" id="bottonB" /></a>
 </body>
 <footer>
     <?php include "../footer/footer2.php" ?>
