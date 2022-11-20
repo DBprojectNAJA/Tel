@@ -31,7 +31,7 @@ if ($is_telId) {
     if (isset($_SESSION['employee_id'])) {
         $employee_id = $_SESSION['employee_id'];
     ?>
-    <h1>แจ้งคำร้อง</h1>
+        <h1>แจ้งคำร้อง</h1>
         <div class="r1" style="min-height: 55vh;">
             <section>
                 <label>
@@ -87,27 +87,32 @@ if ($is_telId) {
         $('#submit').click(function() {
             var tel_id = document.getElementById('tel_id').value
             var abnormality = document.getElementById('abnormality').value
-            var emp_id = "<?php echo $employee_id ?>"
-            if (tel_id == "") {
-                alert("กรุณาเลือกเครื่องที่ต้องการซ่อม")
-                return
-            }
-            $.ajax({
-                url: "make_request.php", //ส่งไปที่ไหน
-                method: "POST",
-                data: {
-                    tel_id,
-                    abnormality,
-                    emp_id
-                },
-                success: function(data) {
-                    if (data) {
-                        alert("เพิ่มคำร้องสำเร็จ")
-                    }
-                    console.log(data);
+            if (abnormality) {
+                var emp_id = "<?php echo $employee_id ?>"
+                if (tel_id == "") {
+                    alert("กรุณาเลือกเครื่องที่ต้องการซ่อม")
+                    return
                 }
+                $.ajax({
+                    url: "make_request.php", //ส่งไปที่ไหน
+                    method: "POST",
+                    data: {
+                        tel_id,
+                        abnormality,
+                        emp_id
+                    },
+                    success: function(data) {
+                        if (data) {
+                            alert("เพิ่มคำร้องสำเร็จ")
+                        }
+                        console.log(data);
+                    }
 
-            })
+                })
+            } else {
+                alert("โปรดใส่อาการผิดปกติ")
+            }
+
 
 
         })
@@ -116,4 +121,5 @@ if ($is_telId) {
 <footer>
     <?php include "../footer/footer2.php" ?>
 </footer>
+
 </html>

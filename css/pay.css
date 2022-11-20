@@ -1,25 +1,30 @@
 body {
-    background:#06283D;
+    background: #06283D;
     text-align: center;
 }
+
 .p1 {
     text-align: left;
-    position: relative;
+    /* position: relative; */
+    background-color: white;
     margin: 0px 300px 10px 300px;
     padding: 1% 0% 3% 20%;
     background-color: #DFF6FF;
     line-height: 40px;
 }
+
 h1 {
     padding-top: 10px;
     margin: 50px 300px 0px 300px;
     background-color: #DFF6FF;
 }
+
 .tel-checkbox {
     margin-left: 1%;
 }
+
 #submit {
-    background-color: #1363DF; 
+    background-color: #1363DF;
     border: outset;
     color: white;
     margin-top: 5px;
@@ -30,8 +35,9 @@ h1 {
     font-size: 12px;
     font-weight: bold;
 }
+
 #submit:hover {
-    background-color: #47B5FF; 
+    background-color: #47B5FF;
     border: outset;
     color: black;
     margin-top: 5px;
@@ -42,14 +48,16 @@ h1 {
     font-size: 12px;
     font-weight: bold;
 }
+
 #CusName::before {
     font-family: "FontAwesome";
     content: "\f2bd";
     padding: 5px;
-    
+
 }
+
 #bottonB {
-    background-color: #1363DF; 
+    background-color: #1363DF;
     border: none;
     color: white;
     margin: 0px 20px 70px 20px;
@@ -60,8 +68,9 @@ h1 {
     font-size: 13px;
     font-weight: bold;
 }
+
 #bottonB:hover {
-    background-color: #47B5FF; 
+    background-color: #47B5FF;
     border: none;
     color: black;
     margin: 0px 20px 70px 20px;
