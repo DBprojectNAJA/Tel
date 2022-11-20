@@ -15,7 +15,7 @@
         <div class="search">
         <form>
             <label><b style="font-size: 30px; margin-bottom: 10px;">กรอกชื่อ-สกุล/รหัสโทรศัพท์</b></label><br>
-            <input pattern="^[ก-๏\sa-z0-9]+" type="text" name="search-by-name-or-telid" style="text-align:center" required value='<?php
+            <input pattern="^([ก-๏]|tel).*" type="text" name="search-by-name-or-telid" style="text-align:center" required value='<?php
                 $value = (isset($_GET["search-by-name-or-telid"])) ?
                     $_GET["search-by-name-or-telid"] : "";
                 echo $value;
