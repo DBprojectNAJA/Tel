@@ -18,7 +18,7 @@ include "../connect/connect.php";
                     <label>
                         <h1>กรอกชื่อ-สกุล/รหัสโทรศัพท์</h1>
                     </label><br>
-                    <input type="text" name="search-by-name-or-telid" style="text-align:center" value='<?php
+                    <input type="text" name="search-by-name-or-telid" style="text-align:center" required value='<?php
                                                                                                         $value = (isset($_GET["search-by-name-or-telid"])) ?
                                                                                                             $_GET["search-by-name-or-telid"] : "";
                                                                                                         echo $value;
