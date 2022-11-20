@@ -28,25 +28,39 @@ session_start(); ?>
             ");
     $stmt4->bindParam(1, $_GET["name"]);
     $stmt4->execute(); ?>
+    <div style="min-height: 75vh;">
+        <h1>ใบเสร็จรับเงิน</h1>
+        <div class="p1">
+            <?php
+            if ($stmt4->rowCount() > 0) { ?>
 
-    <h1>ใบเสร็จรับเงิน</h1>
-    <div class="p1" style="min-height: 35vh;">
-    <b id ="CusName">คุณ <?=$_GET["name"]?></b><br>
-    <b><u>เลือกโทรศัพท์ที่ต้องการพิมพ์ใบเสร็จ</u></b><br>
-    <div class="tel-checkbox">
-        <?php while ($row4 = $stmt4->fetch()) {
-            if ($row4["pay_date"]) {
-                $row4["pay_date"] = date('d-m-Y', strtotime($row4["pay_date"]));
+                <b id="CusName">คุณ <?= $_GET["name"] ?></b><br>
+                <b><u>เลือกโทรศัพท์ที่ต้องการพิมพ์ใบเสร็จ</u></b><br>
+                <div class="tel-checkbox">
+                    <?php
+                    while ($row4 = $stmt4->fetch()) {
+                        if ($row4["pay_date"]) {
+                            $row4["pay_date"] = date('d-m-Y', strtotime($row4["pay_date"]));
+                        }
+                    ?>
+                        <input type="checkbox" id="print" onclick="addDelete('<?= $row4['request_id'] ?>');" name="print" value="<?= $row4["request_id"] ?>">
+                        <?= $row4["request_id"] ?> รหัสโทรศัพท์ <?= $row4["tel_id"] ?> รุ่น <?= $row4["tel_model"] ?> ราคา <?= $row4["cost"] ?> บาท - วันที่จ่าย <?= $row4["pay_date"] ?><br>
+                        <br>
+                    <?php }
+                    ?>
+                </div>
+                <button id="submit">พิมพ์ใบเสร็จรับเงิน</button><br>
+            <?php
+            } else { ?>
+                <h2>ไม่พบข้อมูล</h2>
+            <?php
             }
-        ?>
-            <input type="checkbox" id="print" onclick="addDelete('<?= $row4['request_id'] ?>');" name="print" value="<?= $row4["request_id"] ?>">
-            <?= $row4["request_id"] ?> รหัสโทรศัพท์ <?= $row4["tel_id"] ?> รุ่น <?= $row4["tel_model"] ?> ราคา <?= $row4["cost"] ?> บาท - วันที่จ่าย <?= $row4["pay_date"] ?><br>
-            <br>
-        <?php } ?>
+            ?>
+        </div>
+
+        <a href="../search/search.php?search-by-name-or-telid=<?= $_GET["name"] ?>"><input type="button" value="Back" id="bottonB" /></a>
     </div>
-    <button id="submit">พิมพ์ใบเสร็จรับเงิน</button><br>
-    </div>
-    <a href="../search/search.php?search-by-name-or-telid=<?= $_GET["name"] ?>"><input type="button" value="Back" id="bottonB" /></a>
+
 </body>
 <script>
     let requestArr = [];
@@ -64,16 +78,22 @@ session_start(); ?>
 
     $(document).ready(function() {
         $('#submit').click(function() {
-            var url = 'reciept.php';
-            var form = $('<form style="display: none;" action="' + url + '" method="post">' +
-                '<input type="text" name="request" value="' + requestArr + '" />' +
-                '</form>');
-            $('body').append(form);
-            form.submit();
+            if (requestArr.length > 0) {
+                var url = 'reciept.php';
+                var form = $('<form style="display: none;" target="_blank" action="' + url + '" method="post">' +
+                    '<input type="text" name="request" value="' + requestArr + '" />' +
+                    '</form>');
+                $('body').append(form);
+                form.submit();
+            } else {
+                alert("กรุณาเลือกใบเสร็จที่จะพิมพ์")
+            }
+
         })
     })
 </script>
 <footer>
     <?php include "../footer/footer2.php" ?>
 </footer>
+
 </html>

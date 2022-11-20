@@ -9,6 +9,7 @@ include "../connect/connect.php";
     <?php include "../nav/nav.php" ?>
     <link rel="stylesheet" type="text/css" href="../css/pay.css">
 </head>
+
 <body>
     <?php
     $stmt4 = $pdo->prepare("SELECT customer.cus_name,telephone.tel_model,telephone.color,
@@ -27,26 +28,40 @@ include "../connect/connect.php";
             ");
     $stmt4->bindParam(1, $_GET["name"]);
     $stmt4->execute(); ?>
+    <div style="min-height: 75vh;">
+        <h1>ชำระเงิน</h1>
+        <div class="p1">
+            <?php
+            if ($stmt4->rowCount() > 0) { ?>
+                <b id="CusName">คุณ<?= $_GET["name"] ?></b><br>
+                <b><u>เลือกโทรศัพท์ที่ต้องการชำระเงิน</u></b>
+                <div class="tel-checkbox">
+                    <?php while ($row4 = $stmt4->fetch()) {
+                        if ($row4["pay_date"]) {
+                            $row4["pay_date"] = date('d-m-Y', strtotime($row4["pay_date"]));
+                        }
+                    ?>
+                        <input type="checkbox" id="print" name="print" onclick="addDelete('<?= $row4['request_id'] ?>');" value="<?= $row4["request_id"] ?>">
+                        <?= $row4["tel_id"] ?> รุ่น <?= $row4["tel_model"] ?> สี <?= $row4["color"] ?> ราคา <?= $row4["cost"] ?> บาท
+                        <br>
+                    <?php } ?>
 
-    <h1>ชำระเงิน</h1>
-    <div class="p1" style="min-height: 40vh;">
-    <b id ="CusName">คุณ<?=$_GET["name"]?></b><br>
-    <b><u>เลือกโทรศัพท์ที่ต้องการชำระเงิน</u></b>
-    <div class="tel-checkbox">
-        <?php while ($row4 = $stmt4->fetch()) {
-            if ($row4["pay_date"]) {
-                $row4["pay_date"] = date('d-m-Y', strtotime($row4["pay_date"]));
+                </div>
+                <button id="submit">ชำระเงิน</button><br>
+            <?php
+            } else {
+            ?>
+                <h2>ไม่พบข้อมูล</h2>
+            <?php
             }
-        ?>
-            <input type="checkbox" id="print" name="print" onclick="addDelete('<?= $row4['request_id'] ?>');" value="<?= $row4["request_id"] ?>">
-            <?= $row4["tel_id"] ?> รุ่น <?= $row4["tel_model"] ?> สี <?= $row4["color"] ?> ราคา <?= $row4["cost"] ?> บาท
-            <br>
-        <?php } ?>
-        
+
+            ?>
+
+        </div>
+        <a href="../search/search.php?search-by-name-or-telid=<?= $_GET["name"] ?>"><input type="button" value="Back" id="bottonB" /></a>
+
     </div>
-    <button id="submit">ชำระเงิน</button><br>
-    </div>
-    <a href="../search/search.php?search-by-name-or-telid=<?= $_GET["name"] ?>"><input type="button" value="Back" id="bottonB" /></a>
+
 </body>
 <script>
     let requestArr = [];
@@ -64,29 +79,35 @@ include "../connect/connect.php";
 
     $(document).ready(function() {
         $('#submit').click(function() {
-            $.ajax({
-                url: "makeTransaction.php", //ส่งไปที่ไหน
-                method: "POST",
-                data: {
-                    requestArr
-                },
-                success: function(data) {
-                    if (data) {
-                        var url = 'reciept.php';
-                        var form = $('<form style="display: none;" action="' + url + '" method="post">' +
-                            '<input type="text" name="request" value="' + requestArr + '" />' +
-                            '</form>');
-                        $('body').append(form);
-                        form.submit();
+            if (requestArr.length > 0) {
+                $.ajax({
+                    url: "makeTransaction.php", //ส่งไปที่ไหน
+                    method: "POST",
+                    data: {
+                        requestArr
+                    },
+                    success: function(data) {
+                        if (data) {
+                            var url = 'reciept.php';
+                            var form = $('<form style="display: none;" target="_blank" action="' + url + '" method="post">' +
+                                '<input type="text" name="request" value="' + requestArr + '" />' +
+                                '</form>');
+                            $('body').append(form);
+                            form.submit();
+                        }
+                        console.log(data);
                     }
-                    console.log(data);
-                }
 
-            })
+                })
+            } else {
+                alert("กรุณาเลือกเครื่องที่ต้องการจ่ายเงิน")
+            }
+
         })
     })
 </script>
 <footer>
     <?php include "../footer/footer2.php" ?>
 </footer>
+
 </html>
