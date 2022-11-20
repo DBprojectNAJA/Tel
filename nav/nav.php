@@ -84,6 +84,21 @@
             display:block;
         }
        }
+       @media (max-height: 786px) and (max-width: 686px) {/*ipad*/
+        .toggle{
+            display:block;
+        }
+        ul{
+            width: 100%;
+            display:none;
+        }
+        ul li{
+            display: block;
+        }
+        .active{
+            display:block;
+        }
+    }
  
 
     </style>
