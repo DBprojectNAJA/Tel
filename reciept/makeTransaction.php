@@ -1,7 +1,7 @@
 <?php
 include "../connect/connect.php";
 
-$requestID = $_POST['request'];
+$requestID = $_POST['requestArr'];
 
 for ($i = 0; $i < count($requestID); $i++) {
     $stmt = $pdo->prepare("UPDATE request
