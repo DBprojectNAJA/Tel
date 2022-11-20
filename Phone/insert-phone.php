@@ -10,16 +10,20 @@
 
     <?php include "../nav/nav_login.php" ?>
     <?php include "../nav/nav.php" ?>
-    <h1> เพิ่มเครื่องเข้าระบบ </h1>
+    
     <div class="main">
         <div class="add">
-        <form action="insert-phone-to-database.php?cus_name=<?=$_GET['cus_name'] ?>" method="post">
-            tel_model: <input type="text" name="tel_model"><br>
-            color: <input type="text" name="color"><br>
-            <input type="submit" value="add">
+        <h1> เพิ่มเครื่องเข้าระบบ </h1>
+        <form action="insert-phone-to-database.php?cus_name=<?=$_GET['cus_name'] ?>" method="post" class="F1">
+            <b>tel_model : </b><input type="text" name="tel_model"><br>
+            <b>color : </b><input type="text" name="color"><br>
+            <input type="submit" value="Add" id="submit">
         </form>
     </div>
-     
-    </div>      
+    </div>
+    <a href="../search/search.php?search-by-name-or-telid=<?=$_GET['cus_name']?>"><input type="button" value="Back" id="bottonB" /></a>      
 </body>
+<footer>
+        <?php include "../footer/footer2.php" ?>
+</footer>
 </html>        

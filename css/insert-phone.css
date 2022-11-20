@@ -2,28 +2,85 @@
     font-family: 'Prompt';
 }
 h1{
-text-align: center;
-font-weight: bold;
-font-size: 72px;
-color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 35px;
+    color: black;
+    margin-bottom: 20px;
 }
 
-.main>div{display: block;
-margin-bottom: 50px;
-justify-content: center;
-background-color:white;
-margin: 15vh 20% 20vh 20%;
-padding: 5%;
-border-radius: 10px;
+.main>div{
+    display: block;
+    margin-bottom: 50px;
+    background-color:white;
+    margin: 10vh 10% 10vh 10%;
+    padding: 5%;
+    border-radius: 10px;
+    min-height:28vh;
 /* text-align: center; */
 }
 body {
-    margin: 0px auto 0px auto;
+    
     background-color: #06283D;
+    line-height: 40px;
 }
 .main{
-margin: 130px 370px 193.8px;
+margin: 0px 370px 50px;
 position: static;
 left: 0;
 right: 0;
+}
+.F1 {
+    text-align: left;
+    position: relative;
+    margin: 0px 20px 10px 20px;
+    padding: 1% 0% 3% 20%;
+}
+#submit {
+    background-color: #1363DF; 
+    border: outset;
+    color: white;
+    margin: 10px 30% 0px 30%;
+    padding: 2px 5px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+}
+#submit:hover {
+    background-color: #47B5FF; 
+    border: outset;
+    color: black;
+    margin: 10px 30% 0px 30%;
+    padding: 2px 5px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+}
+#bottonB {
+    background-color: #1363DF; 
+    border: none;
+    color: white;
+    margin: 0px 48% 30px 47%;
+    padding: 10px 22px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+}
+#bottonB:hover {
+    background-color: #47B5FF; 
+    border: none;
+    color: black;
+    margin: 0px 48% 30px 47%;
+    padding: 10px 22px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
 }
