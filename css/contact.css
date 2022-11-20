@@ -13,18 +13,3 @@ table, th, td {
 th, td {
     padding: 10px;
 }
-@media (max-width: 480px) { /*Phone*/
-body{
-    min-width: 480;
-    width: 480;
-}
-#hid{
-    display: none;
-}
-}
-@media (max-height: 686px) and (max-width: 786px) {/*ipad*/
-    #hid{
-        display: none;
-    }
-
-}
