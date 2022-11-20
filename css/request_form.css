@@ -5,7 +5,7 @@ body {
 .r1 {
     text-align: left;
     position: relative;
-    margin: 0px 350px 10px 350px;
+    margin: 0px 50px 10px 50px;
     padding: 1% 0% 3% 20%;
     background-color: #DFF6FF;
     line-height: 40px;
@@ -62,4 +62,11 @@ h1 {
     display: inline-block;
     font-size: 13px;
     font-weight: bold;
+}
+
+@media (max-width: 480px) {
+    body{
+        width: 480;
+        min-width: 480;
+    }
 }

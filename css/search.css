@@ -79,6 +79,10 @@ button {
 }
 
 @media (max-width: 480px) { /*Phone*/
+    body{
+        width: 480;
+        min-width: 480;
+    }
     .content {
     margin: 10px;
     padding: 10px;
