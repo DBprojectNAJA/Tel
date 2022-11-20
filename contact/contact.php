@@ -5,6 +5,7 @@
     <head>
         <mega charset="utf-8">
         <?php include "../nav/nav_login.php" ?>
+        <link rel="stylesheet" type="text/css" href="../css/contact.css">
         <script>
             async function getDataFromAPI() {
             let response = fetch('./contact.json').then(res => res.json())
@@ -24,6 +25,7 @@
             let td2 = document.createElement('td')
             td2.innerHTML = address
             let td3 = document.createElement('td')
+            td3.id="hid"
             td3.innerHTML = map
             let td4 = document.createElement('td')
             td4.innerHTML = tel
@@ -37,23 +39,6 @@
             }
             getDataFromAPI()
         </script>
-        <style>
-            body {
-                background: #06283D;
-                text-align: center;
-            }
-            #tb {
-                margin: 0% 20% 5% 20%;
-                background-color: #DFF6FF;
-            }
-            table, th, td {
-                border: 2px solid #06283D;
-                border-collapse: collapse;
-            }
-            th, td {
-                padding: 10px;
-            }
-        </style>
     </head>
     <body>
         <div id="Tb">
@@ -62,7 +47,7 @@
                 <tr id="trr">
                     <th>สาขา</th>
                     <th>ที่อยู่</th>
-                    <th>แผนที่</th>
+                    <th id="hid">แผนที่</th>
                     <th>เบอร์ติดต่อ</th>
                 </tr>
             </table>
