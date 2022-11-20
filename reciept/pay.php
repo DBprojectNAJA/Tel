@@ -9,7 +9,17 @@ include "../connect/connect.php";
     <?php include "../nav/nav.php" ?>
     <link rel="stylesheet" type="text/css" href="../css/pay.css">
 </head>
-
+<script>
+    function Checkbox() {
+        var name = $_GET["name"];
+        var v = $('input:checkbox:checked').length;
+        if( parseInt( v ) <= 0 ) {
+            alert("กรุณาเลือกโทรศัพท์อย่างน้อย 1 เครื่อง");
+            document.location("pay.php?name=<?=$_GET["name"]?>");
+            // location.href='';
+        }
+    }
+</script>
 <body>
     <?php
     $stmt4 = $pdo->prepare("SELECT customer.cus_name,telephone.tel_model,telephone.color,
@@ -34,6 +44,7 @@ include "../connect/connect.php";
     <b id ="CusName">คุณ<?=$_GET["name"]?></b><br>
     <b><u>เลือกโทรศัพท์ที่ต้องการชำระเงิน</u></b>
     <div class="tel-checkbox">
+        <form onsubmit="Checkbox()">
         <?php while ($row4 = $stmt4->fetch()) {
             if ($row4["pay_date"]) {
                 $row4["pay_date"] = date('d-m-Y', strtotime($row4["pay_date"]));
@@ -43,8 +54,9 @@ include "../connect/connect.php";
             <?= $row4["tel_id"] ?> รุ่น <?= $row4["tel_model"] ?> สี <?= $row4["color"] ?> ราคา <?= $row4["cost"] ?> บาท
             <br>
         <?php } ?>
+        
     </div>
-    <button id="submit">ชำระเงิน</button><br>
+    <button id="submit">ชำระเงิน</button></form><br>
     </div>
     <a href="../search/search.php?search-by-name-or-telid=<?= $_GET["name"] ?>"><input type="button" value="Back" id="bottonB" /></a>
 </body>
