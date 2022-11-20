@@ -15,10 +15,10 @@ $row = $stmt->fetch();?>
 <h1>แก้ไขรายละเอียดโทรศัพท์</h1>
 <div id="inPdata"style="min-height: 40vh;">
 <form action="update-phone.php" method="get">
-    <b>tel_id : </b><input type="text" name="tel_id" value="<?=$row["tel_id"]?>" readonly style="background-color:#ddd"><br>
-    <b>name : </b><input type="text" name="cus_name" value="<?=$row["cus_name"]?>" readonly style="background-color:#ddd"><br>
-    <b>tel_model : </b><input type="text" name="tel_model" value="<?=$row["tel_model"]?>"><br>
-    <b>color : </b><input type="text" name="color" value="<?=$row["color"]?>"><br>
+    <b>tel_id : </b><input type="text" name="tel_id" value="<?=$row["tel_id"]?>" readonly disabled style="background-color:#ddd"><br>
+    <b>name : </b><input type="text" name="cus_name" value="<?=$row["cus_name"]?>" readonly disabled style="background-color:#ddd"><br>
+    <b>tel_model : </b><input type="text" name="tel_model" value="<?=$row["tel_model"]?>" required><br>
+    <b>color : </b><input type="text" name="color" value="<?=$row["color"]?>" required><br>
     <input type="submit" value="แก้ไขข้อมูล" id="submit">
 </form>
 </div>

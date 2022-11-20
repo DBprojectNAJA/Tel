@@ -70,7 +70,7 @@ if ($is_telId) {
                         อาการผิดปกติ
                     </label>
                     <br />
-                    <textarea id="abnormality" name="abnormality" rows="5"></textarea>
+                    <textarea id="abnormality" name="abnormality" rows="5" required></textarea>
                 </div>
                 <input type="button" value="ส่งคำร้อง" id="submit" />
             </section>

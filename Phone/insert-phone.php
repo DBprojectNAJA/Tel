@@ -15,8 +15,8 @@
         <div class="add">
         <h1> เพิ่มเครื่องเข้าระบบ </h1>
         <form action="insert-phone-to-database.php?cus_name=<?=$_GET['cus_name'] ?>" method="post" class="F1">
-            <b>tel_model : </b><input type="text" name="tel_model"><br>
-            <b>color : </b><input type="text" name="color"><br>
+            <b>tel_model : </b><input type="text" name="tel_model" required><br>
+            <b>color : </b><input type="text" name="color" required><br>
             <input type="submit" value="Add" id="submit">
         </form>
     </div>
