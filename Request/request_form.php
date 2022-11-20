@@ -31,7 +31,7 @@ if ($is_telId) {
     if (isset($_SESSION['employee_id'])) {
         $employee_id = $_SESSION['employee_id'];
     ?>
-        <h1>แจ้งคำร้อง</h1>
+       <center> <h1>แจ้งคำร้อง</h1></center>
         <div class="r1" style="min-height: 55vh;">
             <section>
                 <label>
