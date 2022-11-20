@@ -83,7 +83,7 @@ h1 {
     }
 }
 
-@media (max-height: 686px) and (max-width: 786px){
+@media (max-height: 686px) and (max-width: 1100px){
     body{
         width: max-content;
         min-width: 480;
