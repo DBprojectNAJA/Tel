@@ -30,7 +30,7 @@ session_start(); ?>
     $stmt4->execute(); ?>
 
     <h1>ใบเสร็จรับเงิน</h1>
-    <div class="p1" style="min-height: 40vh;">
+    <div class="p1" style="min-height: 35vh;">
     <b id ="CusName">คุณ <?=$_GET["name"]?></b><br>
     <b><u>เลือกโทรศัพท์ที่ต้องการพิมพ์ใบเสร็จ</u></b><br>
     <div class="tel-checkbox">

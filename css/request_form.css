@@ -5,8 +5,8 @@ body {
 .r1 {
     text-align: left;
     position: relative;
-    margin: 0px 200px 0px 200px;
-    padding: 1% 0% 0% 30%;
+    margin: 0px 300px 10px 300px;
+    padding: 1% 0% 3% 20%;
     background-color: #DFF6FF;
     line-height: 40px;
 }
@@ -43,7 +43,7 @@ h1 {
     background-color: #1363DF; 
     border: none;
     color: white;
-    margin: 10px 20px 10px 20px;
+    margin: 0px 20px 70px 20px;
     padding: 10px 22px;
     border-radius: 5px;
     text-align: center;
@@ -55,7 +55,7 @@ h1 {
     background-color: #47B5FF; 
     border: none;
     color: black;
-    margin: 10px 20px 10px 20px;
+    margin: 0px 20px 70px 20px;
     padding: 10px 22px;
     border-radius: 5px;
     text-align: center;
