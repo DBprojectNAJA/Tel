@@ -67,7 +67,15 @@ h1 {
 
 @media (max-width: 480px) {
     body{
-        width: 480;
+        width: max-content;
         min-width: 480;
+    }
+    h1{
+        
+        font-size: 28px;
+        width: max-content;
+    }
+    .r1{
+        padding: 1% 0% 3% 10%;
     }
 }

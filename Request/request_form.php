@@ -20,7 +20,7 @@ if ($is_telId) {
 ?>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <?php include "../nav/nav.php" ?>
     <link rel="stylesheet" type="text/css" href="../css/request_form.css">
@@ -32,7 +32,7 @@ if ($is_telId) {
         $employee_id = $_SESSION['employee_id'];
     ?>
        <center> <h1>แจ้งคำร้อง</h1></center>
-        <div class="r1" style="min-height: 55vh;">
+        <center><div class="r1" style="min-height: 55vh;">
             <section>
                 <label>
                     เจ้าของคำร้อง
@@ -74,7 +74,7 @@ if ($is_telId) {
                 </div>
                 <input type="button" value="ส่งคำร้อง" id="submit" />
             </section>
-        </div>
+        </div></center>
         <a href="../search/search.php?search-by-name-or-telid=<?= $name ?>"><input type="button" value="Back" id="bottonB" /></a>
     <?php
     }
