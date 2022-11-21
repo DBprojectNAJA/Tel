@@ -9,7 +9,7 @@ $stmt->bindParam(2, $_POST["cus_prefix"]);
 $stmt->bindParam(3, $_POST["cus_tel"]);
 $stmt->execute();
 
-header('refresh:2;url=../search/search.php');
+header('Location:../search/search.php');
 ?>
 
 <html>
